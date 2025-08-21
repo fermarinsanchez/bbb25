@@ -1,0 +1,56 @@
+.container {
+  padding: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.title {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin: 0;
+}
+
+.paragraph {
+  font-family: var(--font-plus-jakarta);
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  margin: 0;
+}
+
+.weightsContainer {
+  font-family: var(--font-plus-jakarta);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.weightItem {
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+.weightLight {
+  font-weight: var(--font-light);
+}
+
+.weightNormal {
+  font-weight: var(--font-normal);
+}
+
+.weightMedium {
+  font-weight: var(--font-medium);
+}
+
+.weightSemibold {
+  font-weight: var(--font-semibold);
+}
+
+.weightBold {
+  font-weight: var(--font-bold);
+}
+
+.weightExtrabold {
+  font-weight: var(--font-extrabold);
+} 

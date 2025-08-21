@@ -1,0 +1,342 @@
+.cookieBanner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #73C2AF 0%, #5BA8A0 100%);
+  color: white;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: slideUp 0.4s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.bannerContent {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+}
+
+.mainSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.iconContainer {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cookieIcon {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.textContent {
+  flex: 1;
+}
+
+.title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.actionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 72px;
+}
+
+.mainActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.buttonSecondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  align-self: flex-start;
+}
+
+.buttonSecondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.buttonReject {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.buttonReject:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.buttonAccept {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2C5F5A;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.buttonAccept:hover {
+  background: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.buttonAcceptAll {
+  background: #2C5F5A;
+  color: white;
+  border: 2px solid #2C5F5A;
+}
+
+.buttonAcceptAll:hover {
+  background: #1F4A45;
+  border-color: #1F4A45;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección de detalles */
+.detailsSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+}
+
+.cookieCategories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.category {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.categoryLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #73C2AF;
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  cursor: pointer;
+}
+
+.categoryStatus {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.categoryDescription {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.legalInfo {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.legalText {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.legalLink {
+  color: white;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.legalLink:hover {
+  opacity: 0.8;
+}
+
+/* Animación de entrada */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bannerContent {
+    padding: 1rem 1.5rem;
+  }
+  
+  .mainSection {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .iconContainer {
+    align-self: center;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .description {
+    font-size: 0.95rem;
+  }
+  
+  .mainActions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .buttonSecondary {
+    align-self: center;
+    width: auto;
+  }
+  
+  .categoryHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .categoryStatus {
+    align-self: flex-start;
+  }
+  .actionsSection {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerContent {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+  
+  .button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .category {
+    padding: 1rem;
+  }
+  
+  .categoryLabel {
+    font-size: 1rem;
+  }
+  
+  .categoryDescription {
+    font-size: 0.9rem;
+  }
+}
+
+/* Scrollbar personalizado para la sección de detalles */
+.cookieBanner::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cookieBanner::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.cookieBanner::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.cookieBanner::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+} 

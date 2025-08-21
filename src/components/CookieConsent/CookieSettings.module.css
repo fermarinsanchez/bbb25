@@ -1,0 +1,239 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.content {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.header h2 {
+  margin: 0 0 1rem 0;
+  color: #2C5F5A;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header p {
+  margin: 0;
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.successMessage {
+  background: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #c3e6cb;
+}
+
+.cookieCategories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.category {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.category:hover {
+  border-color: #73C2AF;
+  box-shadow: 0 2px 8px rgba(115, 194, 175, 0.1);
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.categoryLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2C5F5A;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #73C2AF;
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  cursor: pointer;
+}
+
+.categoryStatus {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+  background: #e9ecef;
+  color: #495057;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.categoryDescription {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  min-width: 160px;
+}
+
+.buttonReset {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 2px solid #dee2e6;
+}
+
+.buttonReset:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+  transform: translateY(-1px);
+}
+
+.buttonSave {
+  background: #73C2AF;
+  color: white;
+  border: 2px solid #73C2AF;
+}
+
+.buttonSave:hover {
+  background: #5BA8A0;
+  border-color: #5BA8A0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(115, 194, 175, 0.3);
+}
+
+.legalInfo {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #e9ecef;
+  text-align: center;
+}
+
+.legalInfo p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.legalLink {
+  color: #73C2AF;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.legalLink:hover {
+  color: #5BA8A0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .header h2 {
+    font-size: 1.75rem;
+  }
+  
+  .header p {
+    font-size: 1rem;
+  }
+  
+  .categoryHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .categoryStatus {
+    align-self: flex-start;
+  }
+  
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1rem;
+  }
+  
+  .header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .category {
+    padding: 1rem;
+  }
+  
+  .categoryLabel {
+    font-size: 1rem;
+  }
+  
+  .categoryDescription {
+    font-size: 0.9rem;
+  }
+} 

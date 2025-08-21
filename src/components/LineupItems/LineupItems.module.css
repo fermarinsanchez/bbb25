@@ -1,0 +1,68 @@
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 16px;
+}
+
+.rootContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 12px 12px 0;
+
+}
+
+.imageContainer {
+  flex-shrink: 0;
+}
+
+.bandImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bandName {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.2;
+}
+
+.bandHour {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
+}
+
+.bandLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.bandLink:hover {
+  transform: translateX(4px);
+}
+
+.bandLink:hover .rootContainer {
+  background-color: rgba(0, 123, 255, 0.05);
+  border-radius: 8px;
+}

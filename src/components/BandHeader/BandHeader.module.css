@@ -1,0 +1,158 @@
+  .root {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 640px;
+  }
+
+  .backButton {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #FFCC03;
+    border: 0.5px solid black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .backButton:hover {
+    background-color: #e6b800;
+  }
+
+  .backButton:active {
+    background-color: #ccaa00;
+  }
+
+  .backgroundContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    max-height: 640px;
+  /* min-height: 640px; */
+
+  }
+  
+.backgroundContainer img {
+  width: 100%;
+  max-height: 640px;
+  
+}
+
+.purpleHeader {
+  background-color: #705485;
+  clip-path: polygon(0 33%, 100% 0, 100% 100%, 0% 100%);
+  height: 220px;
+  width: 100%;
+  margin-top: -90px;
+}
+
+.bandImageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 56px;
+}
+
+.bandImage {
+     box-shadow: 
+        0 0 0 2px #293377,
+        0 0 0 8px #3299CC,
+        0 0 0 2px #293377;
+}
+
+.bandImageContainer img {
+    width: 70%;
+    position: relative;
+}
+
+/* Media query para pantallas mayores a 768px */
+@media (min-width: 768px) {
+  
+
+  .backgroundContainer {
+    background-color: #23B4BF;
+    min-height: 640px;
+  }
+  
+  .backgroundContainer img {
+    visibility: hidden; /* Ocultar imagen pero mantener el espacio */
+  }
+  
+  .backButton {
+    top: 89px; /* Posición superior para pantallas grandes */
+    left: 28px; /* Posición izquierda para pantallas grandes */
+  }
+  
+  .bandImageContainer {
+    padding-top: 128px; /* Padding superior para pantallas grandes */
+  }
+  
+  .bandImageContainer img {
+    width: 70%;
+    max-width: 540px; /* Tamaño máximo para la imagen */
+  }
+  
+  .bandTitle {
+    max-width: 540px; /* Tamaño máximo para el título */
+    margin-top: 100px;
+  }
+  
+  .purpleHeader {
+      max-width: 740px;
+      min-height: 300px;
+      position: absolute;
+      bottom: 0;
+
+  }
+}
+
+.bandTitle {
+    z-index: 3;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+/* Transiciones para carga suave */
+.bandImage {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.bandImage.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bandTitle img {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+.bandTitle img.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}

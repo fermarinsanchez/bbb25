@@ -1,0 +1,68 @@
+[
+ {
+  "question": "¿A qué tengo derecho con la entrada del festival?",
+  "answer": [
+   "Acceso completo al recinto, todas las actuaciones musicales, actividades, talleres, zonas de descanso, servicios sanitarios y acceso a los servicios de hostelería donde podrás comprar bebidas y comida."
+  ]
+ },
+ {
+  "question": "¿Cuál es la política de menores de edad?",
+  "answer": [
+   "Dos menores por adulto entran gratis. Si vienes con más de dos niños, cada niño adicional paga 10€.",
+   "Ejemplo: 1 adulto + 2 menores = entrada gratis para los menores. 1 adulto + 3 menores = 10€ por el tercer menor.",
+   "Los menores de 16 años deben estar siempre acompañados por un adulto responsable."
+  ]
+ },
+ {
+  "question": "¿Puedo traer comida y bebida al festival?",
+  "answer": [
+   "No se permite traer comida y bebida desde fuera. Dentro del recinto podrás comprar comida y bebida.",
+   "Sí se permite entrar comida para niños de 0 a 4 años y personas con restricciones alimentarias (celíacos, etc.)."
+  ]
+ },
+ {
+  "question": "¿Hay parking disponible?",
+  "answer": [
+   "Sí, el recinto cuenta con parking gratuito en las inmediaciones con gran capacidad de aparcamiento."
+  ]
+ },
+ {
+  "question": "¿Qué pasa si llueve?",
+  "answer": [
+   "El festival se celebrará con lluvia ligera. El recinto cuenta con zonas cubiertas y el evento está preparado para desarrollarse. En caso de lluvia moderada o fuerte, los conciertos podrían suspenderse temporalmente por seguridad.",
+   "Solo se cancelaría completamente en condiciones meteorológicas extremas."
+  ]
+ },
+ {
+  "question": "¿Puedo salir y volver a entrar del recinto?",
+  "answer": [
+   "Si, puedes salir y volver a entrar del recinto las veces que quieras presentando el sello de entrada."
+  ]
+ },
+ {
+  "question": "¿Puedo traer mi mascota?",
+  "answer": [
+   "No se permiten mascotas en el recinto, excepto perros guía o de asistencia que estén correctamente identificados y acompañen a personas con discapacidad.",
+   "Nota Importante: Los peluches de los peques sí están permitidos. Si tu bebé de 2 años quiere traer su delfín de peluche, ¡adelante! Los peluches son bienvenidos siempre que vayan acompañados de sus dueños pequeños."
+  ]
+ },
+ {
+  "question": "¿Qué debo hacer si pierdo algo durante el festival?",
+  "answer": [
+   "Dirígete al punto de acceso del recinto. También puedes contactar con la organización  o los responsables de la Terraza Summerland a través de redes sociales."
+  ]
+ },
+ {
+  "question": "¿Cuáles son los horarios del festival?",
+  "answer": [
+   "Viernes 26: Apertura de puertas a las 19:30 horas hasta las 24:00 horas.",
+   "Sábado 27: Apertura de puertas a las 12:00 horas hasta las 21:00 horas."
+  ]
+ },
+ {
+  "question": "¿Puedo comprar entradas allí mismo en el acceso del festival?",
+  "answer": [
+   "Sí, se pueden comprar entradas en la entrada del festival, pero te recomendamos comprarlas online con antelación para evitar colas y asegurar tu plaza."
+  ]
+ }
+]

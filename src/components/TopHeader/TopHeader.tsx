@@ -7,7 +7,7 @@ import ticketsIcon from "../../assets/menu_items/tickets.svg";
 import ticketsNotIcon from "../../assets/menu_items/tickets-not.svg";
 import socialIcon from "../../assets/menu_items/info.svg";
 import socialNotIcon from "../../assets/menu_items/info-not.svg";
-import BIcon from "../../assets/bicon.svg";
+import BIcon from "../../assets/BIcon.svg";
 import styles from "./TopHeader.module.css";
 
 interface TopHeaderProps {

@@ -1,0 +1,79 @@
+.socialLinks {
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.socialLinks h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.iconsContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.socialIcon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.socialIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Colores específicos para cada red social */
+.socialIcon[title="Instagram"]:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.socialIcon[title="Spotify"]:hover {
+  background-color: #1DB954;
+}
+
+.socialIcon[title="Bandcamp"]:hover {
+  background-color: #629aa9;
+}
+
+.socialIcon[title="YouTube"]:hover {
+  background-color: #FF0000;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .socialLinks {
+    padding: 15px 15px 15px 0px;
+  }
+  
+  .iconsContainer {
+    gap: 15px;
+  }
+  
+  .socialIcon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .socialIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+} 

@@ -1,0 +1,138 @@
+.faqContainer {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.faqTitle {
+ margin-bottom: 2rem;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.faqItem:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: #f8f9fa;
+}
+
+.questionButton {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: #000000;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.questionButton:hover {
+  background: #f8f9fa;
+}
+
+.questionButton:focus {
+  outline: none;
+  background: rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+.question {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  flex: 1;
+  margin-right: 1rem;
+  color: #000000;
+}
+
+.chevron {
+  width: 24px;
+  height: 24px;
+  color: #6b7280;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: #6366f1;
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1.5rem;
+  color: #000000;
+  line-height: 1.6;
+  background: #ffffff;
+}
+
+.answerOpen {
+  max-height: 500px;
+  padding: 16px;
+}
+
+.answer p {
+  margin: 0;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .faqContainer {
+    max-width: 100%;
+  }
+  
+  .questionButton {
+    padding: 1rem 1.25rem;
+  }
+  
+  .question {
+    font-size: 1rem;
+  }
+  
+  .answer {
+    padding: 0 1.25rem;
+  }
+  
+  .answerOpen {
+    padding: 16px;
+  }
+}
+
+/* Para pantallas de más de 768px, centrar el contenido y limitar el ancho máximo */
+@media (min-width: 768px) {
+  .faqContainer {
+    max-width: 1280px;
+  }
+}
+
+/* Para pantallas muy grandes, mantener el ancho máximo */
+@media (min-width: 1024px) {
+  .faqContainer {
+    max-width: 1280px;
+  }
+} 

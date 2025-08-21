@@ -1,0 +1,52 @@
+---
+import { SimpleHeader } from "../SimpleHeader/SimpleHeader.tsx"
+import lineUpTitle from "../../assets/grupos.svg"
+import { Typography } from "../Typography"
+import lineupData from "../../data/lineupData.json"
+import { LineupItems } from "../LineupItems/LineupItems.tsx"
+---
+
+<section>
+ <SimpleHeader client:only='react' titleSvg={lineUpTitle.src} alt='Lineup' />
+</section>
+
+<section class='content'>
+ <Typography variant='body'
+  >Disfruta de los mejores conciertos en vivo con un sonido molón y diversión a
+  raudales!</Typography
+ >
+
+ <Typography variant='headline-3'>Viernes 26</Typography>
+ <Typography variant='body'
+  >El viernes 26 arrancamos con un concierto de apertura de 3 bandas desde las
+  19:30 hasta las 00:00</Typography
+ >
+
+ <div class='lineup-items'>
+  <LineupItems client:only='react' data={lineupData} day='Friday' />
+ </div>
+
+ <Typography variant='headline-3'>Sábado 27</Typography>
+ <Typography variant='body'
+  >El sábado 27 arrancamos con el festival desde las 12:00 de la mañana hasta
+  las 21:00. Vive Balambamboo fest!</Typography
+ >
+
+ <div class='lineup-items'>
+  <LineupItems client:only='react' data={lineupData} day='Saturday' />
+ </div>
+</section>
+
+<style>
+ .content {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 100px;
+ }
+
+ .lineup-items {
+  padding: 16px 0px;
+ }
+</style>

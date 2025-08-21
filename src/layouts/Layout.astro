@@ -1,0 +1,105 @@
+---
+import BottomMenu from "../components/BottomMenu.astro"
+import TopHeader from "../components/TopHeader/TopHeader.astro"
+import Footer from "../components/Footer/Footer.astro"
+import CookieConsentWrapper from "../components/CookieConsent/CookieConsentWrapper"
+import CookieDebugPanel from "../components/CookieConsent/CookieDebugPanel"
+import "../../global.css"
+import { ClientRouter } from "astro:transitions"
+
+export interface Props {
+ title?: string
+ bandImage?: string
+}
+
+const { title = "BBooFest 2025", bandImage } = Astro.props
+---
+
+<!doctype html>
+<html lang='en'>
+ <head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width' />
+  <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+  <meta name='generator' content={Astro.generator} />
+  {bandImage && <link rel='preload' as='image' href={bandImage} />}
+  <title>{title}</title>
+ </head>
+ <body>
+  <!-- TopHeader solo visible en pantallas ≥768px -->
+  <div class='desktop-only'>
+   <TopHeader />
+  </div>
+
+  <main class='main-content'>
+   <slot />
+  </main>
+
+  <!-- Footer solo visible en pantallas ≥768px -->
+  <div class='desktop-only'>
+   <Footer />
+  </div>
+
+  <!-- BottomMenu solo visible en pantallas <768px -->
+  <div class='mobile-only'>
+   <BottomMenu />
+  </div>
+
+  <CookieConsentWrapper client:load />
+  <CookieDebugPanel client:load />
+  <ClientRouter />
+ </body>
+</html>
+
+<style>
+ html,
+ body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+ }
+
+ .main-content {
+  min-height: calc(100vh - 80px - 200px); /* 100vh - TopHeader - Footer aprox */
+ }
+
+ /* Clases para controlar la visibilidad según el viewport */
+ .desktop-only {
+  display: block;
+ }
+
+ .mobile-only {
+  display: none;
+ }
+
+ /* En pantallas pequeñas (≤767px): ocultar elementos desktop, mostrar elementos mobile */
+ @media (max-width: 767px) {
+  .desktop-only {
+   display: none;
+  }
+
+  .mobile-only {
+   display: block;
+  }
+
+  .main-content {
+   padding-top: 0; /* No padding top en móviles */
+   min-height: calc(100vh - 82px); /* 100vh - BottomMenu */
+  }
+ }
+
+ /* En pantallas medianas y grandes (≥768px): mostrar elementos desktop, ocultar elementos mobile */
+ @media (min-width: 768px) {
+  .desktop-only {
+   display: block;
+  }
+
+  .mobile-only {
+   display: none;
+  }
+
+  .main-content {
+   min-height: calc(100vh - 80px - 200px); /* 100vh - TopHeader - Footer */
+  }
+ }
+</style>

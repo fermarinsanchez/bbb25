@@ -1,0 +1,289 @@
+---
+import heroTitle from "../../assets/hero-title.svg"
+import heroMonsters from "../../assets/new-monsters-with-amps.svg"
+import backgroundSquares from "../../assets/fondo_rosa.png"
+---
+
+<section class='hero-section'>
+ <div class='hero-ilustration'>
+  <img
+   src={backgroundSquares.src}
+   alt='Background Squares'
+   class='background-squares'
+  />
+  <div class='hero-content'>
+   <img src={heroMonsters.src} class='hero-monsters' alt='Hero Monsters' />
+   <img src={heroTitle.src} class='hero-title' alt='Hero Title' />
+  </div>
+ </div>
+
+ <!-- Indicador de scroll solo visible en desktop -->
+ <div class='scroll-indicator' id='scrollIndicator'>
+  <div class='scroll-arrow-container'>
+   <div class='scroll-arrow'></div>
+  </div>
+  <span class='scroll-text'>Scroll</span>
+ </div>
+</section>
+
+<style>
+ .hero-ilustration {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #705485;
+  padding-bottom: 8%;
+ }
+
+ .hero-content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+ .hero-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20%;
+  margin: auto;
+  object-fit: contain;
+  object-position: center;
+  width: 80%;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s ease-out 0.6s forwards;
+ }
+
+ .hero-monsters {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  z-index: 3;
+  padding-top: 50px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s ease-out 0.3s forwards;
+ }
+
+ .background-squares {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  object-fit: contain;
+  object-position: top;
+ }
+
+ /* Indicador de scroll - oculto por defecto en móvil */
+ .scroll-indicator {
+  display: none;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+  color: white;
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: opacity 0.5s ease-out;
+  opacity: 1;
+ }
+
+ .scroll-arrow-container {
+  margin: 0 auto 12px;
+  animation: bounce 2s infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+  transform-origin: center;
+ }
+
+ .scroll-text {
+  opacity: 0.8;
+  animation: pulse 2s infinite;
+ }
+
+ @keyframes bounce {
+  0%,
+  100% {
+   transform: translateY(0);
+  }
+  50% {
+   transform: translateY(-10px);
+  }
+ }
+
+ @keyframes pulse {
+  0%,
+  100% {
+   opacity: 0.8;
+  }
+  50% {
+   opacity: 0.4;
+  }
+ }
+
+ @keyframes fadeInUp {
+  from {
+   opacity: 0;
+   transform: translateY(30px);
+  }
+  to {
+   opacity: 1;
+   transform: translateY(0);
+  }
+ }
+
+ @keyframes float {
+  0%,
+  100% {
+   opacity: 1;
+   transform: translateY(0);
+  }
+  50% {
+   opacity: 1;
+   transform: translateY(-8px);
+  }
+ }
+
+ /* Media query para viewports de 768px y superiores */
+ @media (min-width: 768px) {
+  .hero-section {
+   height: 100vh;
+  }
+
+  .hero-ilustration {
+   height: 100vh;
+   justify-content: center;
+   align-items: center;
+  }
+
+  .hero-title {
+   margin-top: 0;
+   /* margin-bottom: 0; */
+  }
+
+  .hero-monsters {
+   padding-top: 0;
+  }
+
+  /* Mostrar indicador de scroll en desktop */
+  .scroll-indicator {
+   display: block;
+  }
+ }
+
+ /* Media query para viewports de 965px y superiores */
+ @media (min-width: 965px) {
+  .background-squares {
+   display: block;
+  }
+
+  .hero-ilustration {
+   margin: 0 auto;
+  }
+
+  .hero-title {
+   width: 770px;
+   max-width: 770px;
+  }
+
+  .hero-monsters {
+   width: 770px;
+   max-width: 770px;
+  }
+ }
+</style>
+
+<script>
+ // Solo ejecutar en viewports de 768px y superiores
+ if (window.innerWidth >= 768) {
+  const scrollIndicator = document.getElementById("scrollIndicator")
+  const heroTitle = document.querySelector(".hero-title") as HTMLElement
+
+  let isScrolling = false
+  let scrollTimeout: string | number | NodeJS.Timeout | undefined
+
+  // Función para ocultar el indicador gradualmente
+  function hideScrollIndicator() {
+   if (scrollIndicator) {
+    scrollIndicator.style.opacity = "0"
+    // Ocultar completamente después de la transición
+    setTimeout(() => {
+     if (scrollIndicator.style.opacity === "0") {
+      scrollIndicator.style.display = "none"
+     }
+    }, 500)
+   }
+  }
+
+  // Función para mostrar el indicador gradualmente
+  function showScrollIndicator() {
+   if (scrollIndicator) {
+    scrollIndicator.style.display = "block"
+    // Pequeño delay para asegurar que el display se aplique antes de la transición
+    setTimeout(() => {
+     scrollIndicator.style.opacity = "1"
+    }, 10)
+   }
+  }
+
+  // Detectar cuando comienza el scroll
+  window.addEventListener("scroll", () => {
+   // Si estamos en el top de la página, mostrar el indicador
+   if (window.scrollY === 0) {
+    showScrollIndicator()
+    return
+   }
+
+   // Si no estamos en el top y no se está ocultando, ocultar
+   if (!isScrolling) {
+    isScrolling = true
+    hideScrollIndicator()
+   }
+
+   // Reset del timeout en cada scroll
+   clearTimeout(scrollTimeout)
+   scrollTimeout = setTimeout(() => {
+    isScrolling = false
+   }, 100)
+  })
+
+  // También ocultar al hacer scroll con el teclado
+  window.addEventListener("keydown", (e) => {
+   if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") {
+    hideScrollIndicator()
+   }
+  })
+
+  // Iniciar animación de flotación después de que termine fadeInUp
+  if (heroTitle) {
+   setTimeout(() => {
+    heroTitle.style.animation = "float 3s ease-in-out infinite"
+   }, 1800) // 0.6s (delay) + 1.2s (duración) = 1.8s total
+  }
+ }
+</script>

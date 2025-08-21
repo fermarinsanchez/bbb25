@@ -1,0 +1,183 @@
+---
+import { Typography } from "../Typography"
+import cartelBboo25 from "../../assets/cartel-rectangular.jpg"
+import FeatureIcons from "../FeatureIcons/FeatureIcons"
+import HeroSection from "./HeroSection.astro"
+---
+
+<main>
+ <HeroSection />
+ <section class='why-section'>
+  <div class='why-section-text'>
+   <Typography variant='headline-3'
+    >Te esperamos para celebrar juntos 10 años de conciertos, locuras y mucho
+    más</Typography
+   >
+   <Typography variant='body'>
+    ¡Vuelve el mejor <strong>festival para todas las edades</strong> del Universo!
+    Para celebrar nuestro 10º aniversario, ampliamos a 2 días la música y la diversión.
+   </Typography>
+   <Typography variant='body'>
+    <strong>Viernes 26:</strong> Acércate a calentar motores vibrando con potentes
+    conciertos desde las 19:30.
+   </Typography>
+   <Typography variant='body'>
+    <strong>Sábado 27:</strong> Disfruta de un día flipante con conciertos, actividades,
+    market y muchas más locuras desde las 12:00 de la mañana.
+   </Typography>
+   <Typography variant='body'>¡Dos días, doble fiestón! </Typography>
+  </div>
+  <div class='why-section-buttons'>
+   <a
+    href='https://toledoentradas.es/balambamboo-fest-2025/'
+    target='_blank'
+    class='ticket-button'
+   >
+    <Typography variant='body-strong'> Comprar entradas </Typography>
+   </a>
+  </div>
+  <div class='poster-container'>
+   <img src={cartelBboo25.src} alt='Cartel Balambam Boo Fest 25' />
+  </div>
+  <div style='margin-top: 40px; text-align: center;'>
+   <Typography variant='headline-3'>Lo vamos a pasar en grande</Typography>
+  </div>
+  <FeatureIcons client:only='react' />
+  <div class='why-section-buttons' style='margin-bottom: 40px;'>
+   <a
+    href='https://toledoentradas.es/balambamboo-fest-2025/'
+    target='_blank'
+    class='ticket-button'
+   >
+    <Typography variant='body-strong'> Comprar entradas </Typography>
+   </a>
+  </div>
+  <Typography variant='headline-3'>Dos días, doble fiestón</Typography>
+  <div class='bands-section'>
+   <div class='bands-columns friday-section'>
+    <Typography variant='headline-3'>Viernes 26</Typography>
+    <Typography variant='body'>Apertura de puertas a las 19:30 horas</Typography
+    >
+   </div>
+   <div class='bands-columns saturday-section'>
+    <Typography variant='headline-3'>Sábado 27</Typography>
+    <Typography variant='body'>
+     Disfruta de un gran día desde las 12:00 horas</Typography
+    >
+   </div>
+  </div>
+  <div class='why-section-buttons'>
+   <a href='/lineup' class='ticket-button'>
+    <Typography variant='body-strong'> Ver grupos </Typography>
+   </a>
+  </div>
+  <div style='margin-top: 40px; margin-bottom: 40px;'>
+   <Typography variant='headline-3'>
+    Playlist para calentar motores
+   </Typography>
+  </div>
+  <iframe
+   data-testid='embed-iframe'
+   style='border-radius:12px; border: none;'
+   src='https://open.spotify.com/embed/playlist/0BXBpKGoZJAaYTEziKtRnN?utm_source=generator&theme=0'
+   width='100%'
+   height='352'
+   allowfullscreen=''
+   allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+   loading='lazy'></iframe>
+ </section>
+</main>
+
+<style>
+ .why-section {
+  padding: clamp(80px, 14%, 130px) 16px 85px 16px;
+  z-index: 1;
+  margin-top: 0px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
+ /* Para pantallas de más de 768px, centrar el contenido y limitar el ancho máximo */
+ @media (min-width: 768px) {
+  .why-section {
+   max-width: 1280px;
+   padding: clamp(80px, 14%, 80px) 24px 85px 24px;
+  }
+ }
+
+ /* Para pantallas muy grandes, añadir más padding horizontal */
+ @media (min-width: 1024px) {
+  .why-section {
+   max-width: 1280px;
+   padding: clamp(80px, 14%, 130px) 32px 85px 32px;
+  }
+ }
+
+ .why-section-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+ }
+
+ .why-section-buttons {
+  padding: 40px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+ }
+
+ .ticket-button {
+  background-color: #8f80bb;
+  border: none;
+  border-radius: 100px;
+  padding: 16px 32px;
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  max-width: 300px;
+ }
+
+ .ticket-button:hover {
+  background-color: #7a6ba8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+ }
+
+ .poster-container img {
+  width: -webkit-fill-available;
+  padding: 40px 0px;
+ }
+
+ .bands-section {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 40px 0px;
+ }
+
+ .bands-columns {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 32px;
+ }
+
+ .friday-section {
+  background-color: #ffcc03;
+  border-radius: 16px;
+ }
+
+ .saturday-section {
+  background-color: #8f80bb;
+  color: white;
+  border-radius: 16px;
+ }
+</style>

@@ -1,0 +1,88 @@
+.topMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #73C2AF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
+}
+
+.topMenu.visible {
+  transform: translateY(0);
+}
+
+.topMenu.hidden {
+  transform: translateY(-100%);
+}
+
+.topMenuContainer {
+  max-width: 1280px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 32px;
+}
+
+.topMenuContent {
+  max-width: 1280px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 1.4rem;
+  padding-bottom: 1.2rem;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.menuItem:hover {
+  transform: scale(1.1);
+}
+
+.menuIcon {
+  width: auto;
+  height: 32px;
+}
+  .menuIconB {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 58px;
+    height: 58px;
+    animation: rotate 3s linear infinite;
+  }
+  
+  .menuIconB img {
+    width: 100%;
+    height: 100%;
+  }
+
+/* Definir la animación de rotación */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Solo mostrar en pantallas mayores a 767px (≥768px) */
+@media (max-width: 767px) {
+  .topMenu {
+    display: none;
+  }
+} 

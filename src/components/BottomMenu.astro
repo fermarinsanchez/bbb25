@@ -1,0 +1,63 @@
+---
+import inicioIcon from "../assets/inicio.svg"
+import inicioNotIcon from "../assets/inicio-not.svg"
+import lineupIcon from "../assets/grupos-short.svg"
+import lineupNotIcon from "../assets/grupos-short-not.svg"
+import ticketsIcon from "../assets/tickets.svg"
+import ticketsNotIcon from "../assets/tickets-not.svg"
+import socialIcon from "../assets/info-short.svg"
+import socialNotIcon from "../assets/info-short-not.svg"
+import styles from "./BottomMenu.module.css"
+
+// Solo mostrar en pantallas pequeñas (menos de 769px)
+const shouldShow = Astro.url.searchParams.get("viewport") !== "large"
+
+// Obtener la ruta actual
+const currentPath = Astro.url.pathname
+
+// Función para determinar si estamos en la ruta activa
+const isActive = (path: string) => {
+ if (path === "/") {
+  return currentPath === "/" || currentPath === "/index"
+ }
+ if (path === "/lineup") {
+  // Considerar las páginas de bandas como parte de lineup
+  return currentPath === path || currentPath.startsWith("/band/")
+ }
+ return currentPath === path
+}
+---
+
+<nav class={styles.bottomMenu}>
+ <a href='/' class={styles.menuItem}>
+  <img
+   src={isActive("/") ? inicioIcon.src : inicioNotIcon.src}
+   alt='Inicio'
+   class={styles.menuIcon}
+  />
+ </a>
+
+ <a href='/lineup' class={styles.menuItem}>
+  <img
+   src={isActive("/lineup") ? lineupIcon.src : lineupNotIcon.src}
+   alt='Lineup'
+   class={styles.menuIcon}
+  />
+ </a>
+
+ <a href='/tickets' class={styles.menuItem}>
+  <img
+   src={isActive("/tickets") ? ticketsIcon.src : ticketsNotIcon.src}
+   alt='Tickets'
+   class={styles.menuIcon}
+  />
+ </a>
+
+ <a href='/social' class={styles.menuItem}>
+  <img
+   src={isActive("/social") ? socialIcon.src : socialNotIcon.src}
+   alt='Social'
+   class={styles.menuIcon}
+  />
+ </a>
+</nav>

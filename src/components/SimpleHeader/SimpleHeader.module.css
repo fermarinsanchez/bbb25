@@ -1,0 +1,69 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+}
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Para viewports mayores a 768px, ocultar la imagen de fondo */
+@media (min-width: 768px) {
+    .backgroundImage {
+        display: none;
+    }
+    
+    .container {
+        background-color: #705485;
+    }
+}
+
+.title {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-top: 16px;
+}
+
+.title img {
+    max-width: 100%;
+    height: auto;
+}
+
+.titleComposition {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 32px;
+    background-color: #705485;
+    clip-path: polygon(0 33%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.titleBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: auto; 
+    & img {
+        width: 100%;
+        margin-top: 16px;
+    }
+}
+

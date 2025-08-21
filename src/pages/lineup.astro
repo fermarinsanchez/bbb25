@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro"
+import LineUpPage from "../components/compositions/LineUpPage.astro"
+---
+
+<Layout title='Lineup'>
+ <LineUpPage />
+</Layout>
+
+<style>
+ /* Para pantallas de más de 768px, centrar el contenido y limitar el ancho máximo */
+ @media (min-width: 768px) {
+  :global(.content) {
+   max-width: 1280px;
+   margin: 0 auto;
+   padding: 32px 24px;
+   padding-bottom: 100px;
+  }
+ }
+
+ /* Para pantallas muy grandes, añadir más padding horizontal */
+ @media (min-width: 1024px) {
+  :global(.content) {
+   padding: 32px 32px;
+   padding-bottom: 100px;
+  }
+ }
+</style>

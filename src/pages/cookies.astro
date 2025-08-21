@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro"
+import CookieSettings from "../components/CookieConsent/CookieSettings"
+import { Typography } from "../components/Typography"
+---
+
+<Layout title='Configuración de Cookies - BBooFest 2025'>
+ <div class='cookies-page'>
+  <div class='page-header'>
+   <Typography variant='headline-1'>Configuración de Cookies</Typography>
+   <Typography variant='body'>
+    Gestiona tus preferencias de cookies para personalizar tu experiencia en
+    BBooFest 2025.
+   </Typography>
+  </div>
+
+  <CookieSettings client:load />
+ </div>
+</Layout>
+
+<style>
+ .cookies-page {
+  padding: 5rem 1rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 100vh;
+ }
+
+ .page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
+ .page-header h1 {
+  color: #2c5f5a;
+  font-size: 2.5rem;
+  margin: 0 0 1rem 0;
+  font-weight: bold;
+ }
+
+ .page-header p {
+  color: #666;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 0;
+ }
+
+ @media (max-width: 768px) {
+  .cookies-page {
+   padding: 1rem 0.5rem;
+  }
+
+  .page-header h1 {
+   font-size: 2rem;
+  }
+
+  .page-header p {
+   font-size: 1.1rem;
+  }
+ }
+</style>

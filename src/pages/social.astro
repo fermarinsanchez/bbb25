@@ -1,0 +1,257 @@
+---
+import { SimpleHeader } from "../components/SimpleHeader/SimpleHeader"
+import Layout from "../layouts/Layout.astro"
+import lineUpTitle from "../assets/info.svg"
+import { Typography } from "../components/Typography"
+import { FAQ } from "../components/FAQ/FAQ"
+import faqsData from "../data/faqs.json"
+---
+
+<Layout title='Social'>
+ <section>
+  <SimpleHeader client:only='react' titleSvg={lineUpTitle.src} alt='Lineup' />
+ </section>
+ <section class='container'>
+  <Typography variant='headline-3'>¿Cómo llegar?</Typography>
+  <Typography variant='body'
+   >Ubicación exacta de Summerland y puntos de acceso más cercanos. El recinto
+   cuenta con parking gratuito en las inmediaciones.</Typography
+  >
+
+  <div class='map-container'>
+   <iframe
+    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.1234567890123!2d-4.123456789012345!3d39.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDA3JzM0LjQiTiA0wrAwNyczNC40Ilc!5e0!3m2!1ses!2ses!4v1234567890123'
+    width='100%'
+    height='450'
+    style='border:0;'
+    allowfullscreen=''
+    loading='lazy'
+    referrerpolicy='no-referrer-when-downgrade'
+    title='Ubicación de Terraza Summerland en La Peraleda de Toledo'
+   >
+   </iframe>
+  </div>
+  <div class='transport-container'>
+   <Typography variant='headline-4'>Transporte Público</Typography>
+  </div>
+  <Typography variant='body'>
+   El Recinto Ferial La Peraleda está perfectamente conectado con el transporte
+   público de Toledo. Os dejamos las líneas de autobuses que pasan por la zona.
+  </Typography>
+
+  <Typography variant='body'>
+   <strong>Paradas más cercanas al recinto:</strong>
+  </Typography>
+
+  <div class='transport-info'>
+   <div class='stop-item'>
+    <span class='stop-name'>Ctra. Peraleda</span>
+    <span class='stop-distance'>1 min a pie (56m)</span>
+    <span class='stop-lines'>L83</span>
+   </div>
+
+   <div class='stop-item'>
+    <span class='stop-name'>Ronda Buenavista, 2</span>
+    <span class='stop-distance'>7 min a pie (444m)</span>
+    <span class='stop-lines'>L1, LB1, L2</span>
+   </div>
+
+   <div class='stop-item'>
+    <span class='stop-name'>San Pedro El Verde (Glorieta Ctra. Peraleda)</span>
+    <span class='stop-distance'>7 min a pie (482m)</span>
+    <span class='stop-lines'>L42</span>
+   </div>
+
+   <div class='stop-item'>
+    <span class='stop-name'>H. N. Parapléjicos</span>
+    <span class='stop-distance'>16 min a pie (1190m)</span>
+    <span class='stop-lines'>VCM-062, VCM-066</span>
+   </div>
+  </div>
+
+  <Typography variant='headline-4'>
+   <strong>Líneas de autobús principales:</strong>
+  </Typography>
+
+  <div class='bus-lines'>
+   <div class='bus-line'>
+    <span class='line-number'>L83</span>
+    <span class='line-route'
+     >Estación Bus - H. Tres Culturas y H.N. Parapléjicos</span
+    >
+   </div>
+   <div class='bus-line'>
+    <span class='line-number'>L1</span>
+    <span class='line-route'>Zocodover - Buenavista</span>
+   </div>
+   <div class='bus-line'>
+    <span class='line-number'>L42</span>
+    <span class='line-route'>Zocodover - Estación Bus - Campus</span>
+   </div>
+   <div class='bus-line'>
+    <span class='line-number'>L2</span>
+    <span class='line-route'>Pza. Conde - Buenavista</span>
+   </div>
+   <div class='bus-line'>
+    <span class='line-number'>LB1</span>
+    <span class='line-route'>Zocodover - Buenavista</span>
+   </div>
+  </div>
+
+  <Typography variant='body'>
+   <strong>Horarios de servicio:</strong> El primer autobús (L1) pasa cerca de las
+   7:01 y el último a las 23:15, por lo que tendrás transporte disponible durante
+   todo el día del festival.
+  </Typography>
+
+  <Typography variant='body'>
+   <strong>Dirección exacta:</strong> Calle Carretera de Peraleda, Toledo
+  </Typography>
+
+  <Typography variant='body'>
+   <strong>Recomendaciones:</strong> La parada más cercana es "Ctra. Peraleda" a
+   solo 1 minuto andando. Si vienes desde el centro de Toledo (Zocodover), las líneas
+   L1, L2 y L42 te llevarán directamente a la zona del recinto.
+  </Typography>
+ </section>
+
+ <section class='faq-section'>
+  <FAQ client:only='react' title='Preguntas Frecuentes' items={faqsData} />
+ </section>
+</Layout>
+
+<style>
+ .container {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 100%;
+  margin: 0 auto;
+ }
+
+ /* Para pantallas de más de 768px, centrar el contenido y limitar el ancho máximo */
+ @media (min-width: 768px) {
+  .container {
+   max-width: 1280px;
+   padding: 32px 24px;
+  }
+ }
+
+ /* Para pantallas muy grandes, añadir más padding horizontal */
+ @media (min-width: 1024px) {
+  .container {
+   padding: 32px 32px;
+  }
+ }
+
+ .map-container {
+  margin-top: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+ }
+
+ .map-container iframe {
+  display: block;
+  width: 100%;
+  height: 450px;
+  border: none;
+ }
+
+ .transport-container {
+  margin-top: 32px;
+ }
+
+ .transport-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+ }
+
+ .stop-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid #705485;
+  border-right: 1px solid #705485;
+  border-bottom: 1px solid #705485;
+  border-top: 1px solid #705485;
+ }
+
+ .stop-name {
+  font-weight: 600;
+  color: black;
+ }
+
+ .stop-distance {
+  font-size: 0.9em;
+  color: #9ca3af;
+ }
+
+ .stop-lines {
+  font-size: 0.9em;
+  color: grey;
+  font-weight: 500;
+ }
+
+ .bus-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+ }
+
+ .bus-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+ }
+
+ .line-number {
+  background: #705485;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9em;
+  min-width: 40px;
+  text-align: center;
+ }
+
+ .line-route {
+  color: black;
+  font-size: 0.9em;
+ }
+
+ .faq-section {
+  padding: 32px 16px;
+  padding-bottom: 100px;
+  max-width: 100%;
+  margin: 0 auto;
+ }
+
+ /* Para pantallas de más de 768px, centrar el contenido y limitar el ancho máximo */
+ @media (min-width: 768px) {
+  .faq-section {
+   max-width: 1280px;
+   padding: 32px 24px;
+   padding-bottom: 100px;
+  }
+ }
+
+ /* Para pantallas muy grandes, añadir más padding horizontal */
+ @media (min-width: 1024px) {
+  .faq-section {
+   padding: 32px 32px;
+   padding-bottom: 100px;
+  }
+ }
+</style>

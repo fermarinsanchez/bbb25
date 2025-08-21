@@ -1,0 +1,77 @@
+---
+import { SimpleHeader } from "../components/SimpleHeader/SimpleHeader"
+import Layout from "../layouts/Layout.astro"
+import TicketsHeader from "../assets/lettering/tickets-header.svg"
+import { TicketCard } from "../components/TicketCard/TicketCard"
+import { Typography } from "../components/Typography"
+---
+
+<Layout title='Tickets'>
+ <section>
+  <SimpleHeader client:only='react' titleSvg={TicketsHeader.src} alt='Lineup' />
+  <div class='container-text'>
+   <Typography variant='headline-2'>Entradas</Typography>
+   <Typography variant='body'>
+    Compra aquí tus entradas para el mejor festival del universo. Tienes
+    entradas para los dos días, para el viernes 26 y para el sábado 27.
+   </Typography>
+   <Typography variant='body'>
+    Cada adulto podrá entrar con un máximo de 2 menores. Si un adulto va a ir
+    acompañado de más de 2 menores, tendrá que comprar una entrada adicional
+    para cada menor extra.
+   </Typography>
+  </div>
+ </section>
+ <section class='container'>
+  <TicketCard variant='both' client:load />
+  <TicketCard variant='friday' client:load />
+  <TicketCard variant='saturday' client:load />
+  <TicketCard variant='child' client:load />
+ </section>
+</Layout>
+
+<style>
+ .container-text {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+ }
+
+ .container {
+  padding: 55px 16px;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 54px;
+ }
+
+ /* Para pantallas de más de 768px, centrar el contenido y limitar el ancho máximo */
+ @media (min-width: 768px) {
+  .container {
+   max-width: 1280px;
+   margin: 0 auto;
+   padding: 55px 24px;
+   padding-bottom: 100px;
+   display: flex;
+   justify-content: space-evenly;
+   flex-direction: row;
+   flex-wrap: wrap;
+   gap: 24px;
+   row-gap: 54px;
+  }
+  .container-text {
+   max-width: 1280px;
+   margin: 0 auto;
+   padding: 55px 24px;
+  }
+ }
+
+ /* Para pantallas muy grandes, añadir más padding horizontal */
+ @media (min-width: 1024px) {
+  .container {
+   padding: 55px 32px;
+   padding-bottom: 100px;
+  }
+ }
+</style>

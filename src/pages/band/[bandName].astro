@@ -1,0 +1,368 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import BottomMenu from "../../components/BottomMenu.astro"
+import lineupData from "../../data/lineupData.json"
+import AzogueLettering from "../../assets/lettering/azogue-lettering.svg"
+import BetaLettering from "../../assets/lettering/beta-lettering.svg"
+import BigRipLettering from "../../assets/lettering/bigrip-lettering.svg"
+import HeadlessLettering from "../../assets/lettering/headless-lettering.svg"
+import PhantomLettering from "../../assets/lettering/phantom-lettering.svg"
+import RivellesLettering from "../../assets/lettering/rivelles-lettering.svg"
+import MaripiliLettering from "../../assets/lettering/maripili-lettering.svg"
+import RetumbesLettering from "../../assets/lettering/retumbes-lettering.svg"
+import PoliposLettering from "../../assets/lettering/polipos-lettering.svg"
+import { BandHeader } from "../../components/BandHeader/BandHeader"
+import SocialLinks from "../../components/SocialLinks/SocialLinks"
+import { Typography } from "../../components/Typography"
+
+export async function getStaticPaths() {
+ return lineupData.map((band) => ({
+  params: {
+   bandName: band.name.toLowerCase().replace(/\s+/g, "-"),
+  },
+  props: { band },
+ }))
+}
+
+const { band } = Astro.props
+
+const bandLettering = {
+ Azogue: AzogueLettering.src,
+ "Beta Máximo": BetaLettering.src,
+ "Big Rip": BigRipLettering.src,
+ "The Headless Chimps": HeadlessLettering.src,
+ "Phantom Crest": PhantomLettering.src,
+ Rivelles: RivellesLettering.src,
+ Maripili: MaripiliLettering.src,
+ "Los Retumbes": RetumbesLettering.src,
+ "Los Pólipos": PoliposLettering.src,
+}[band.name]
+
+const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
+---
+
+<Layout title={`${band.name} - BBOOFest 25`} bandImage={band.image}>
+ <section class='band-header-section'>
+  <BandHeader
+   client:only='react'
+   titleSvg={bandLettering || ""}
+   image={band.image}
+   name={band.name}
+  />
+ </section>
+ <main class='band-detail'>
+  {
+   band["spotify-embed"] && (
+    <div class='band-spotify'>
+     <iframe
+      data-testid='embed-iframe'
+      style='border-radius:12px'
+      src={band["spotify-embed"]}
+      width='100%'
+      height='152'
+      frameborder='0'
+      allowfullscreen=''
+      allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+      loading='lazy'
+     />
+    </div>
+   )
+  }
+
+  <div class='band-header'>
+   <div class='band-info'>
+    <div class='spacing-m'>
+        <Typography variant='headline-1'>{band.name}</Typography>
+    </div>
+    <Typography variant='body' className='band-style'>{band.style}</Typography>
+    <Typography variant='body' className='band-time'
+     >{band.day === "Friday" ? "Viernes" : "Sábado"} - {band.hour}</Typography
+    >
+   </div>
+  </div>
+
+  <div class='band-content'>
+   <div class='band-description'>
+  
+    {
+     band.description.map((description) => (
+      <Typography variant='body'>{description}</Typography>
+     ))
+    }
+   </div>
+
+   <div class='band-links'>
+    <SocialLinks
+     client:only='react'
+     instagram={band.instagram}
+     spotify={band.spotify}
+     bandcamp={band.bandcamp}
+     youtube={band.youtube}
+    />
+   </div>
+
+   {
+    band.videoclip && (
+     <div class='band-video'>
+      <Typography variant='headline-3'>Videoclip</Typography>
+      <iframe
+       width='100%'
+       height='315'
+       src={band.videoclip}
+       title='YouTube video player'
+       frameborder='0'
+       allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+       referrerpolicy='strict-origin-when-cross-origin'
+       allowfullscreen
+      />
+     </div>
+    )
+   }
+  </div>
+
+  <div class='same-day-bands'>
+   <Typography variant='headline-3'
+    >Otras bandas del {band.day === "Friday" ? "viernes" : "sábado"}</Typography
+   >
+   <div class='bands-grid'>
+    {
+     bandsOfSameDay.map((otherBand) => (
+      <a
+       href={`/band/${otherBand.name.toLowerCase().replace(/\s+/g, "-")}`}
+       class={`band-card ${otherBand.name === band.name ? "current" : ""}`}
+      >
+       <img src={otherBand.image} alt={otherBand.name} />
+       <div class='band-card-info'>
+        <Typography variant='headline-4'>{otherBand.name}</Typography>
+        <Typography variant='body'>{otherBand.hour}</Typography>
+       </div>
+      </a>
+     ))
+    }
+   </div>
+  </div>
+ </main>
+
+ <BottomMenu />
+</Layout>
+
+<style>
+ .band-header-section {
+  padding-bottom: 32px;
+ }
+
+ .band-detail {
+  padding: 20px;
+  max-width: 800px;
+  /* margin: 0 auto; */
+ }
+
+ /* Para pantallas de más de 768px, centrar el contenido y limitar el ancho máximo */
+ @media (min-width: 768px) {
+  .band-detail {
+   max-width: 1280px;
+   margin: 0 auto;
+   padding: 20px 24px;
+  }
+ }
+
+ /* Para pantallas muy grandes, añadir más padding horizontal */
+ @media (min-width: 1024px) {
+  .band-detail {
+   padding: 20px 32px;
+  }
+ }
+
+ .band-spotify {
+  margin-bottom: 30px;
+  /* padding: 0 20px; */
+ }
+
+ .band-spotify iframe {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+ }
+
+ .band-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 30px;
+ }
+
+ .band-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+ }
+
+ .band-info h1 {
+  font-size: 2rem;
+  margin: 0 0 10px 0;
+  color: #333;
+  padding
+ }
+
+ .band-style {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0 0 5px 0;
+ }
+
+ .band-time {
+  font-size: 1rem;
+  color: #888;
+  margin: 0;
+ }
+
+ .band-content {
+  margin-bottom: 40px;
+ }
+
+ .band-description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+ }
+
+ .band-description h2 {
+  font-size: 1.5rem;
+  color: #333;
+ }
+
+ .band-description p {
+  line-height: 1.6;
+  color: #555;
+ }
+
+ .band-links {
+  margin-top: 30px;
+ }
+
+ .band-video {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+ }
+
+ .band-video h3 {
+  font-size: 1.2rem;
+  color: #333;
+ }
+
+ .band-video iframe {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+ }
+
+ .band-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+ }
+
+ .band-link:hover {
+  background-color: #0056b3;
+ }
+
+ .same-day-bands {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+ }
+
+ .same-day-bands h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: #333;
+ }
+
+ .bands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 100px;
+ }
+
+ .band-card {
+  text-decoration: none;
+  color: inherit;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+ }
+
+ .band-card:hover {
+  transform: translateY(-2px);
+ }
+
+ .band-card.current {
+  border: 2px solid #8f80bb;
+ }
+
+ .band-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+ }
+
+ .band-card-info {
+  padding: 10px;
+ }
+
+ .band-card-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 0.9rem;
+ }
+
+ .band-card-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #666;
+ }
+
+ .spacing-xl {
+  padding-bottom: 32px;
+ }
+
+ .spacing-l {
+  padding-bottom: 16px;
+ }
+
+ .spacing-m {
+  padding-bottom: 8px;
+ }
+
+ .spacing-s {
+  padding-bottom: 4px;
+ }
+
+ @media (max-width: 600px) {
+  .band-detail {
+   padding: 15px;
+  }
+
+  .band-image {
+   width: 150px;
+   height: 150px;
+  }
+
+  .band-info h1 {
+   font-size: 1.5rem;
+  }
+
+  .bands-grid {
+   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+ }
+</style>

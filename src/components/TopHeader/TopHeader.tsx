@@ -9,7 +9,7 @@ import socialIcon from "../../assets/menu_items/info.svg";
 import socialNotIcon from "../../assets/menu_items/info-not.svg";
 import BIcon from "../../assets/BIcon.svg";
 import styles from "./TopHeader.module.css";
-import { buildUrl, isActiveRoute } from "../../utils/env";
+import { buildUrl, isActiveRoute, debugRoute } from "../../utils/env";
 
 interface TopHeaderProps {
     currentPath?: string;
@@ -18,6 +18,19 @@ interface TopHeaderProps {
 const TopHeader: React.FC<TopHeaderProps> = ({ currentPath = "/" }) => {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+
+    // Debug: mostrar en consola para troubleshooting
+    useEffect(() => {
+        console.log('TopHeader Debug:', {
+            currentPath,
+            isHomeActive: isActiveRoute(currentPath, "/"),
+            isLineupActive: isActiveRoute(currentPath, "/lineup"),
+            isTicketsActive: isActiveRoute(currentPath, "/tickets"),
+            isSocialActive: isActiveRoute(currentPath, "/social"),
+            debugHome: debugRoute(currentPath, "/"),
+            debugLineup: debugRoute(currentPath, "/lineup")
+        });
+    }, [currentPath]);
 
     useEffect(() => {
         const handleScroll = () => {

@@ -70,7 +70,7 @@ const {
  <body>
   <!-- TopHeader solo visible en pantallas ≥768px -->
   <div class='desktop-only'>
-   <TopHeader />
+   <TopHeader currentPath={Astro.url.pathname} />
   </div>
 
   <main class='main-content'>

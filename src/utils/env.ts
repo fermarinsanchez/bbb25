@@ -22,22 +22,38 @@ export const buildUrl = (path: string): string => {
 
 // Función para detectar si una ruta está activa
 export const isActiveRoute = (currentPath: string, targetPath: string): boolean => {
+    // Normalizar las rutas para evitar problemas con trailing slashes
+    const normalizedCurrentPath = currentPath.replace(/\/$/, '') || '/';
+    const normalizedTargetPath = targetPath.replace(/\/$/, '') || '/';
+
     const base = getBaseUrl();
+    const normalizedBase = base.replace(/\/$/, '') || '';
 
-    if (targetPath === '/') {
-        return currentPath === '/' ||
-            currentPath === '/index' ||
-            currentPath === `${base}/` ||
-            currentPath === `${base}/index`;
+    // Para la ruta de inicio
+    if (normalizedTargetPath === '/') {
+        return normalizedCurrentPath === '/' ||
+            normalizedCurrentPath === '/index' ||
+            normalizedCurrentPath === normalizedBase ||
+            normalizedCurrentPath === `${normalizedBase}/index`;
     }
 
-    if (targetPath === '/lineup') {
-        return currentPath === targetPath ||
-            currentPath.startsWith('/band/') ||
-            currentPath === `${base}/lineup` ||
-            currentPath.startsWith(`${base}/band/`);
+    // Para la ruta de lineup (incluye bandas individuales)
+    if (normalizedTargetPath === '/lineup') {
+        return normalizedCurrentPath === '/lineup' ||
+            normalizedCurrentPath.startsWith('/band/') ||
+            normalizedCurrentPath === `${normalizedBase}/lineup` ||
+            normalizedCurrentPath.startsWith(`${normalizedBase}/band/`);
     }
 
-    return currentPath === targetPath ||
-        currentPath === `${base}${targetPath}`;
+    // Para otras rutas
+    return normalizedCurrentPath === normalizedTargetPath ||
+        normalizedCurrentPath === `${normalizedBase}${normalizedTargetPath}`;
+};
+
+// Función de debug para ayudar con el troubleshooting
+export const debugRoute = (currentPath: string, targetPath: string): string => {
+    const base = getBaseUrl();
+    const isActive = isActiveRoute(currentPath, targetPath);
+
+    return `Debug: currentPath="${currentPath}", targetPath="${targetPath}", base="${base}", isActive=${isActive}`;
 }; 

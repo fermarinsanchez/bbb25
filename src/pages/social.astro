@@ -5,9 +5,12 @@ import lineUpTitle from "../assets/info.svg"
 import { Typography } from "../components/Typography"
 import { FAQ } from "../components/FAQ/FAQ"
 import faqsData from "../data/faqs.json"
+import { getMetaConfig } from "../config/meta.js"
+
+const meta = getMetaConfig("social")
 ---
 
-<Layout title='Social'>
+<Layout title={meta.title} description={meta.description} image={meta.image}>
  <section>
   <SimpleHeader client:only='react' titleSvg={lineUpTitle.src} alt='Lineup' />
  </section>

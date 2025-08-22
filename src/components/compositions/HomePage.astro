@@ -3,6 +3,7 @@ import { Typography } from "../Typography"
 import cartelBboo25 from "../../assets/cartel-rectangular.jpg"
 import FeatureIcons from "../FeatureIcons/FeatureIcons"
 import HeroSection from "./HeroSection.astro"
+import { buildSiteUrl } from "../../config/site.js"
 ---
 
 <main>
@@ -67,7 +68,7 @@ import HeroSection from "./HeroSection.astro"
    </div>
   </div>
   <div class='why-section-buttons'>
-   <a href='/lineup' class='ticket-button'>
+   <a href={buildSiteUrl("/lineup")} class='ticket-button'>
     <Typography variant='body-strong'> Ver grupos </Typography>
    </a>
   </div>

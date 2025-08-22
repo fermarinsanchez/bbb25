@@ -9,6 +9,7 @@ import socialIcon from "../../assets/menu_items/info.svg";
 import socialNotIcon from "../../assets/menu_items/info-not.svg";
 import BIcon from "../../assets/BIcon.svg";
 import styles from "./TopHeader.module.css";
+import { buildUrl, isActiveRoute } from "../../utils/env";
 
 interface TopHeaderProps {
     currentPath?: string;
@@ -53,49 +54,37 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentPath = "/" }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
 
-    // Función para determinar si estamos en la ruta activa
-    const isActive = (path: string) => {
-        if (path === "/") {
-            return currentPath === "/" || currentPath === "/index";
-        }
-        if (path === "/lineup") {
-            // Considerar las páginas de bandas como parte de lineup
-            return currentPath === path || currentPath.startsWith("/band/");
-        }
-        return currentPath === path;
-    };
-
     return (
         <nav className={`${styles.topMenu} ${isVisible ? styles.visible : styles.hidden}`}>
             <div className={styles.topMenuContainer}>
                 <div className={styles.topMenuContent}>
-                    <a href='/' className={styles.menuItem}>
+                    <a href={buildUrl("/")} className={styles.menuItem}>
                         <img
-                            src={isActive("/") ? inicioIcon.src : inicioNotIcon.src}
+                            src={isActiveRoute(currentPath, "/") ? inicioIcon.src : inicioNotIcon.src}
                             alt='Inicio'
                             className={styles.menuIcon}
                         />
                     </a>
 
-                    <a href='/lineup' className={styles.menuItem}>
+                    <a href={buildUrl("/lineup")} className={styles.menuItem}>
                         <img
-                            src={isActive("/lineup") ? lineupIcon.src : lineupNotIcon.src}
+                            src={isActiveRoute(currentPath, "/lineup") ? lineupIcon.src : lineupNotIcon.src}
                             alt='Lineup'
                             className={styles.menuIcon}
                         />
                     </a>
 
-                    <a href='/tickets' className={styles.menuItem}>
+                    <a href={buildUrl("/tickets")} className={styles.menuItem}>
                         <img
-                            src={isActive("/tickets") ? ticketsIcon.src : ticketsNotIcon.src}
+                            src={isActiveRoute(currentPath, "/tickets") ? ticketsIcon.src : ticketsNotIcon.src}
                             alt='Tickets'
                             className={styles.menuIcon}
                         />
                     </a>
 
-                    <a href='/social' className={styles.menuItem}>
+                    <a href={buildUrl("/social")} className={styles.menuItem}>
                         <img
-                            src={isActive("/social") ? socialIcon.src : socialNotIcon.src}
+                            src={isActiveRoute(currentPath, "/social") ? socialIcon.src : socialNotIcon.src}
                             alt='Social'
                             className={styles.menuIcon}
                         />

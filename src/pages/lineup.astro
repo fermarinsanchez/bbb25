@@ -1,9 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import LineUpPage from "../components/compositions/LineUpPage.astro"
+import { getMetaConfig } from "../config/meta.js"
+
+const meta = getMetaConfig("lineup")
 ---
 
-<Layout title='Lineup'>
+<Layout title={meta.title} description={meta.description} image={meta.image}>
  <LineUpPage />
 </Layout>
 

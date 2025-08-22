@@ -1,12 +1,11 @@
 ---
-import HomePage from '../components/compositions/HomePage.astro'
-import Layout from '../layouts/Layout.astro';
+import HomePage from "../components/compositions/HomePage.astro"
+import Layout from "../layouts/Layout.astro"
+import { getMetaConfig } from "../config/meta.js"
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, thse `assets`, `components`, and `layouts` directories, and start fresh.
+const meta = getMetaConfig("home")
 ---
 
-<Layout title="Inicio - BBooFest 2025">
-	<!-- <Welcome /> -->
-	<HomePage />
+<Layout title={meta.title} description={meta.description} image={meta.image}>
+ <HomePage />
 </Layout>

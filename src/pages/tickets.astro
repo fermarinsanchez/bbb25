@@ -4,9 +4,12 @@ import Layout from "../layouts/Layout.astro"
 import TicketsHeader from "../assets/lettering/tickets-header.svg"
 import { TicketCard } from "../components/TicketCard/TicketCard"
 import { Typography } from "../components/Typography"
+import { getMetaConfig } from "../config/meta.js"
+
+const meta = getMetaConfig("tickets")
 ---
 
-<Layout title='Tickets'>
+<Layout title={meta.title} description={meta.description} image={meta.image}>
  <section>
   <SimpleHeader client:only='react' titleSvg={TicketsHeader.src} alt='Lineup' />
   <div class='container-text'>

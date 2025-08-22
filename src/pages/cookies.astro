@@ -2,9 +2,12 @@
 import Layout from "../layouts/Layout.astro"
 import CookieSettings from "../components/CookieConsent/CookieSettings"
 import { Typography } from "../components/Typography"
+import { getMetaConfig } from "../config/meta.js"
+
+const meta = getMetaConfig("cookies")
 ---
 
-<Layout title='Configuración de Cookies - BBooFest 2025'>
+<Layout title={meta.title} description={meta.description} image={meta.image}>
  <div class='cookies-page'>
   <div class='page-header'>
    <Typography variant='headline-1'>Configuración de Cookies</Typography>

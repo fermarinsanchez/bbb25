@@ -1,9 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import { Typography } from "../components/Typography"
+import { buildSiteUrl } from "../config/site.js"
+import { getMetaConfig } from "../config/meta.js"
+
+const meta = getMetaConfig("politicaPrivacidad")
 ---
 
-<Layout title='Política de Privacidad - BBooFest 2025'>
+<Layout title={meta.title} description={meta.description} image={meta.image}>
  <div class='privacy-policy-page'>
   <div class='page-header'>
    <Typography variant='headline-1'>Política de Privacidad</Typography>
@@ -274,7 +278,7 @@ import { Typography } from "../components/Typography"
     <Typography variant='body'>
      Nuestro sitio web utiliza cookies y tecnologías similares. Para más
      información sobre cómo utilizamos las cookies, consulte nuestra <a
-      href='/politica-cookies'
+      href={buildSiteUrl("/politica-cookies")}
       class='internal-link'>Política de Cookies</a
      >.
     </Typography>
@@ -385,7 +389,9 @@ import { Typography } from "../components/Typography"
     <Typography variant='body'>
      Para más información sobre el tratamiento de sus datos personales, también
      puede consultar nuestra
-     <a href='/politica-cookies' class='internal-link'>Política de Cookies</a>.
+     <a href={buildSiteUrl("/politica-cookies")} class='internal-link'
+      >Política de Cookies</a
+     >.
     </Typography>
    </section>
   </div>
@@ -535,4 +541,3 @@ import { Typography } from "../components/Typography"
   }
  }
 </style>
-

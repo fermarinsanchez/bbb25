@@ -1,9 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import { Typography } from "../components/Typography"
+import { buildSiteUrl } from "../config/site.js"
+import { getMetaConfig } from "../config/meta.js"
+
+const meta = getMetaConfig("politicaCookies")
 ---
 
-<Layout title='Política de Cookies - BBooFest 2025'>
+<Layout title={meta.title} description={meta.description} image={meta.image}>
  <div class='cookies-policy-page'>
   <div class='page-header'>
    <Typography variant='headline-1'>Política de Cookies</Typography>
@@ -236,8 +240,9 @@ import { Typography } from "../components/Typography"
     >
     <Typography variant='body'>
      Puede gestionar sus preferencias de cookies directamente en nuestro sitio
-     web visitando la página de <a href='/cookies' class='internal-link'
-      >Configuración de Cookies</a
+     web visitando la página de <a
+      href={buildSiteUrl("/cookies")}
+      class='internal-link'>Configuración de Cookies</a
      >.
     </Typography>
    </section>
@@ -345,7 +350,7 @@ import { Typography } from "../components/Typography"
     <Typography variant='body'>
      Para más información sobre el tratamiento de sus datos personales, consulte
      nuestra
-     <a href='/politica-privacidad' class='internal-link'
+     <a href={buildSiteUrl("/politica-privacidad")} class='internal-link'
       >Política de Privacidad</a
      >.
     </Typography>
@@ -372,8 +377,10 @@ import { Typography } from "../components/Typography"
   </div>
 
   <div class='policy-actions'>
-   <a href='/cookies' class='btn btn-primary'>Configurar Cookies</a>
-   <a href='/' class='btn btn-secondary'>Volver al Inicio</a>
+   <a href={buildSiteUrl("/cookies")} class='btn btn-primary'
+    >Configurar Cookies</a
+   >
+   <a href={buildSiteUrl("/")} class='btn btn-secondary'>Volver al Inicio</a>
   </div>
  </div>
 </Layout>

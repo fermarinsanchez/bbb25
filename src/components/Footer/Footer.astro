@@ -3,6 +3,7 @@ import BIcon from "../../assets/BIcon.svg"
 import styles from "./Footer.module.css"
 import Amp from "../../assets/amp.svg"
 import { Typography } from "../Typography"
+import { buildSiteUrl } from "../../config/site.js"
 ---
 
 <footer class={styles.footer}>
@@ -27,11 +28,13 @@ import { Typography } from "../Typography"
     <div class={styles.pageLinks}>
      <Typography variant='headline-4'>Navegación</Typography>
      <nav class={styles.navLinks}>
-      <a href='/' class={styles.navLink}>Inicio</a>
-      <a href='/lineup' class={styles.navLink}>Grupos</a>
-      <a href='/tickets' class={styles.navLink}>Tickets</a>
-      <a href='/social' class={styles.navLink}>Info</a>
-      <a href='/politica-privacidad' class={styles.navLink}>Privacidad</a>
+      <a href={buildSiteUrl("/")} class={styles.navLink}>Inicio</a>
+      <a href={buildSiteUrl("/lineup")} class={styles.navLink}>Grupos</a>
+      <a href={buildSiteUrl("/tickets")} class={styles.navLink}>Tickets</a>
+      <a href={buildSiteUrl("/social")} class={styles.navLink}>Info</a>
+      <a href={buildSiteUrl("/politica-privacidad")} class={styles.navLink}
+       >Privacidad</a
+      >
      </nav>
     </div>
    </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './LineupItems.module.css'
+import { buildUrl } from '../../utils/env'
 
 type DataBand = {
     name: string
@@ -21,7 +22,7 @@ const LineupItems = ({ data, day }: LineupItemProps) => {
 
     // Función para generar la URL de la banda
     const getBandUrl = (bandName: string) => {
-        return `/band/${bandName.toLowerCase().replace(/\s+/g, '-')}`
+        return buildUrl(`/band/${bandName.toLowerCase().replace(/\s+/g, '-')}`)
     }
 
     return (<ul>

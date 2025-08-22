@@ -14,17 +14,23 @@ import PoliposLettering from "../../assets/lettering/polipos-lettering.svg"
 import { BandHeader } from "../../components/BandHeader/BandHeader"
 import SocialLinks from "../../components/SocialLinks/SocialLinks"
 import { Typography } from "../../components/Typography"
+import { buildSiteUrl } from "../../config/site.js"
 
 export async function getStaticPaths() {
+ // En desarrollo, usar rutas normales
+ // En producción (GitHub Pages), incluir el base path
+ const isProduction = import.meta.env.PROD;
+ const basePath = isProduction ? '/bbb25' : '';
+ 
  return lineupData.map((band) => ({
   params: {
    bandName: band.name.toLowerCase().replace(/\s+/g, "-"),
   },
-  props: { band },
+  props: { band, basePath },
  }))
 }
 
-const { band } = Astro.props
+const { band, basePath } = Astro.props
 
 const bandLettering = {
  Azogue: AzogueLettering.src,
@@ -41,7 +47,12 @@ const bandLettering = {
 const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
 ---
 
-<Layout title={`${band.name} - BBOOFest 25`} bandImage={band.image}>
+<Layout 
+	title={`${band.name} - BBOOFest 25`}
+	description={`Descubre ${band.name}, una de las bandas del BBooFest 2025. ${band.style} - ${band.day === "Friday" ? "Viernes" : "Sábado"} ${band.hour}`}
+	image={band.image}
+	bandImage={band.image}
+>
  <section class='band-header-section'>
   <BandHeader
    client:only='react'
@@ -128,7 +139,7 @@ const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
     {
      bandsOfSameDay.map((otherBand) => (
       <a
-       href={`/band/${otherBand.name.toLowerCase().replace(/\s+/g, "-")}`}
+       href={`${basePath}/band/${otherBand.name.toLowerCase().replace(/\s+/g, "-")}`}
        class={`band-card ${otherBand.name === band.name ? "current" : ""}`}
       >
        <img src={otherBand.image} alt={otherBand.name} />

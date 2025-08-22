@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import inicioIcon from "../../assets/inicio.svg";
 import inicioNotIcon from "../../assets/inicio-not.svg";
 import lineupIcon from "../../assets/grupos-short.svg";
@@ -15,45 +15,56 @@ interface BottomMenuProps {
 }
 
 const BottomMenu: React.FC<BottomMenuProps> = React.memo(({ currentPath }) => {
-    // Memoizar los enlaces para evitar re-renders innecesarios
-    const menuItems = useMemo(() => [
-        {
-            href: buildUrl("/"),
-            icon: isActiveRoute(currentPath, "/") ? inicioIcon.src : inicioNotIcon.src,
-            alt: 'Inicio',
-            isActive: isActiveRoute(currentPath, "/")
-        },
-        {
-            href: buildUrl("/lineup"),
-            icon: isActiveRoute(currentPath, "/lineup") ? lineupIcon.src : lineupNotIcon.src,
-            alt: 'Lineup',
-            isActive: isActiveRoute(currentPath, "/lineup")
-        },
-        {
-            href: buildUrl("/tickets"),
-            icon: isActiveRoute(currentPath, "/tickets") ? ticketsIcon.src : ticketsNotIcon.src,
-            alt: 'Tickets',
-            isActive: isActiveRoute(currentPath, "/tickets")
-        },
-        {
-            href: buildUrl("/social"),
-            icon: isActiveRoute(currentPath, "/social") ? socialIcon.src : socialNotIcon.src,
-            alt: 'Social',
-            isActive: isActiveRoute(currentPath, "/social")
-        }
-    ], [currentPath]);
+    // Memoizar las URLs base (no cambian nunca)
+    const baseUrls = useMemo(() => ({
+        home: buildUrl("/"),
+        lineup: buildUrl("/lineup"),
+        tickets: buildUrl("/tickets"),
+        social: buildUrl("/social")
+    }), []); // Sin dependencias - se calcula una sola vez
 
+    // Memoizar los iconos (no cambian nunca)
+    const icons = useMemo(() => ({
+        home: { active: inicioIcon.src, inactive: inicioNotIcon.src },
+        lineup: { active: lineupIcon.src, inactive: lineupNotIcon.src },
+        tickets: { active: ticketsIcon.src, inactive: ticketsNotIcon.src },
+        social: { active: socialIcon.src, inactive: socialNotIcon.src }
+    }), []); // Sin dependencias - se calcula una sola vez
+
+    // Solo re-renderizar cuando cambia currentPath, pero sin recalcular URLs e iconos
     return (
         <nav className={styles.bottomMenu}>
-            {menuItems.map((item, index) => (
-                <a key={index} href={item.href} className={styles.menuItem}>
-                    <img
-                        src={item.icon}
-                        alt={item.alt}
-                        className={styles.menuIcon}
-                    />
-                </a>
-            ))}
+            <a href={baseUrls.home} className={styles.menuItem}>
+                <img
+                    src={isActiveRoute(currentPath, "/") ? icons.home.active : icons.home.inactive}
+                    alt='Inicio'
+                    className={styles.menuIcon}
+                />
+            </a>
+
+            <a href={baseUrls.lineup} className={styles.menuItem}>
+                <img
+                    src={isActiveRoute(currentPath, "/lineup") ? icons.lineup.active : icons.lineup.inactive}
+                    alt='Lineup'
+                    className={styles.menuIcon}
+                />
+            </a>
+
+            <a href={baseUrls.tickets} className={styles.menuItem}>
+                <img
+                    src={isActiveRoute(currentPath, "/tickets") ? icons.tickets.active : icons.tickets.inactive}
+                    alt='Tickets'
+                    className={styles.menuIcon}
+                />
+            </a>
+
+            <a href={baseUrls.social} className={styles.menuItem}>
+                <img
+                    src={isActiveRoute(currentPath, "/social") ? icons.social.active : icons.social.inactive}
+                    alt='Social'
+                    className={styles.menuIcon}
+                />
+            </a>
         </nav>
     );
 });

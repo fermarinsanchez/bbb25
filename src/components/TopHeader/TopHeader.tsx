@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import inicioIcon from "../../assets/menu_items/inicio.svg";
 import inicioNotIcon from "../../assets/menu_items/inicio-not.svg";
 import lineupIcon from "../../assets/menu_items/grupos.svg";
@@ -15,9 +15,37 @@ interface TopHeaderProps {
     currentPath?: string;
 }
 
-const TopHeader: React.FC<TopHeaderProps> = ({ currentPath = "/" }) => {
+const TopHeader: React.FC<TopHeaderProps> = React.memo(({ currentPath = "/" }) => {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+
+    // Memoizar los elementos del menú para evitar re-renders innecesarios
+    const menuItems = useMemo(() => [
+        {
+            href: buildUrl("/"),
+            icon: isActiveRoute(currentPath, "/") ? inicioIcon.src : inicioNotIcon.src,
+            alt: 'Inicio',
+            isActive: isActiveRoute(currentPath, "/")
+        },
+        {
+            href: buildUrl("/lineup"),
+            icon: isActiveRoute(currentPath, "/lineup") ? lineupIcon.src : lineupNotIcon.src,
+            alt: 'Lineup',
+            isActive: isActiveRoute(currentPath, "/lineup")
+        },
+        {
+            href: buildUrl("/tickets"),
+            icon: isActiveRoute(currentPath, "/tickets") ? ticketsIcon.src : ticketsNotIcon.src,
+            alt: 'Tickets',
+            isActive: isActiveRoute(currentPath, "/tickets")
+        },
+        {
+            href: buildUrl("/social"),
+            icon: isActiveRoute(currentPath, "/social") ? socialIcon.src : socialNotIcon.src,
+            alt: 'Social',
+            isActive: isActiveRoute(currentPath, "/social")
+        }
+    ], [currentPath]);
 
     // Debug: mostrar en consola para troubleshooting
     useEffect(() => {
@@ -71,37 +99,15 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentPath = "/" }) => {
         <nav className={`${styles.topMenu} ${isVisible ? styles.visible : styles.hidden}`}>
             <div className={styles.topMenuContainer}>
                 <div className={styles.topMenuContent}>
-                    <a href={buildUrl("/")} className={styles.menuItem}>
-                        <img
-                            src={isActiveRoute(currentPath, "/") ? inicioIcon.src : inicioNotIcon.src}
-                            alt='Inicio'
-                            className={styles.menuIcon}
-                        />
-                    </a>
-
-                    <a href={buildUrl("/lineup")} className={styles.menuItem}>
-                        <img
-                            src={isActiveRoute(currentPath, "/lineup") ? lineupIcon.src : lineupNotIcon.src}
-                            alt='Lineup'
-                            className={styles.menuIcon}
-                        />
-                    </a>
-
-                    <a href={buildUrl("/tickets")} className={styles.menuItem}>
-                        <img
-                            src={isActiveRoute(currentPath, "/tickets") ? ticketsIcon.src : ticketsNotIcon.src}
-                            alt='Tickets'
-                            className={styles.menuIcon}
-                        />
-                    </a>
-
-                    <a href={buildUrl("/social")} className={styles.menuItem}>
-                        <img
-                            src={isActiveRoute(currentPath, "/social") ? socialIcon.src : socialNotIcon.src}
-                            alt='Social'
-                            className={styles.menuIcon}
-                        />
-                    </a>
+                    {menuItems.map((item, index) => (
+                        <a key={index} href={item.href} className={styles.menuItem}>
+                            <img
+                                src={item.icon}
+                                alt={item.alt}
+                                className={styles.menuIcon}
+                            />
+                        </a>
+                    ))}
                 </div>
                 <div className={styles.menuIconB}>
                     <img src={BIcon.src} alt='Menu' />
@@ -109,6 +115,8 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentPath = "/" }) => {
             </div>
         </nav>
     );
-};
+});
 
-export default TopHeader; 
+TopHeader.displayName = 'TopHeader';
+
+export { TopHeader }; 

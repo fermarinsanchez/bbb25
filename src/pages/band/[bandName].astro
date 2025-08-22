@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro"
-import BottomMenu from "../../components/BottomMenu.astro"
 import lineupData from "../../data/lineupData.json"
 import AzogueLettering from "../../assets/lettering/azogue-lettering.svg"
 import BetaLettering from "../../assets/lettering/beta-lettering.svg"
@@ -153,8 +152,6 @@ const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
    </div>
   </div>
  </main>
-
- <BottomMenu />
 </Layout>
 
 <style>

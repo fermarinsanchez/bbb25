@@ -1,8 +1,0 @@
----
-import TopHeaderComponent from "./TopHeader"
-
-// Obtener la ruta actual
-const currentPath = Astro.url.pathname
----
-
-<TopHeaderComponent client:load currentPath={currentPath} />

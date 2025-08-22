@@ -1,12 +1,12 @@
 ---
-import BottomMenu from "../components/BottomMenu.astro"
-import TopHeader from "../components/TopHeader/TopHeader.astro"
 import Footer from "../components/Footer/Footer.astro"
 import CookieConsentWrapper from "../components/CookieConsent/CookieConsentWrapper"
 import CookieDebugPanel from "../components/CookieConsent/CookieDebugPanel"
 import "../styles/main.css"
 import { ClientRouter } from "astro:transitions"
 import { buildSiteUrl } from "../config/site.js"
+import { BottomMenu } from "../components/BottomMenu"
+import { TopHeader } from "../components/TopHeader"
 
 export interface Props {
  title?: string
@@ -84,7 +84,7 @@ const {
 
   <!-- BottomMenu solo visible en pantallas <768px -->
   <div class='mobile-only'>
-   <BottomMenu />
+   <BottomMenu currentPath={Astro.url.pathname} client:load />
   </div>
 
   <CookieConsentWrapper client:load />

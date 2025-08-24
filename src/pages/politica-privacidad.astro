@@ -10,7 +10,9 @@ const meta = getMetaConfig("politicaPrivacidad")
 <Layout title={meta.title} description={meta.description} image={meta.image}>
  <div class='privacy-policy-page'>
   <div class='page-header'>
-   <Typography variant='headline-1'>Política de Privacidad</Typography>
+   <div class='headline-wrapper'>
+    <Typography variant='headline-1'>Política de Privacidad</Typography>
+   </div>
    <Typography variant='body' className='last-updated'>
     Última actualización: {
      new Date().toLocaleDateString("es-ES", {
@@ -24,260 +26,80 @@ const meta = getMetaConfig("politicaPrivacidad")
 
   <div class='policy-content'>
    <section class='policy-section'>
-    <Typography variant='headline-2'
-     >1. Información del Responsable del Tratamiento</Typography
-    >
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'>1. Información del Responsable</Typography
+     >
+    </div>
     <Typography variant='body'>
-     <strong>Responsable:</strong> BBooFest 2025<br />
-     <strong>NIF/CIF:</strong> [NIF/CIF de la empresa]<br />
-     <strong>Dirección:</strong> [Dirección completa de la empresa]<br />
-     <strong>Email:</strong> privacidad@bboofest.com<br />
-     <strong>Teléfono:</strong> [Número de teléfono]<br />
+     <strong>Responsable:</strong> Old Fashion Runners<br />
+     <strong>NIF/CIF:</strong> 622446330<br />
+     <strong>Email:</strong> balambamboofest@gmail.com<br />
      <strong>Actividad:</strong> Organización de eventos musicales y culturales
     </Typography>
    </section>
 
    <section class='policy-section'>
-    <Typography variant='headline-2'
-     >2. Finalidad del Tratamiento de Datos</Typography
-    >
-    <Typography variant='body'>
-     Sus datos personales serán tratados para las siguientes finalidades:
-    </Typography>
-    <ul>
-     <li>
-      <strong>Gestión de venta de entradas:</strong> Procesamiento de compras, envío
-      de confirmaciones y gestión de accesos al evento
-     </li>
-     <li>
-      <strong>Comunicación comercial:</strong> Envío de información sobre futuros
-      eventos, ofertas especiales y novedades del festival (solo con consentimiento
-      explícito)
-     </li>
-     <li>
-      <strong>Gestión de consultas y reclamaciones:</strong> Atención al cliente
-      y resolución de incidencias
-     </li>
-     <li>
-      <strong>Análisis y mejora del servicio:</strong> Estadísticas de uso del sitio
-      web y mejora de la experiencia del usuario
-     </li>
-     <li>
-      <strong>Cumplimiento legal:</strong> Cumplimiento de obligaciones fiscales,
-      contables y legales aplicables
-     </li>
-    </ul>
-   </section>
-
-   <section class='policy-section'>
-    <Typography variant='headline-2'
-     >3. Base Legal para el Tratamiento</Typography
-    >
-    <Typography variant='body'>
-     El tratamiento de sus datos personales se basa en las siguientes bases
-     legales:
-    </Typography>
-    <ul>
-     <li>
-      <strong>Ejecución de contrato:</strong> Para la gestión de la compra de entradas
-      y prestación de servicios
-     </li>
-     <li>
-      <strong>Interés legítimo:</strong> Para el análisis y mejora de nuestros servicios,
-      y para la gestión de consultas
-     </li>
-     <li>
-      <strong>Consentimiento explícito:</strong> Para el envío de comunicaciones
-      comerciales y el uso de cookies no esenciales
-     </li>
-     <li>
-      <strong>Cumplimiento de obligación legal:</strong> Para el cumplimiento de
-      obligaciones fiscales y contables
-     </li>
-    </ul>
-   </section>
-
-   <section class='policy-section'>
-    <Typography variant='headline-2'
-     >4. Tipos de Datos Personales Tratados</Typography
-    >
-    <Typography variant='body'>
-     Tratamos los siguientes tipos de datos personales:
-    </Typography>
-    <ul>
-     <li>
-      <strong>Datos de identificación:</strong> Nombre, apellidos, DNI/NIE (para
-      facturación)
-     </li>
-     <li>
-      <strong>Datos de contacto:</strong> Dirección de email, teléfono, dirección
-      postal
-     </li>
-     <li>
-      <strong>Datos de facturación:</strong> Información necesaria para la emisión
-      de facturas
-     </li>
-     <li>
-      <strong>Datos de navegación:</strong> Información técnica sobre el uso del
-      sitio web (cookies)
-     </li>
-     <li>
-      <strong>Datos de preferencias:</strong> Información sobre gustos musicales
-      y preferencias de eventos
-     </li>
-    </ul>
-   </section>
-
-   <section class='policy-section'>
-    <Typography variant='headline-2'>5. Destinatarios de los Datos</Typography>
-    <Typography variant='body'>
-     Sus datos personales pueden ser comunicados a:
-    </Typography>
-    <ul>
-     <li>
-      <strong>Proveedores de servicios:</strong> Plataformas de pago, servicios de
-      hosting, herramientas de análisis web
-     </li>
-     <li>
-      <strong>Autoridades competentes:</strong> Cuando sea requerido por ley o resolución
-      judicial
-     </li>
-     <li>
-      <strong>Colaboradores del evento:</strong> Solo los datos estrictamente necesarios
-      para la organización del festival
-     </li>
-    </ul>
-    <Typography variant='body'>
-     <strong>Transferencias internacionales:</strong> Algunos de nuestros proveedores
-     pueden estar ubicados fuera del Espacio Económico Europeo (EEE). Estas transferencias
-     están amparadas por decisiones de adecuación de la Comisión Europea o garantías
-     contractuales apropiadas.
-    </Typography>
-   </section>
-
-   <section class='policy-section'>
-    <Typography variant='headline-2'>6. Conservación de los Datos</Typography>
-    <Typography variant='body'>
-     Los datos personales se conservarán durante los siguientes períodos:
-    </Typography>
-    <ul>
-     <li>
-      <strong>Datos de facturación:</strong> 5 años (obligación legal fiscal)
-     </li>
-     <li>
-      <strong>Datos de clientes:</strong> Mientras dure la relación comercial y 3
-      años adicionales
-     </li>
-     <li>
-      <strong>Datos de navegación:</strong> Según la configuración de cookies (máximo
-      2 años)
-     </li>
-     <li>
-      <strong>Datos de marketing:</strong> Hasta la revocación del consentimiento
-     </li>
-    </ul>
-   </section>
-
-   <section class='policy-section'>
-    <Typography variant='headline-2'>7. Sus Derechos</Typography>
-    <Typography variant='body'>
-     Como titular de los datos personales, tiene los siguientes derechos:
-    </Typography>
-    <ul>
-     <li>
-      <strong>Derecho de acceso:</strong> Conocer qué datos personales tenemos sobre
-      usted y cómo los tratamos
-     </li>
-     <li>
-      <strong>Derecho de rectificación:</strong> Corregir datos inexactos o incompletos
-     </li>
-     <li>
-      <strong>Derecho de supresión:</strong> Solicitar la eliminación de sus datos
-      cuando no sean necesarios
-     </li>
-     <li>
-      <strong>Derecho de limitación:</strong> Restringir el tratamiento de sus datos
-      en determinadas circunstancias
-     </li>
-     <li>
-      <strong>Derecho de portabilidad:</strong> Recibir sus datos en formato estructurado
-      y transferirlos a otro responsable
-     </li>
-     <li>
-      <strong>Derecho de oposición:</strong> Oponerse al tratamiento de sus datos
-      por motivos legítimos
-     </li>
-     <li>
-      <strong>Derecho de retirada del consentimiento:</strong> Revocar el consentimiento
-      en cualquier momento
-     </li>
-     <li>
-      <strong>Derecho de reclamación:</strong> Presentar una reclamación ante la
-      AEPD
-     </li>
-    </ul>
-   </section>
-
-   <section class='policy-section'>
-    <Typography variant='headline-2'>8. Ejercicio de Derechos</Typography>
-    <Typography variant='body'>
-     Para ejercer sus derechos, puede contactarnos a través de:
-    </Typography>
-    <div class='contact-info'>
-     <Typography variant='body'>
-      <strong>Email:</strong>
-      <a href='mailto:privacidad@bboofest.com'>privacidad@bboofest.com</a>
-     </Typography>
-     <Typography variant='body'>
-      <strong>Dirección postal:</strong> [Dirección completa de la empresa]
-     </Typography>
-     <Typography variant='body'>
-      <strong>Teléfono:</strong> [Número de teléfono]
-     </Typography>
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'>2. Finalidad del Sitio Web</Typography>
     </div>
     <Typography variant='body'>
-     <strong>Plazo de respuesta:</strong> Responderemos a su solicitud en un plazo
-     máximo de 1 mes desde su recepción.
-    </Typography>
-    <Typography variant='body'>
-     <strong>Gratuidad:</strong> El ejercicio de estos derechos es gratuito, salvo
-     en casos de solicitudes manifiestamente infundadas o excesivas.
-    </Typography>
-   </section>
-
-   <section class='policy-section'>
-    <Typography variant='headline-2'>9. Seguridad de los Datos</Typography>
-    <Typography variant='body'>
-     Implementamos medidas técnicas y organizativas apropiadas para garantizar
-     la seguridad de sus datos personales:
+     Este sitio web tiene únicamente fines informativos. Su propósito es
+     proporcionar información sobre:
     </Typography>
     <ul>
      <li>
-      <strong>Cifrado de datos:</strong> Utilizamos protocolos de cifrado para proteger
-      la transmisión de datos
+      <strong>Información del festival:</strong> Programación, artistas, horarios
+      y detalles del evento
      </li>
      <li>
-      <strong>Acceso restringido:</strong> Solo el personal autorizado puede acceder
-      a los datos personales
+      <strong>Información general:</strong> Ubicación, transporte, alojamiento y
+      servicios disponibles
      </li>
      <li>
-      <strong>Copias de seguridad:</strong> Realizamos copias de seguridad regulares
-      de los datos
-     </li>
-     <li>
-      <strong>Auditorías de seguridad:</strong> Evaluamos periódicamente nuestras
-      medidas de seguridad
+      <strong>Enlaces externos:</strong> Redirección a servicios externos para la
+      compra de entradas
      </li>
     </ul>
+    <Typography variant='body'>
+     <strong>Importante:</strong> La compra de entradas se realiza a través de servicios
+     externos que no están bajo nuestro control. Para información sobre el tratamiento
+     de datos personales en la compra de entradas, consulte la política de privacidad
+     del proveedor correspondiente.
+    </Typography>
    </section>
 
    <section class='policy-section'>
-    <Typography variant='headline-2'
-     >10. Cookies y Tecnologías Similares</Typography
-    >
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'
+      >3. No Recopilación de Datos Personales</Typography
+     >
+    </div>
     <Typography variant='body'>
-     Nuestro sitio web utiliza cookies y tecnologías similares. Para más
-     información sobre cómo utilizamos las cookies, consulte nuestra <a
+     Este sitio web NO recopila, almacena ni procesa datos personales de los
+     usuarios. No solicitamos ni recopilamos:
+    </Typography>
+    <ul>
+     <li>Nombres, apellidos o información de identificación personal</li>
+     <li>Direcciones de correo electrónico o números de teléfono</li>
+     <li>Información de facturación o datos bancarios</li>
+     <li>Preferencias personales o datos de navegación identificables</li>
+    </ul>
+    <Typography variant='body'>
+     Al ser un sitio web puramente informativo, no es necesario el
+     consentimiento para el tratamiento de datos personales.
+    </Typography>
+   </section>
+
+   <section class='policy-section'>
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'
+      >4. Cookies y Tecnologías Similares</Typography
+     >
+    </div>
+    <Typography variant='body'>
+     Nuestro sitio web puede utilizar cookies técnicas necesarias para su
+     funcionamiento básico. Para más información sobre cómo utilizamos las
+     cookies, consulte nuestra <a
       href={buildSiteUrl("/politica-cookies")}
       class='internal-link'>Política de Cookies</a
      >.
@@ -285,79 +107,96 @@ const meta = getMetaConfig("politicaPrivacidad")
    </section>
 
    <section class='policy-section'>
-    <Typography variant='headline-2'>11. Redes Sociales</Typography>
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'>5. Enlaces Externos</Typography>
+    </div>
     <Typography variant='body'>
-     Nuestro sitio web incluye enlaces a redes sociales. Tenga en cuenta que
-     estas plataformas tienen sus propias políticas de privacidad y términos de
-     uso. Le recomendamos revisarlas antes de compartir información personal.
+     Nuestro sitio web incluye enlaces a servicios externos, incluyendo:
+    </Typography>
+    <ul>
+     <li>
+      <strong>Plataformas de venta de entradas:</strong> Servicios externos para
+      la compra de entradas
+     </li>
+     <li>
+      <strong>Redes sociales:</strong> Plataformas como Instagram, Facebook, Twitter,
+      etc.
+     </li>
+     <li>
+      <strong>Servicios de terceros:</strong> Mapas, información de transporte, etc.
+     </li>
+    </ul>
+    <Typography variant='body'>
+     <strong>Importante:</strong> Estos servicios externos tienen sus propias políticas
+     de privacidad y términos de uso. Le recomendamos revisarlas antes de compartir
+     información personal o realizar compras.
     </Typography>
    </section>
 
    <section class='policy-section'>
-    <Typography variant='headline-2'>12. Menores de Edad</Typography>
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'>6. Menores de Edad</Typography>
+    </div>
     <Typography variant='body'>
-     Nuestros servicios no están dirigidos a menores de 14 años. No recopilamos
-     intencionalmente datos personales de menores de 14 años. Si tiene
-     conocimiento de que hemos recopilado datos de un menor, contacte con
-     nosotros inmediatamente para que podamos eliminarlos.
+     Nuestro sitio web está dirigido a usuarios de todas las edades. Al no
+     recopilar datos personales, no hay restricciones específicas para menores
+     de edad. Sin embargo, recomendamos que los menores naveguen bajo la
+     supervisión de un adulto responsable.
     </Typography>
    </section>
 
    <section class='policy-section'>
-    <Typography variant='headline-2'
-     >13. Modificaciones de la Política</Typography
-    >
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'>7. Seguridad del Sitio Web</Typography>
+    </div>
+    <Typography variant='body'>
+     Implementamos medidas técnicas apropiadas para garantizar la seguridad de
+     nuestro sitio web:
+    </Typography>
+    <ul>
+     <li>
+      <strong>Protocolo HTTPS:</strong> Conexión segura para la navegación
+     </li>
+     <li>
+      <strong>Actualizaciones de seguridad:</strong> Mantenimiento regular del sitio
+      web
+     </li>
+     <li>
+      <strong>Monitoreo de seguridad:</strong> Supervisión continua del estado del
+      sitio
+     </li>
+    </ul>
+   </section>
+
+   <section class='policy-section'>
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'
+      >8. Modificaciones de la Política</Typography
+     >
+    </div>
     <Typography variant='body'>
      Nos reservamos el derecho de modificar esta política de privacidad en
      cualquier momento. Los cambios entrarán en vigor inmediatamente después de
-     su publicación en el sitio web. Le notificaremos sobre cambios
-     significativos a través de nuestro sitio web o por otros medios apropiados.
+     su publicación en el sitio web.
     </Typography>
     <Typography variant='body'>
      Le recomendamos revisar esta política periódicamente para mantenerse
-     informado sobre cómo protegemos su información.
+     informado sobre cómo protegemos su privacidad.
     </Typography>
    </section>
 
    <section class='policy-section'>
-    <Typography variant='headline-2'>14. Autoridad de Control</Typography>
-    <Typography variant='body'>
-     Si considera que el tratamiento de sus datos personales no cumple con la
-     normativa vigente, puede presentar una reclamación ante la Agencia Española
-     de Protección de Datos (AEPD):
-    </Typography>
-    <div class='aepd-info'>
-     <Typography variant='body'>
-      <strong>AEPD:</strong>
-      <a href='https://www.aepd.es' target='_blank' rel='noopener noreferrer'
-       >https://www.aepd.es</a
-      >
-     </Typography>
-     <Typography variant='body'>
-      <strong>Dirección:</strong> C/ Jorge Juan, 6, 28001 Madrid
-     </Typography>
-     <Typography variant='body'>
-      <strong>Teléfono:</strong> 901 100 099
-     </Typography>
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'>9. Contacto</Typography>
     </div>
-   </section>
-
-   <section class='policy-section'>
-    <Typography variant='headline-2'>15. Contacto</Typography>
     <Typography variant='body'>
      Para cualquier consulta sobre esta política de privacidad o sobre el
-     tratamiento de sus datos personales, puede contactarnos a través de:
+     funcionamiento de nuestro sitio web, puede contactarnos a través de:
     </Typography>
     <div class='contact-info'>
      <Typography variant='body'>
       <strong>Email:</strong>
-      <a href='mailto:privacidad@bboofest.com'>privacidad@bboofest.com</a>
-     </Typography>
-     <Typography variant='body'>
-      <strong>Dirección postal:</strong> [Dirección completa de la empresa]
-     </Typography>
-     <Typography variant='body'>
-      <strong>Teléfono:</strong> [Número de teléfono]
+      <a href='mailto:balambamboofest@gmail.com'>balambamboofest@gmail.com</a>
      </Typography>
      <Typography variant='body'>
       <strong>Horario de atención:</strong> Lunes a Viernes de 9:00 a 18:00
@@ -366,7 +205,9 @@ const meta = getMetaConfig("politicaPrivacidad")
    </section>
 
    <section class='policy-section'>
-    <Typography variant='headline-2'>16. Información Adicional</Typography>
+    <div class='headline-wrapper'>
+     <Typography variant='headline-2'>10. Información Adicional</Typography>
+    </div>
     <Typography variant='body'>
      Esta política de privacidad cumple con la normativa española vigente,
      incluyendo:
@@ -387,8 +228,8 @@ const meta = getMetaConfig("politicaPrivacidad")
      </li>
     </ul>
     <Typography variant='body'>
-     Para más información sobre el tratamiento de sus datos personales, también
-     puede consultar nuestra
+     Para más información sobre el uso de cookies, también puede consultar
+     nuestra
      <a href={buildSiteUrl("/politica-cookies")} class='internal-link'
       >Política de Cookies</a
      >.
@@ -418,6 +259,10 @@ const meta = getMetaConfig("politicaPrivacidad")
   font-size: 2.5rem;
   margin: 0 0 1rem 0;
   font-weight: bold;
+ }
+
+ .headline-wrapper {
+  padding-bottom: 16px;
  }
 
  .page-header p {

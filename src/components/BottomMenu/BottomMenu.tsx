@@ -2,42 +2,42 @@ import React from "react";
 import styles from "./BottomMenu.module.css";
 import { isActiveRoute } from "../../utils/env";
 import { buildSiteUrl } from "../../config/site";
-import HomeIcon from "../../assets/menu_items/inicio.svg";
-import HomeIconNot from "../../assets/menu_items/inicio-not.svg";
-import LineupIcon from "../../assets/menu_items/grupos.svg";
-import LineupIconNot from "../../assets/menu_items/grupos-not.svg";
-import TicketsIcon from "../../assets/menu_items/tickets.svg";
-import TicketsIconNot from "../../assets/menu_items/tickets-not.svg";
-import SocialIcon from "../../assets/menu_items/info.svg";
-import SocialIconNot from "../../assets/menu_items/info-not.svg";
+import inicioIcon from "../../assets/bottom_menu_items/inicio.svg";
+import inicioNotIcon from "../../assets/bottom_menu_items/inicio-not.svg";
+import lineupIcon from "../../assets/bottom_menu_items/grupos-short.svg";
+import lineupNotIcon from "../../assets/bottom_menu_items/grupos-short-not.svg";
+import ticketsIcon from "../../assets/bottom_menu_items/tickets.svg";
+import ticketsNotIcon from "../../assets/bottom_menu_items/tickets-not.svg";
+import socialIcon from "../../assets/bottom_menu_items/info-short.svg";
+import socialNotIcon from "../../assets/bottom_menu_items/info-short-not.svg";
 
 const menuItems = [
     {
         name: "Inicio",
         path: "/",
-        icon: HomeIcon.src,
-        iconNot: HomeIconNot.src,
+        icon: inicioIcon.src,
+        iconNot: inicioNotIcon.src,
         url: buildSiteUrl("/"),
     },
     {
         name: "Lineup",
         path: "/lineup",
-        icon: LineupIcon.src,
-        iconNot: LineupIconNot.src,
+        icon: lineupIcon.src,
+        iconNot: lineupNotIcon.src,
         url: buildSiteUrl("/lineup"),
     },
     {
         name: "Tickets",
         path: "/tickets",
-        icon: TicketsIcon.src,
-        iconNot: TicketsIconNot.src,
+        icon: ticketsIcon.src,
+        iconNot: ticketsNotIcon.src,
         url: buildSiteUrl("/tickets"),
     },
     {
         name: "Info",
         path: "/social",
-        icon: SocialIcon.src,
-        iconNot: SocialIconNot.src,
+        icon: socialIcon.src,
+        iconNot: socialNotIcon.src,
         url: buildSiteUrl("/social"),
     },
 ];

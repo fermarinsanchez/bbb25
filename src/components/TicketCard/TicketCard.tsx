@@ -18,7 +18,7 @@ const TicketCard = ({ variant }: TicketCardProps) => {
     const { isAbove } = useBreakpoints()
 
     const isDesktop = isAbove('md') // 768px y superior
-    console.log('isDektop', isDesktop)
+
 
     if (variant === 'friday') {
         return (<div className={styles.root}>

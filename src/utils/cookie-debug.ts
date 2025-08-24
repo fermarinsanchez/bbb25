@@ -1,194 +1,109 @@
-/**
- * Utilidades para debuggear el estado de cookies en localStorage
- */
+// Utilidades para debugging de cookies en desarrollo
+// Solo se incluye en builds de desarrollo
 
-export interface CookieDebugInfo {
+interface CookieDebugInfo {
+    timestamp: string;
+    localStorageAvailable: boolean;
     hasConsent: boolean;
     consentData: string | null;
     preferencesData: string | null;
     parsedConsent: any;
     parsedPreferences: any;
-    localStorageAvailable: boolean;
-    timestamp: string;
 }
 
-/**
- * Obtiene información completa del estado de cookies en localStorage
- */
 export const getCookieDebugInfo = (): CookieDebugInfo => {
     const timestamp = new Date().toISOString();
+    const localStorageAvailable = typeof window !== 'undefined' && 'localStorage' in window;
 
-    try {
-        const consentData = localStorage.getItem('cookie-consent');
-        const preferencesData = localStorage.getItem('cookie-preferences');
+    let consentData: string | null = null;
+    let preferencesData: string | null = null;
+    let parsedConsent: any = null;
+    let parsedPreferences: any = null;
 
-        let parsedConsent = null;
-        let parsedPreferences = null;
-
+    if (localStorageAvailable) {
         try {
-            if (consentData) parsedConsent = JSON.parse(consentData);
-        } catch (e) {
-            console.warn('Error parsing cookie-consent:', e);
-        }
+            consentData = localStorage.getItem('cookie-consent');
+            preferencesData = localStorage.getItem('cookie-preferences');
 
-        try {
-            if (preferencesData) parsedPreferences = JSON.parse(preferencesData);
-        } catch (e) {
-            console.warn('Error parsing cookie-preferences:', e);
-        }
-
-        return {
-            hasConsent: !!consentData,
-            consentData,
-            preferencesData,
-            parsedConsent,
-            parsedPreferences,
-            localStorageAvailable: true,
-            timestamp
-        };
-    } catch (error) {
-        return {
-            hasConsent: false,
-            consentData: null,
-            preferencesData: null,
-            parsedConsent: null,
-            parsedPreferences: null,
-            localStorageAvailable: false,
-            timestamp
-        };
-    }
-};
-
-/**
- * Muestra información de debug en la consola
- */
-export const logCookieDebugInfo = () => {
-    const debugInfo = getCookieDebugInfo();
-
-    console.group('🍪 Cookie Debug Info');
-    console.log('📅 Timestamp:', debugInfo.timestamp);
-    console.log('💾 localStorage Available:', debugInfo.localStorageAvailable);
-    console.log('✅ Has Consent:', debugInfo.hasConsent);
-    console.log('📋 Consent Data:', debugInfo.consentData);
-    console.log('⚙️ Preferences Data:', debugInfo.preferencesData);
-    console.log('🔍 Parsed Consent:', debugInfo.parsedConsent);
-    console.log('🔍 Parsed Preferences:', debugInfo.parsedPreferences);
-    console.groupEnd();
-
-    return debugInfo;
-};
-
-/**
- * Limpia todos los datos de cookies del localStorage
- */
-export const clearAllCookieData = () => {
-    try {
-        localStorage.removeItem('cookie-consent');
-        localStorage.removeItem('cookie-preferences');
-        console.log('🧹 All cookie data cleared from localStorage');
-        return true;
-    } catch (error) {
-        console.error('❌ Error clearing cookie data:', error);
-        return false;
-    }
-};
-
-/**
- * Simula diferentes estados de consentimiento para testing
- */
-export const simulateCookieConsent = (scenario: 'accept-all' | 'accept-selected' | 'reject' | 'partial') => {
-    const scenarios = {
-        'accept-all': {
-            necessary: true,
-            analytics: true,
-            marketing: true,
-            preferences: true
-        },
-        'accept-selected': {
-            necessary: true,
-            analytics: true,
-            marketing: false,
-            preferences: true
-        },
-        'reject': {
-            necessary: true,
-            analytics: false,
-            marketing: false,
-            preferences: false
-        },
-        'partial': {
-            necessary: true,
-            analytics: true,
-            marketing: false,
-            preferences: false
-        }
-    };
-
-    const preferences = scenarios[scenario];
-
-    try {
-        localStorage.setItem('cookie-consent', JSON.stringify(preferences));
-        localStorage.setItem('cookie-preferences', JSON.stringify(preferences));
-        console.log(`🎭 Simulated ${scenario} consent:`, preferences);
-        return true;
-    } catch (error) {
-        console.error('❌ Error simulating consent:', error);
-        return false;
-    }
-};
-
-/**
- * Verifica la integridad de los datos de cookies
- */
-export const validateCookieData = (): { isValid: boolean; errors: string[] } => {
-    const errors: string[] = [];
-
-    try {
-        const consentData = localStorage.getItem('cookie-consent');
-        const preferencesData = localStorage.getItem('cookie-preferences');
-
-        if (!consentData) {
-            errors.push('No cookie-consent found in localStorage');
-        }
-
-        if (!preferencesData) {
-            errors.push('No cookie-preferences found in localStorage');
-        }
-
-        if (consentData && preferencesData) {
-            try {
-                const consent = JSON.parse(consentData);
-                const preferences = JSON.parse(preferencesData);
-
-                // Verificar que ambos objetos sean iguales
-                if (JSON.stringify(consent) !== JSON.stringify(preferences)) {
-                    errors.push('cookie-consent and cookie-preferences are different');
+            if (consentData) {
+                try {
+                    parsedConsent = JSON.parse(consentData);
+                } catch (e) {
+                    parsedConsent = { error: 'Failed to parse consent data' };
                 }
-
-                // Verificar estructura requerida
-                const requiredKeys = ['necessary', 'analytics', 'marketing', 'preferences'];
-                requiredKeys.forEach(key => {
-                    if (!(key in consent)) {
-                        errors.push(`Missing required key: ${key}`);
-                    }
-                });
-
-                // Verificar que necessary sea siempre true
-                if (consent.necessary !== true) {
-                    errors.push('necessary must always be true');
-                }
-
-            } catch (parseError) {
-                errors.push(`JSON parse error: ${parseError}`);
             }
-        }
 
-    } catch (error) {
-        errors.push(`localStorage error: ${error}`);
+            if (preferencesData) {
+                try {
+                    parsedPreferences = JSON.parse(preferencesData);
+                } catch (e) {
+                    parsedPreferences = { error: 'Failed to parse preferences data' };
+                }
+            }
+        } catch (e) {
+            // Error accessing localStorage
+        }
     }
+
+    const hasConsent = !!(parsedPreferences && typeof parsedPreferences === 'object');
 
     return {
-        isValid: errors.length === 0,
-        errors
+        timestamp,
+        localStorageAvailable,
+        hasConsent,
+        consentData,
+        preferencesData,
+        parsedConsent,
+        parsedPreferences
     };
-}; 
+};
+
+export const clearAllCookieData = (): void => {
+    if (typeof window !== 'undefined' && 'localStorage' in window) {
+        localStorage.removeItem('cookie-consent');
+        localStorage.removeItem('cookie-preferences');
+    }
+};
+
+export const simulateCookieConsent = (scenario: 'accept-all' | 'reject' | 'partial'): void => {
+    if (typeof window === 'undefined' || !('localStorage' in window)) {
+        return;
+    }
+
+    let preferences: any;
+
+    switch (scenario) {
+        case 'accept-all':
+            preferences = {
+                analytics: true,
+                marketing: true,
+                preferences: true
+            };
+            break;
+        case 'reject':
+            preferences = {
+                analytics: false,
+                marketing: false,
+                preferences: false
+            };
+            break;
+        case 'partial':
+            preferences = {
+                analytics: true,
+                marketing: false,
+                preferences: true
+            };
+            break;
+        default:
+            return;
+    }
+
+    localStorage.setItem('cookie-preferences', JSON.stringify(preferences));
+};
+
+// Solo exportar en desarrollo y en el cliente
+if (import.meta.env.DEV && typeof window !== 'undefined') {
+    (window as any).getCookieDebugInfo = getCookieDebugInfo;
+    (window as any).clearAllCookieData = clearAllCookieData;
+    (window as any).simulateCookieConsent = simulateCookieConsent;
+} 

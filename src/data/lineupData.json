@@ -86,11 +86,30 @@
  },
  {
   "day": "Saturday",
-  "name": "Maripili",
-  "style": "Punk Pop",
+  "name": "Beta Máximo",
+  "style": "Punk Rock",
   "link": "https://www.thestrokes.com",
   "order": 2,
   "hour": "14:00",
+  "image": "https://res.cloudinary.com/dci5hxl4x/image/upload/v1754667396/bboofest25/betamax_wwqrup.jpg",
+  "description": [
+   "Demasiado Pop para ser Punk, demasiado PUNK Y WEIRD para ser otra cosa. Este estrafalario alienígena nos está matando con su pegadizo arcade-punk galáctico a toda pastilla, repleto de devastadoras y totalmente irresistibles melodías afiladas, propulsadas por una maldita y demencial caja de ritmos a 10.000 revoluciones.",
+   "Ultra frenético synth-punk a cascoporro, infusionado de endiablado y afilado pop a degüello. Sin duda una perfecta y engrasada máquina para hacer que te vuelen los sesos en mil pedazos, dejándote sin aliento en la pista de baile!"
+  ],
+  "instagram": "https://www.instagram.com/beta.maximo/?hl=es",
+  "spotify": "https://open.spotify.com/intl-es/artist/365RFaJ5rIVgB8JkNSLN0M",
+  "spotify-embed": "https://open.spotify.com/embed/track/0euNnpWdQp0kb2vJ2CQzWn?utm_source=generator&theme=0",
+  "bandcamp": "https://betamaximo.bandcamp.com/",
+  "youtube": "https://www.youtube.com/@betamaximo6100",
+  "videoclip": "https://www.youtube.com/embed/8aduFM0P_C0?si=qQNPrIJrBmDwZ99x"
+ },
+ {
+  "day": "Saturday",
+  "name": "Maripili",
+  "style": "Punk Pop",
+  "link": "https://www.thestrokes.com",
+  "order": 3,
+  "hour": "15:30",
   "image": "https://res.cloudinary.com/dci5hxl4x/image/upload/v1754667398/bboofest25/Maripili_pj1cpj.jpg",
   "description": [
    "Maripili es una banda toledana formada por retales de otros grupos tales como Klaus&Kinski, Hollywood Sinners, Autócratas y Quicklime, entre otras.",
@@ -106,22 +125,24 @@
  },
  {
   "day": "Saturday",
-  "name": "Beta Máximo",
-  "style": "Punk Rock",
+  "name": "Descarburados",
+  "style": "Scooter No Club",
   "link": "https://www.thestrokes.com",
-  "order": 3,
-  "hour": "15:00",
-  "image": "https://res.cloudinary.com/dci5hxl4x/image/upload/v1754667396/bboofest25/betamax_wwqrup.jpg",
+  "order": 4,
+  "hour": "17:00",
+  "image": "https://res.cloudinary.com/dci5hxl4x/image/upload/v1756028122/bboofest25/descarburados-img_hajasf.jpg",
   "description": [
-   "Demasiado Pop para ser Punk, demasiado PUNK Y WEIRD para ser otra cosa. Este estrafalario alienígena nos está matando con su pegadizo arcade-punk galáctico a toda pastilla, repleto de devastadoras y totalmente irresistibles melodías afiladas, propulsadas por una maldita y demencial caja de ritmos a 10.000 revoluciones.",
-   "Ultra frenético synth-punk a cascoporro, infusionado de endiablado y afilado pop a degüello. Sin duda una perfecta y engrasada máquina para hacer que te vuelen los sesos en mil pedazos, dejándote sin aliento en la pista de baile!"
+   "No son un club, son amantes de las scooters clásicas, la música y la cerveza.",
+   "El sábado 27 de septiembre traerán al Balambam Boo una exposición de Vespas y Lambrettas clásicas, un photocall vintage que te transportará a la época dorada de las scooters, y nuestro puesto de venta con camisetas, parches y chapas.",
+   "Descarburados no solo es scooters, es pasión por lo clásico, buena música y mejor ambiente. ¡Ven a conocer nuestra historia y a llevarte un recuerdo único del festival!",
+   "Donde esté la jarana, ahí estaremos nosotros"
   ],
-  "instagram": "https://www.instagram.com/beta.maximo/?hl=es",
-  "spotify": "https://open.spotify.com/intl-es/artist/365RFaJ5rIVgB8JkNSLN0M",
-  "spotify-embed": "https://open.spotify.com/embed/track/0euNnpWdQp0kb2vJ2CQzWn?utm_source=generator&theme=0",
-  "bandcamp": "https://betamaximo.bandcamp.com/",
-  "youtube": "https://www.youtube.com/@betamaximo6100",
-  "videoclip": "https://www.youtube.com/embed/8aduFM0P_C0?si=qQNPrIJrBmDwZ99x"
+  "instagram": "https://www.instagram.com/descarburadostoledosnc/",
+  "spotify": null,
+  "spotify-embed": null,
+  "bandcamp": null,
+  "youtube": null,
+  "videoclip": null
  },
 
  {
@@ -129,8 +150,8 @@
   "name": "Los Retumbes",
   "style": "Primitive Rock and Roll",
   "link": "https://www.thestrokes.com",
-  "order": 4,
-  "hour": "17:00",
+  "order": 5,
+  "hour": "17:30",
   "image": "https://res.cloudinary.com/dci5hxl4x/image/upload/v1754667395/bboofest25/retumbes_o9b3ot.jpg",
   "description": [
    "Los Retumbes comienzan en el verano de 2017 para combatir el aburrimiento retumbando. Este dúo mixto y enmascarado de guitarra y percusión suena en directo a garage-punk, Masonics, Billy Childish, Gories también a rock&roll vía Bo Diddley, Link Wray, a surf y rhythm and blues primitivo, descarnado, puro trash en ocasiones. Sus canciones tienen letras ácidas e irreverentes, satíricas pero también cargadas de protesta. Comienzan a tocar y a finales de 2018 nos presentan su primer trabajo discográfico, un EP homónimo de la mano del sello Family Spree Recordings, grabado en los estudios Circo Perrotti con la producción de Jorge Explosión. En diciembre de 2019 vuelven con su segundo EP El regreso también con Family Spree Recordings y también grabado en los estudios Circo Perrotti. Otro artefacto explosivo en las mismas coordenadas: punkrock, garage lo-fi, rock'n'roll desquiciado,..., es decir, las mismas virtudes que les propulsaron al éxito con su primer lanzamiento.",
@@ -145,13 +166,14 @@
   "youtube": "https://www.youtube.com/@losretumbes5099",
   "videoclip": "https://www.youtube.com/embed/h0qNiCl_xyk?si=hPAJz4jwbnMOjMmX"
  },
+
  {
   "day": "Saturday",
   "name": "Los Pólipos",
   "style": "Thrash Punk",
   "link": "https://www.thestrokes.com",
-  "order": 5,
-  "hour": "18:15",
+  "order": 6,
+  "hour": "18:30",
   "image": "https://res.cloudinary.com/dci5hxl4x/image/upload/v1754667396/bboofest25/polipos_uca3ch.jpg",
   "description": [
    "Los Pólipos son un poderoso trío de la ciudad de Madrid. Nacidos en el castizo barrio de Puerta del Angel, pero criados en las profundidades de la Malasaña más rockanrolera.",
@@ -172,8 +194,8 @@
   "name": "Rivelles",
   "style": "Punk Rock",
   "link": "https://www.thestrokes.com",
-  "order": 6,
-  "hour": "19:00",
+  "order": 7,
+  "hour": "19:30",
   "image": "https://res.cloudinary.com/dci5hxl4x/image/upload/v1754667397/bboofest25/Rivelles_jo9h2k.jpg",
   "description": [
    "Desde la tierra de las hamburguesas y los tornados llega Rivelles, el trío más ramonero de Appleton (Wisconsin). Kevin, Mathew y Nickole no vienen a reinventar nada, vienen a recordarte cómo se hace el punk rock sin adornos: canciones cortas, afiladas, sin solos y con el pedal de distorsión a fondo.",

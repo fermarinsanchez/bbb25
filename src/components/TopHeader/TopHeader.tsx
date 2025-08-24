@@ -25,7 +25,7 @@ const TopHeader: React.FC<TopHeaderProps> = React.memo(({ currentPath = "/" }) =
         lineup: buildUrl("/lineup"),
         tickets: buildUrl("/tickets"),
         social: buildUrl("/social")
-    }), []); // Sin dependencias - se calcula una sola vez
+    }), []);
 
     // Memoizar los iconos (no cambian nunca)
     const icons = useMemo(() => ({
@@ -33,35 +33,13 @@ const TopHeader: React.FC<TopHeaderProps> = React.memo(({ currentPath = "/" }) =
         lineup: { active: lineupIcon.src, inactive: lineupNotIcon.src },
         tickets: { active: ticketsIcon.src, inactive: ticketsNotIcon.src },
         social: { active: socialIcon.src, inactive: socialNotIcon.src }
-    }), []); // Sin dependencias - se calcula una sola vez
-
-    // Debug: mostrar en consola para troubleshooting
-    useEffect(() => {
-        console.log('TopHeader Debug:', {
-            currentPath,
-            isHomeActive: isActiveRoute(currentPath, "/"),
-            isLineupActive: isActiveRoute(currentPath, "/lineup"),
-            isTicketsActive: isActiveRoute(currentPath, "/tickets"),
-            isSocialActive: isActiveRoute(currentPath, "/social"),
-            debugHome: debugRoute(currentPath, "/"),
-            debugLineup: debugRoute(currentPath, "/lineup")
-        });
-    }, [currentPath]);
+    }), []);
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            // Debug del scroll
-            console.log('Scroll Debug:', {
-                currentScrollY,
-                lastScrollY,
-                isVisible,
-                isScrollingDown: currentScrollY > lastScrollY,
-                isScrollingUp: currentScrollY < lastScrollY
-            });
-
-            // Si estamos en el top (scrollY === 0), siempre mostrar
+            // Si estamos en el top, siempre mostrar
             if (currentScrollY === 0) {
                 setIsVisible(true);
                 setLastScrollY(currentScrollY);
@@ -72,20 +50,14 @@ const TopHeader: React.FC<TopHeaderProps> = React.memo(({ currentPath = "/" }) =
             const isScrollingDown = currentScrollY > lastScrollY;
             const isScrollingUp = currentScrollY < lastScrollY;
 
-            // Solo ocultar si estamos haciendo scroll hacia abajo y no estamos en el top
-            if (isScrollingDown && currentScrollY > 100) {
-                if (isVisible) {
-                    console.log('Ocultando header - scroll hacia abajo');
-                    setIsVisible(false);
-                }
+            // Si scrolleamos hacia abajo, ocultar
+            if (isScrollingDown) {
+                setIsVisible(false);
             }
 
-            // Mostrar si estamos haciendo scroll hacia arriba
+            // Si scrolleamos hacia arriba, mostrar
             if (isScrollingUp) {
-                if (!isVisible) {
-                    console.log('Mostrando header - scroll hacia arriba');
-                    setIsVisible(true);
-                }
+                setIsVisible(true);
             }
 
             setLastScrollY(currentScrollY);
@@ -96,7 +68,7 @@ const TopHeader: React.FC<TopHeaderProps> = React.memo(({ currentPath = "/" }) =
 
         // Cleanup
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [lastScrollY, isVisible]);
+    }, [lastScrollY]);
 
     return (
         <nav className={`${styles.topMenu} ${isVisible ? styles.visible : styles.hidden}`}>

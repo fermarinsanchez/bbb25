@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCookieConsent } from '../../hooks/use-cookie-consent';
-import { clearAllCookieData, simulateCookieConsent, logCookieDebugInfo } from '../../utils/cookie-debug';
+import { clearAllCookieData, simulateCookieConsent, getCookieDebugInfo } from '../../utils/cookie-debug';
 
 const CookieDebugPanel: React.FC = () => {
     const { hasConsent, preferences, resetConsent } = useCookieConsent();
@@ -125,7 +125,10 @@ const CookieDebugPanel: React.FC = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                 <button
-                    onClick={logCookieDebugInfo}
+                    onClick={() => {
+                        const debugInfo = getCookieDebugInfo();
+                        console.log('🍪 Cookie Debug Info:', debugInfo);
+                    }}
                     style={{
                         background: '#3498db',
                         color: 'white',

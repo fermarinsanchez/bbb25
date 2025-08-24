@@ -1,12 +1,12 @@
-// Detectar si estamos en producción (GitHub Pages) o desarrollo local
+// Detectar si estamos en producción o desarrollo local
 export const isProduction = import.meta.env.PROD;
 
-// Base path para GitHub Pages
-export const GITHUB_PAGES_BASE = '/bbb25';
+// Dominio del sitio en producción
+export const SITE_DOMAIN = 'https://balambamboofest.com';
 
 // Función para construir URLs que funciona tanto en desarrollo como en producción
 export const getBaseUrl = (): string => {
-    return isProduction ? GITHUB_PAGES_BASE : '';
+    return isProduction ? SITE_DOMAIN : '';
 };
 
 // Función para construir URLs completas
@@ -26,28 +26,20 @@ export const isActiveRoute = (currentPath: string, targetPath: string): boolean 
     const normalizedCurrentPath = currentPath.replace(/\/$/, '') || '/';
     const normalizedTargetPath = targetPath.replace(/\/$/, '') || '/';
 
-    const base = getBaseUrl();
-    const normalizedBase = base.replace(/\/$/, '') || '';
-
     // Para la ruta de inicio
     if (normalizedTargetPath === '/') {
         return normalizedCurrentPath === '/' ||
-            normalizedCurrentPath === '/index' ||
-            normalizedCurrentPath === normalizedBase ||
-            normalizedCurrentPath === `${normalizedBase}/index`;
+            normalizedCurrentPath === '/index';
     }
 
     // Para la ruta de lineup (incluye bandas individuales)
     if (normalizedTargetPath === '/lineup') {
         return normalizedCurrentPath === '/lineup' ||
-            normalizedCurrentPath.startsWith('/band/') ||
-            normalizedCurrentPath === `${normalizedBase}/lineup` ||
-            normalizedCurrentPath.startsWith(`${normalizedBase}/band/`);
+            normalizedCurrentPath.startsWith('/band/');
     }
 
     // Para otras rutas
-    return normalizedCurrentPath === normalizedTargetPath ||
-        normalizedCurrentPath === `${normalizedBase}${normalizedTargetPath}`;
+    return normalizedCurrentPath === normalizedTargetPath;
 };
 
 // Función de debug para ayudar con el troubleshooting

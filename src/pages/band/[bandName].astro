@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro"
+import { BandHeader } from "../../components/BandHeader/BandHeader"
 import lineupData from "../../data/lineupData.json"
 import AzogueLettering from "../../assets/lettering/azogue-lettering.svg"
 import BetaLettering from "../../assets/lettering/beta-lettering.svg"
@@ -10,27 +11,22 @@ import RivellesLettering from "../../assets/lettering/rivelles-lettering.svg"
 import MaripiliLettering from "../../assets/lettering/maripili-lettering.svg"
 import RetumbesLettering from "../../assets/lettering/retumbes-lettering.svg"
 import PoliposLettering from "../../assets/lettering/polipos-lettering.svg"
-import DescarburadosLettering from "../../assets/lettering/descarburados-title.svg"
-import { BandHeader } from "../../components/BandHeader/BandHeader"
+import DescarburadosTitle from "../../assets/lettering/descarburados-title.svg"
 import SocialLinks from "../../components/SocialLinks/SocialLinks"
 import { Typography } from "../../components/Typography"
 import { buildSiteUrl } from "../../config/site.js"
 
 export async function getStaticPaths() {
- // En desarrollo, usar rutas normales
- // En producción (GitHub Pages), incluir el base path
- const isProduction = import.meta.env.PROD;
- const basePath = isProduction ? '/bbb25' : '';
- 
+ // Generar rutas para todas las bandas
  return lineupData.map((band) => ({
   params: {
    bandName: band.name.toLowerCase().replace(/\s+/g, "-"),
   },
-  props: { band, basePath },
+  props: { band },
  }))
 }
 
-const { band, basePath } = Astro.props
+const { band } = Astro.props
 
 const bandLettering = {
  Azogue: AzogueLettering.src,
@@ -42,7 +38,7 @@ const bandLettering = {
  Maripili: MaripiliLettering.src,
  "Los Retumbes": RetumbesLettering.src,
  "Los Pólipos": PoliposLettering.src,
- "Descarburados": DescarburadosLettering.src,
+ "Descarburados": DescarburadosTitle.src,
 }[band.name]
 
 const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
@@ -140,7 +136,7 @@ const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
     {
      bandsOfSameDay.map((otherBand) => (
       <a
-       href={`${basePath}/band/${otherBand.name.toLowerCase().replace(/\s+/g, "-")}`}
+       href={buildSiteUrl(`/band/${otherBand.name.toLowerCase().replace(/\s+/g, "-")}`)}
        class={`band-card ${otherBand.name === band.name ? "current" : ""}`}
       >
        <img src={otherBand.image} alt={otherBand.name} />

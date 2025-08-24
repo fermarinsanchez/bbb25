@@ -1,15 +1,47 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import inicioIcon from "../../assets/menu_items/inicio.svg";
-import inicioNotIcon from "../../assets/menu_items/inicio-not.svg";
-import lineupIcon from "../../assets/menu_items/grupos.svg";
-import lineupNotIcon from "../../assets/menu_items/grupos-not.svg";
-import ticketsIcon from "../../assets/menu_items/tickets.svg";
-import ticketsNotIcon from "../../assets/menu_items/tickets-not.svg";
-import socialIcon from "../../assets/menu_items/info.svg";
-import socialNotIcon from "../../assets/menu_items/info-not.svg";
-import BIcon from "../../assets/BIcon.svg";
+import React, { useState, useEffect } from "react";
 import styles from "./TopHeader.module.css";
-import { buildUrl, isActiveRoute, debugRoute } from "../../utils/env";
+import { isActiveRoute } from "../../utils/env";
+import { buildSiteUrl } from "../../config/site";
+import HomeIcon from "../../assets/menu_items/inicio.svg";
+import HomeIconNot from "../../assets/menu_items/inicio-not.svg";
+import LineupIcon from "../../assets/menu_items/grupos.svg";
+import LineupIconNot from "../../assets/menu_items/grupos-not.svg";
+import TicketsIcon from "../../assets/menu_items/tickets.svg";
+import TicketsIconNot from "../../assets/menu_items/tickets-not.svg";
+import SocialIcon from "../../assets/menu_items/info.svg";
+import SocialIconNot from "../../assets/menu_items/info-not.svg";
+import BIcon from "../../assets/BIcon.svg";
+
+const menuItems = [
+    {
+        name: "Inicio",
+        path: "/",
+        icon: HomeIcon.src,
+        iconNot: HomeIconNot.src,
+        url: buildSiteUrl("/"),
+    },
+    {
+        name: "Lineup",
+        path: "/lineup",
+        icon: LineupIcon.src,
+        iconNot: LineupIconNot.src,
+        url: buildSiteUrl("/lineup"),
+    },
+    {
+        name: "Tickets",
+        path: "/tickets",
+        icon: TicketsIcon.src,
+        iconNot: TicketsIconNot.src,
+        url: buildSiteUrl("/tickets"),
+    },
+    {
+        name: "Info",
+        path: "/social",
+        icon: SocialIcon.src,
+        iconNot: SocialIconNot.src,
+        url: buildSiteUrl("/social"),
+    },
+];
 
 interface TopHeaderProps {
     currentPath?: string;
@@ -18,22 +50,6 @@ interface TopHeaderProps {
 const TopHeader: React.FC<TopHeaderProps> = React.memo(({ currentPath = "/" }) => {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-
-    // Memoizar las URLs base (no cambian nunca)
-    const baseUrls = useMemo(() => ({
-        home: buildUrl("/"),
-        lineup: buildUrl("/lineup"),
-        tickets: buildUrl("/tickets"),
-        social: buildUrl("/social")
-    }), []);
-
-    // Memoizar los iconos (no cambian nunca)
-    const icons = useMemo(() => ({
-        home: { active: inicioIcon.src, inactive: inicioNotIcon.src },
-        lineup: { active: lineupIcon.src, inactive: lineupNotIcon.src },
-        tickets: { active: ticketsIcon.src, inactive: ticketsNotIcon.src },
-        social: { active: socialIcon.src, inactive: socialNotIcon.src }
-    }), []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -74,37 +90,19 @@ const TopHeader: React.FC<TopHeaderProps> = React.memo(({ currentPath = "/" }) =
         <nav className={`${styles.topMenu} ${isVisible ? styles.visible : styles.hidden}`}>
             <div className={styles.topMenuContainer}>
                 <div className={styles.topMenuContent}>
-                    <a href={baseUrls.home} className={styles.menuItem}>
-                        <img
-                            src={isActiveRoute(currentPath, "/") ? icons.home.active : icons.home.inactive}
-                            alt='Inicio'
-                            className={styles.menuIcon}
-                        />
-                    </a>
-
-                    <a href={baseUrls.lineup} className={styles.menuItem}>
-                        <img
-                            src={isActiveRoute(currentPath, "/lineup") ? icons.lineup.active : icons.lineup.inactive}
-                            alt='Lineup'
-                            className={styles.menuIcon}
-                        />
-                    </a>
-
-                    <a href={baseUrls.tickets} className={styles.menuItem}>
-                        <img
-                            src={isActiveRoute(currentPath, "/tickets") ? icons.tickets.active : icons.tickets.inactive}
-                            alt='Tickets'
-                            className={styles.menuIcon}
-                        />
-                    </a>
-
-                    <a href={baseUrls.social} className={styles.menuItem}>
-                        <img
-                            src={isActiveRoute(currentPath, "/social") ? icons.social.active : icons.social.inactive}
-                            alt='Social'
-                            className={styles.menuIcon}
-                        />
-                    </a>
+                    {menuItems.map((item) => (
+                        <a
+                            key={item.name}
+                            href={item.url}
+                            className={styles.menuItem}
+                        >
+                            <img
+                                src={isActiveRoute(currentPath, item.path) ? item.icon : item.iconNot}
+                                alt={item.name}
+                                className={styles.menuIcon}
+                            />
+                        </a>
+                    ))}
                 </div>
                 <div className={styles.menuIconB}>
                     <img src={BIcon.src} alt='Menu' />

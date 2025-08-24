@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './LineupItems.module.css'
-import { buildUrl } from '../../utils/env'
+import { buildSiteUrl } from '../../config/site'
 
 type DataBand = {
     name: string
@@ -19,9 +19,10 @@ type LineupItemProps = {
 
 const LineupItems = ({ data, day }: LineupItemProps) => {
     const bandsOfTheDay = data.filter(band => band.day === day)
+
     // Función para generar la URL de la banda
     const getBandUrl = (bandName: string) => {
-        return buildUrl(`/band/${bandName.toLowerCase().replace(/\s+/g, '-')}`)
+        return buildSiteUrl(`/band/${bandName.toLowerCase().replace(/\s+/g, '-')}`)
     }
 
     return (<ul>

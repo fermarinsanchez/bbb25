@@ -1,52 +1,125 @@
-# Astro Starter Kit: Basics
+# Balambam Boo Fest 2025 - Sitio Web
 
-```sh
-npm create astro@latest -- --template basics
+Sitio web oficial del festival Balambam Boo Fest 2025, construido con Astro y React.
+
+## 🌐 Dominio
+
+El sitio está configurado para funcionar con el dominio personalizado: **balambamboofest.com**
+
+## 🚀 Tecnologías
+
+- **Astro** - Framework de construcción de sitios estáticos
+- **React** - Biblioteca de UI para componentes interactivos
+- **TypeScript** - Tipado estático para JavaScript
+- **CSS Modules** - Estilos modulares y encapsulados
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── components/          # Componentes React reutilizables
+├── pages/              # Páginas del sitio (routing automático)
+├── layouts/            # Layouts de página
+├── assets/             # Imágenes, iconos y recursos estáticos
+├── data/               # Datos del festival (lineup, FAQs)
+├── config/             # Configuración del sitio
+├── hooks/              # Hooks personalizados de React
+├── styles/             # Estilos globales
+└── utils/              # Utilidades y helpers
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🎵 Funcionalidades
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Página de inicio** con información del festival
+- **Lineup** con todas las bandas participantes
+- **Páginas individuales** para cada banda
+- **Sistema de tickets** con diferentes opciones
+- **Información del festival** (ubicación, transporte, etc.)
+- **Políticas de privacidad y cookies**
+- **Diseño responsive** para todos los dispositivos
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 🛠️ Desarrollo
 
-## 🚀 Project Structure
+### Instalación
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm install
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### Desarrollo local
 
-## 🧞 Commands
+```bash
+npm run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+### Build de producción
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+npm run build
+```
 
-## 👀 Want to learn more?
+### Preview del build
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+npm run preview
+```
+
+## 🌍 Configuración de Rutas
+
+El sitio está configurado para funcionar con rutas absolutas en producción:
+
+- **Desarrollo**: Rutas relativas (ej: `/lineup`)
+- **Producción**: URLs completas (ej: `https://balambamboofest.com/lineup`)
+
+### Configuración de Dominio
+
+- **Astro config**: `site: 'https://balambamboofest.com'`
+- **Sin base path**: Las rutas funcionan directamente desde el dominio raíz
+- **Función `buildSiteUrl`**: Construye URLs correctas según el entorno
+
+## 📱 Componentes Principales
+
+- **TopHeader** - Navegación superior con menú
+- **BottomMenu** - Menú de navegación inferior
+- **BandHeader** - Cabecera de páginas de bandas
+- **LineupItems** - Lista de bandas del festival
+- **TicketCard** - Tarjetas de compra de entradas
+- **CookieConsent** - Gestión de consentimiento de cookies
+
+## 🎨 Estilos
+
+- **Sistema de diseño** consistente con la identidad del festival
+- **Paleta de colores** personalizada
+- **Tipografía** optimizada para legibilidad
+- **Componentes** con estados hover y transiciones suaves
+
+## 📊 Datos del Festival
+
+Los datos del festival se almacenan en archivos JSON:
+
+- **`lineupData.json`** - Información de todas las bandas
+- **`faqs.json`** - Preguntas frecuentes
+
+## 🔧 Configuración de Cookies
+
+El sitio incluye un sistema completo de gestión de cookies con:
+
+- **Consentimiento** configurable por categorías
+- **Política de cookies** detallada
+- **Configuración** personalizable por el usuario
+
+## 🚀 Despliegue
+
+El sitio está configurado para desplegarse en GitHub Pages con dominio personalizado:
+
+1. **Build** del proyecto: `npm run build`
+2. **Despliegue** automático en GitHub Pages
+3. **Dominio personalizado**: `balambamboofest.com`
+
+## 📝 Licencia
+
+Este proyecto es privado y pertenece al festival Balambam Boo Fest 2025.
+
+---
+
+**Desarrollado con ❤️ para el mejor festival del universo**

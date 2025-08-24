@@ -3,7 +3,7 @@ import styles from './BandHeader.module.css'
 import PurpleHeader from '../../assets/purple-header-bg.svg'
 import BackIcon from '../../assets/backIcon.svg'
 import SqareBackground from '../../assets/fondo_rosa.png'
-import { buildUrl } from '../../utils/env'
+import { buildSiteUrl } from '../../config/site'
 
 type BandHeaderProps = {
     titleSvg: string
@@ -22,7 +22,7 @@ const BandHeader = ({ titleSvg, image, name }: BandHeaderProps) => {
 
     return (
         <section className={styles.root}>
-            <a href={buildUrl("/lineup")} className={styles.backButton} >
+            <a href={buildSiteUrl("/lineup")} className={styles.backButton} >
                 <img src={BackIcon.src} alt='back icon' />
             </a>
             <div className={styles.backgroundContainer}>

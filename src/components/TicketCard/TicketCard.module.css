@@ -126,6 +126,7 @@
     padding: 16px;
     width: 100%;
     font-weight: 700;
+    font-size: 16px;
     z-index: 1;
     width: 50%;
     align-self: flex-end;
@@ -138,6 +139,7 @@
     padding: 16px;
     width: 100%;
     font-weight: 700;
+    font-size: 16px;
     z-index: 1;
     width: 50%;
     align-self: flex-start;
@@ -151,6 +153,7 @@
     padding: 16px;
     width: 100%;
     font-weight: 700;
+    font-size: 16px;
     z-index: 1;
     width: 50%;
     align-self: flex-start;

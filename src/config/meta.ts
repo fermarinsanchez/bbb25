@@ -2,7 +2,7 @@
 export const META_CONFIG = {
     home: {
         title: 'Balambam Boo Fest 2025 - El mejor festival para todas las edades',
-        description: '¡Vuelve el mejor festival tras 10 años de trayectoria! 26-27 de Octubre en Summerland (Toledo). Conciertos, actividades, narkets y muchas locuras más.',
+        description: '¡Vuelve el mejor festival tras 10 años de trayectoria! 26-27 de Septiembre en Summerland (Toledo). Conciertos, actividades, narkets y muchas locuras más.',
         image: 'https://res.cloudinary.com/dci5hxl4x/image/upload/v1756108115/bboofest_25_3_wri4dw.png'
     },
     lineup: {
@@ -12,7 +12,7 @@ export const META_CONFIG = {
     },
     tickets: {
         title: 'Tickets Balambam Boo Fest 2025 - Comprar Entradas',
-        description: 'Consigue tus entradas para el Balambam Boo Fest 2025. Festival de música independiente el 26-27 de Octubre en Summerland (Toledo).',
+        description: 'Consigue tus entradas para el Balambam Boo Fest 2025. Festival de música independiente el 26-27 de Septiembre en Summerland (Toledo).',
         image: 'https://res.cloudinary.com/dci5hxl4x/image/upload/v1756108115/bboofest_25_3_wri4dw.png'
     },
     social: {

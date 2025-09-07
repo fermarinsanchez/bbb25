@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { useCookieConsent } from '../../hooks/use-cookie-consent';
-import type { CookiePreferences } from '../../hooks/use-cookie-consent';
+export interface CookiePreferences {
+    necessary: boolean;
+    analytics: boolean;
+    marketing: boolean;
+    preferences: boolean;
+}
 import styles from './CookieSettings.module.css';
 import { Typography } from '../Typography';
+import { buildSiteUrl } from '../../config/site';
 
 const CookieSettings: React.FC = () => {
     const { preferences, savePreferences, resetConsent } = useCookieConsent();
@@ -16,7 +22,12 @@ const CookieSettings: React.FC = () => {
     // Sincronizar localPreferences cuando cambien las preferences del hook
     React.useEffect(() => {
         if (preferences) {
-            setLocalPreferences(preferences);
+            setLocalPreferences(prev => ({
+                ...prev,
+                analytics: preferences.analytics,
+                marketing: preferences.marketing,
+                preferences: preferences.preferences
+            }));
         }
     }, [preferences]);
     const [showSuccess, setShowSuccess] = useState(false);
@@ -31,40 +42,48 @@ const CookieSettings: React.FC = () => {
 
     const handleSave = () => {
         console.log('💾 Saving preferences:', localPreferences);
-        if (savePreferences(localPreferences)) {
-            // Sincronizar el estado local con las preferencias guardadas
-            setLocalPreferences(localPreferences);
-            setShowSuccess(true);
-            setTimeout(() => setShowSuccess(false), 3000);
+        savePreferences({
+            analytics: localPreferences.analytics,
+            marketing: localPreferences.marketing,
+            preferences: localPreferences.preferences
+        });
+        // Sincronizar el estado local con las preferencias guardadas
+        setLocalPreferences(localPreferences);
+        setShowSuccess(true);
 
-            // Verificar que se guardó correctamente
-            setTimeout(() => {
-                const saved = localStorage.getItem('cookie-preferences');
-                console.log('🔍 Verification - Saved preferences:', saved);
-            }, 100);
-        }
+        // Mostrar mensaje de éxito y luego redireccionar a la home
+        setTimeout(() => {
+            setShowSuccess(false);
+            // Redireccionar a la home después de guardar
+            window.location.href = buildSiteUrl('/');
+        }, 1500);
+
+        // Verificar que se guardó correctamente
+        setTimeout(() => {
+            const saved = localStorage.getItem('cookie-preferences');
+            console.log('🔍 Verification - Saved preferences:', saved);
+        }, 100);
     };
 
     const handleReset = () => {
         console.log('🔄 Resetting cookie preferences');
-        if (resetConsent()) {
-            // Actualizar el estado local inmediatamente
-            const defaultPreferences = {
-                necessary: true,
-                analytics: false,
-                marketing: false,
-                preferences: false,
-            };
-            setLocalPreferences(defaultPreferences);
-            setShowSuccess(true);
-            setTimeout(() => setShowSuccess(false), 3000);
+        resetConsent();
+        // Actualizar el estado local inmediatamente
+        const defaultPreferences = {
+            necessary: true,
+            analytics: false,
+            marketing: false,
+            preferences: false,
+        };
+        setLocalPreferences(defaultPreferences);
+        setShowSuccess(true);
+        setTimeout(() => setShowSuccess(false), 3000);
 
-            // Verificar que se reseteó correctamente
-            setTimeout(() => {
-                const saved = localStorage.getItem('cookie-preferences');
-                console.log('🔍 Reset verification - localStorage:', saved);
-            }, 100);
-        }
+        // Verificar que se reseteó correctamente
+        setTimeout(() => {
+            const saved = localStorage.getItem('cookie-preferences');
+            console.log('🔍 Reset verification - localStorage:', saved);
+        }, 100);
     };
 
     // Mostrar estado de carga solo durante la hidratación inicial del servidor

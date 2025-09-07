@@ -62,9 +62,12 @@
 
 .actionsSection {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
   gap: 1rem;
   padding-left: 72px;
+  flex-wrap: wrap;
 }
 
 .mainActions {
@@ -86,6 +89,8 @@
   align-items: center;
   justify-content: center;
   min-height: 44px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .buttonSecondary {
@@ -136,6 +141,12 @@
   border-color: #1F4A45;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.buttonConfigure {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Sección de detalles */
@@ -262,9 +273,10 @@
     font-size: 0.95rem;
   }
   
-  .mainActions {
+  .actionsSection {
     flex-direction: column;
-    width: 100%;
+    padding-left: 0;
+    align-items: stretch;
   }
   
   .button {
@@ -285,9 +297,6 @@
   
   .categoryStatus {
     align-self: flex-start;
-  }
-  .actionsSection {
-    padding-left: 1rem;
   }
 }
 

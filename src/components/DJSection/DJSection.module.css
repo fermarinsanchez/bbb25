@@ -1,0 +1,138 @@
+.djSection {
+  margin: 60px 0;
+  padding: 0 16px;
+}
+
+.sectionTitle {
+  text-align: left;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.sectionSubtitle {
+  text-align: left;
+  margin-bottom: 40px;
+  color: #666;
+  max-width: 600px;
+ 
+}
+
+.djsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.djItem {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.djItem:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.djImageContainer {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.djImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.djInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.djName {
+  margin: 0;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.djStyle {
+  margin: 0;
+  color: #8f80bb;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.djDay {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.djDescription {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.djButtonContainer {
+  flex-shrink: 0;
+}
+
+.djButton {
+  background-color: #8f80bb;
+  border: none;
+  border-radius: 100px;
+  padding: 16px 32px;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.djButton:hover {
+  background-color: #7a6ba8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .djItem {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .djImageContainer {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .djSection {
+    margin: 40px 0;
+  }
+  
+  .djButton {
+    width: 100%;
+  }
+} 

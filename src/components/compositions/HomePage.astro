@@ -1,9 +1,16 @@
 ---
 import { Typography } from "../Typography"
-import cartelBboo25 from "../../assets/cartel-rectangular.jpg"
+import cartelBboo25 from "../../assets/cartel-rectangular.png"
 import FeatureIcons from "../FeatureIcons/FeatureIcons"
 import HeroSection from "./HeroSection.astro"
+import { DJSection } from "../DJSection/DJSection"
 import { buildSiteUrl } from "../../config/site.js"
+import lineupData from "../../data/lineupData.json"
+
+// Filtrar los DJs del lineup
+const djs = lineupData.filter(
+ (item) => item.name === "Head and Banger" || item.name === "Alfonso Monasterio"
+)
 ---
 
 <main>
@@ -53,41 +60,105 @@ import { buildSiteUrl } from "../../config/site.js"
     <Typography variant='body-strong'> Comprar entradas </Typography>
    </a>
   </div>
-  <Typography variant='headline-3'>Dos días, doble fiestón</Typography>
+
+  <!-- Nueva sección de DJs -->
+  <DJSection client:only='react' djs={djs} />
+
   <div class='bands-section'>
    <div class='bands-columns friday-section'>
     <Typography variant='headline-3'>Viernes 26</Typography>
     <Typography variant='body'>Apertura de puertas a las 19:30 horas</Typography
     >
+
+    <div class='day-details'>
+     <div class='day-details-left'>
+      <Typography variant='body-strong'>🎸 Conciertos:</Typography>
+      <ul class='day-bullets'>
+       <li><strong>20:00</strong> - Phantom Crest (High Energy Mugre)</li>
+       <li><strong>21:00</strong> - The Headless Chimps (Frenetic Rock)</li>
+       <li><strong>22:00</strong> - Big Rip (Crossover Thrash)</li>
+      </ul>
+     </div>
+     <div class='day-details-left'>
+      <Typography variant='body-strong'>🎧 DJ:</Typography>
+      <ul class='day-bullets'>
+       <li>Alfonso Monasterio (King of dj's)</li>
+      </ul>
+     </div>
+     <div class='day-details-left'>
+      <Typography variant='body-strong'>🛍️ Markets:</Typography>
+      <ul class='day-bullets'>
+       <li>Discos y vinilos para coleccionistas</li>
+      </ul>
+     </div>
+    </div>
    </div>
+
    <div class='bands-columns saturday-section'>
     <Typography variant='headline-3'>Sábado 27</Typography>
-    <Typography variant='body'>
-     Disfruta de un gran día desde las 12:00 horas</Typography
+    <Typography variant='body'
+     >Disfruta de un gran día desde las 12:00 horas</Typography
     >
+
+    <div class='day-details'>
+     <div class='day-details-left'>
+      <Typography variant='body-strong'>🎸 Conciertos:</Typography>
+      <ul class='day-bullets'>
+       <li><strong>13:00</strong> - Azogue (Pop Rock)</li>
+       <li><strong>14:00</strong> - Beta Máximo (Punk Rock)</li>
+       <li><strong>15:30</strong> - Maripili (Punk Pop)</li>
+       <li><strong>17:00</strong> - Descarburados (Exposición Scooters)</li>
+       <li><strong>17:30</strong> - Los Retumbes (Primitive Rock)</li>
+       <li><strong>18:30</strong> - Los Pólipos (Thrash Punk)</li>
+       <li><strong>19:30</strong> - Rivelles (Punk Rock)</li>
+      </ul>
+     </div>
+     <div class='day-details-left'>
+      <Typography variant='body-strong'>🎧 DJ:</Typography>
+      <ul class='day-bullets'>
+       <li>Head and Banger (Punk Rock)</li>
+      </ul>
+     </div>
+     <div class='day-details-left'>
+      <Typography variant='body-strong'>🎨 Actividades:</Typography>
+      <ul class='day-bullets'>
+       <li>Talleres y actividades</li>
+       <li>Exposición de Vespas y Lambrettas clásicas (Descarburados)</li>
+       <li>Photocall</li>
+      </ul>
+     </div>
+     <div class='day-details-left'>
+      <Typography variant='body-strong'>🛍️ Markets:</Typography>
+      <ul class='day-bullets'>
+       <li>Discos, artesanía...</li>
+       <li>Camisetas, parches, chapas...</li>
+      </ul>
+     </div>
+     <Typography variant='body'
+      ><strong>¡Y muchas sorpresas más!</strong></Typography
+     >
+    </div>
    </div>
   </div>
-  <div class='why-section-buttons'>
-   <a href={buildSiteUrl("/lineup")} class='ticket-button'>
-    <Typography variant='body-strong'> Ver grupos </Typography>
-   </a>
-  </div>
-  <div style='margin-top: 40px; margin-bottom: 40px;'>
-   <Typography variant='headline-3'>
-    Playlist para calentar motores
-   </Typography>
-  </div>
-  <iframe
-   data-testid='embed-iframe'
-   style='border-radius:12px; border: none;'
-   src='https://open.spotify.com/embed/playlist/0BXBpKGoZJAaYTEziKtRnN?utm_source=generator&theme=0'
-   width='100%'
-   height='352'
-   allowfullscreen=''
-   allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-   loading='lazy'></iframe>
  </section>
 </main>
+<div class='why-section-buttons'>
+ <a href={buildSiteUrl("/lineup")} class='ticket-button'>
+  <Typography variant='body-strong'> Ver grupos </Typography>
+ </a>
+</div>
+<div style='margin-top: 40px; margin-bottom: 40px;'>
+ <Typography variant='headline-3'> Playlist para calentar motores </Typography>
+</div>
+<iframe
+ data-testid='embed-iframe'
+ style='border-radius:12px; border: none;'
+ src='https://open.spotify.com/embed/playlist/0BXBpKGoZJAaYTEziKtRnN?utm_source=generator&theme=0'
+ width='100%'
+ height='352'
+ allowfullscreen=''
+ allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+ loading='lazy'></iframe>
 
 <style>
  .why-section {
@@ -180,5 +251,40 @@ import { buildSiteUrl } from "../../config/site.js"
   background-color: #8f80bb;
   color: white;
   border-radius: 16px;
+ }
+
+ .day-details {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+ }
+
+ .day-bullets {
+  margin: 8px 0 0 0;
+  padding-left: 16px;
+  list-style: none;
+ }
+
+ .day-bullets li {
+  margin-bottom: 8px;
+  position: relative;
+  line-height: 1.4;
+ }
+
+ .day-bullets li::before {
+  content: "•";
+  color: inherit;
+  font-weight: bold;
+  position: absolute;
+  left: -16px;
+ }
+
+ .friday-section .day-bullets li::before {
+  color: #8f80bb;
+ }
+
+ .saturday-section .day-bullets li::before {
+  color: #ffcc03;
  }
 </style>

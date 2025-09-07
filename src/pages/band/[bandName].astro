@@ -12,12 +12,14 @@ import MaripiliLettering from "../../assets/lettering/maripili-lettering.svg"
 import RetumbesLettering from "../../assets/lettering/retumbes-lettering.svg"
 import PoliposLettering from "../../assets/lettering/polipos-lettering.svg"
 import DescarburadosTitle from "../../assets/lettering/descarburados-title.svg"
+import AlfonsoLettering from "../../assets/lettering/alfonso_lettering.svg"
+import HeadAndBangerLettering from "../../assets/lettering/head_banger_lettering.svg"
 import SocialLinks from "../../components/SocialLinks/SocialLinks"
 import { Typography } from "../../components/Typography"
 import { buildSiteUrl } from "../../config/site.js"
 
 export async function getStaticPaths() {
- // Generar rutas para todas las bandas
+ // Generar rutas para todas las bandas y DJs
  return lineupData.map((band) => ({
   params: {
    bandName: band.name.toLowerCase().replace(/\s+/g, "-"),
@@ -27,6 +29,9 @@ export async function getStaticPaths() {
 }
 
 const { band } = Astro.props
+
+// Determinar si es DJ o banda
+const isDJ = band.name === "Head and Banger" || band.name === "Alfonso Monasterio"
 
 const bandLettering = {
  Azogue: AzogueLettering.src,
@@ -39,6 +44,8 @@ const bandLettering = {
  "Los Retumbes": RetumbesLettering.src,
  "Los Pólipos": PoliposLettering.src,
  "Descarburados": DescarburadosTitle.src,
+ "Alfonso Monasterio": AlfonsoLettering.src,
+ "Head and Banger": HeadAndBangerLettering.src,
 }[band.name]
 
 const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
@@ -46,7 +53,7 @@ const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
 
 <Layout 
 	title={`${band.name} - BBOOFest 25`}
-	description={`Descubre ${band.name}, una de las bandas del BBooFest 2025. ${band.style} - ${band.day === "Friday" ? "Viernes" : "Sábado"} ${band.hour}`}
+	description={`Descubre ${band.name}, ${isDJ ? 'uno de los DJs' : 'una de las bandas'} del BBooFest 2025. ${band.style} - ${band.day === "Friday" ? "Viernes" : "Sábado"} ${band.hour}`}
 	image={band.image}
 	bandImage={band.image}
 >
@@ -80,7 +87,7 @@ const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
   <div class='band-header'>
    <div class='band-info'>
     <div class='spacing-m'>
-        <Typography variant='headline-1'>{band.name}</Typography>
+        <Typography variant='headline-1'>{`${band.name} ${isDJ ? ' (DJ)' : ''}`}</Typography>
     </div>
     <Typography variant='body' className='band-style'>{band.style}</Typography>
     <Typography variant='body' className='band-time'
@@ -130,7 +137,7 @@ const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
 
   <div class='same-day-bands'>
    <Typography variant='headline-3'
-    >Otras bandas del {band.day === "Friday" ? "viernes" : "sábado"}</Typography
+    >Otros artistas del {band.day === "Friday" ? "viernes" : "sábado"}</Typography
    >
    <div class='bands-grid'>
     {
@@ -141,7 +148,7 @@ const bandsOfSameDay = lineupData.filter((b) => b.day === band.day)
       >
        <img src={otherBand.image} alt={otherBand.name} />
        <div class='band-card-info'>
-        <Typography variant='headline-4'>{otherBand.name}</Typography>
+        <Typography variant='headline-4'>{`${otherBand.name} ${otherBand.name === "Head and Banger" || otherBand.name === "Alfonso Monasterio" ? ' (DJ)' : ''}`}</Typography>
         <Typography variant='body'>{otherBand.hour}</Typography>
        </div>
       </a>

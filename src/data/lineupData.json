@@ -209,5 +209,39 @@
   "bandcamp": "https://rivelles.bandcamp.com/album/no-way",
   "youtube": "https://www.youtube.com/@RIVELLE77",
   "videoclip": "https://www.youtube.com/embed/KJleTVnT41Q?si=sFATAQh9RlpM9kSw"
+ },
+ {
+  "day": "Friday",
+  "name": "Alfonso Monasterio",
+  "style": "Rompe pistas",
+  "link": "https://www.thestrokes.com",
+  "order": 1,
+  "hour": "Todo el día",
+  "image": "https://res.cloudinary.com/dci5hxl4x/image/upload/v1757242098/alfonso_image_xahjqj.jpg",
+  "description": [
+   "Alfonso Monasterio, ponetemas y melómano. Miembro del Colectivo talaverano/toledano Monasterio de Cultura, que lleva 15 años agitando el avispero musical de la zona con conciertos y pinchadas.",
+   "Cómo ente individual ha estado poniendo tonadillas allá donde se le ha requerido, pasando por distintas cabinas de antros cavernosos, terrazas calientes o fiestas de pueblo. También ha paseado sus plastiquetes por distintos festivales como Prestoso, Azkena, Villajarana y alguno más que su etílica cabeza no alcanza a recordar.",
+   "Su estilo es no tener estilo, así que no esperen calidad ni cantidad, sino finísimas lonchas de pavo cargadas de amor, brillo y bailoteo."
+  ],
+  "instagram": "https://www.instagram.com/head_and_banger/"
+ },
+ {
+  "day": "Saturday",
+  "name": "Head and Banger",
+  "style": "Punk Rock",
+  "link": "https://www.thestrokes.com",
+  "order": 1,
+  "hour": "Todo el día",
+  "image": "https://res.cloudinary.com/dci5hxl4x/image/upload/v1757242099/hadn_and_banger_image_iwdttg.jpg",
+  "description": [
+   "Desde Madrid y sin pedir permiso, HEAD & BANGER irrumpieron en la escena como una confederación de pinchadiscos con espíritu ramone. Antes de eso fueron un trío en los 90, bajo el nombre Fagor y Los Zanussi, una encarnación inicial que ya mezclaba humor, nervio y vinilo para prender fuego a cualquier pista.",
+   "Su estilo es inclasificable: punk-pop, garaje, surf, electrónica bizarra, glam, nueva ola y canción española ye-yé sesentera. Todo cabe en sus Sesiones Inconexas, donde el caos musical se convierte en coreografía colectiva. Su lema lo resume: \"El punk no es un género, es una actitud.\"",
+   "Han hecho sudar a medio país: Wheels and Waves Biarritz, Azkena Rock Festival, Fuzzville!, Fiestas de San Isidro en Matadero Madrid,... además de un sinfín de salas donde el descontrol es religión.",
+   "La canción Head & Banger de Baby Horror funciona como retrato generacional: \"dos pinchadiscos en la capital, cargados de buen material\", \"los verás por la calle con sus pick-ups\", capaces de llegar sin avisar y poner a todo el mundo a bailar. Personajes de ciencia ficción, superhéroes del rock and roll, con identidad velada \"como los Kiss con su make up\", venidos \"de una dimensión donde siempre suena rock and roll\". Gabba, gabba, hey.",
+   "En paralelo, han jugado a ser banda con proyectos como Versión X, Deuda Soberana e Indemnización en Diferido: emular a estrellas del rock, quizá sin éxito, pero siempre con estilo. Espíritu ramone hasta el amanecer. No pinchan para gustar. Pinchan para agitar.",
+   "— \"Otra birra, Head.\"",
+   "— \"Siempre, Banger.\""
+  ],
+  "instagram": "https://www.instagram.com/head_and_banger/"
  }
 ]

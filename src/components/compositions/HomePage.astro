@@ -140,25 +140,27 @@ const djs = lineupData.filter(
     </div>
    </div>
   </div>
+  <div class='why-section-buttons'>
+   <a href={buildSiteUrl("/lineup")} class='ticket-button'>
+    <Typography variant='body-strong'> Ver grupos </Typography>
+   </a>
+  </div>
+  <div style='margin-top: 40px; margin-bottom: 40px;'>
+   <Typography variant='headline-3'>
+    Playlist para calentar motores
+   </Typography>
+  </div>
+  <iframe
+   data-testid='embed-iframe'
+   style='border-radius:12px; border: none;'
+   src='https://open.spotify.com/embed/playlist/0BXBpKGoZJAaYTEziKtRnN?utm_source=generator&theme=0'
+   width='100%'
+   height='352'
+   allowfullscreen=''
+   allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+   loading='lazy'></iframe>
  </section>
 </main>
-<div class='why-section-buttons'>
- <a href={buildSiteUrl("/lineup")} class='ticket-button'>
-  <Typography variant='body-strong'> Ver grupos </Typography>
- </a>
-</div>
-<div style='margin-top: 40px; margin-bottom: 40px;'>
- <Typography variant='headline-3'> Playlist para calentar motores </Typography>
-</div>
-<iframe
- data-testid='embed-iframe'
- style='border-radius:12px; border: none;'
- src='https://open.spotify.com/embed/playlist/0BXBpKGoZJAaYTEziKtRnN?utm_source=generator&theme=0'
- width='100%'
- height='352'
- allowfullscreen=''
- allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
- loading='lazy'></iframe>
 
 <style>
  .why-section {

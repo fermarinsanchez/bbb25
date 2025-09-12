@@ -66,6 +66,18 @@ const {
   <meta name='theme-color' content='#8B5CF6' />
   <meta name='msapplication-TileColor' content='#8B5CF6' />
   <link rel='canonical' href={Astro.url.href} />
+
+  <!-- Google Analytics -->
+  <script async src='https://www.googletagmanager.com/gtag/js?id=G-Z05HNTX8Q6'
+  ></script>
+  <script>
+   window.dataLayer = window.dataLayer || []
+   function gtag() {
+    dataLayer.push(arguments)
+   }
+   gtag("js", new Date())
+   gtag("config", "G-Z05HNTX8Q6")
+  </script>
  </head>
  <body>
   <!-- TopHeader solo visible en pantallas ≥768px -->

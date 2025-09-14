@@ -48,6 +48,7 @@ const LineupItems = ({ data, day }: LineupItemProps) => {
                                         <div className={styles.textContainer}>
                                             <h3 className={styles.bandName}>{dj.name}</h3>
                                             <p className={styles.bandHour}>{dj.hour} - {dj.style}</p>
+                                            <p className={styles.bandHour} style={{ textDecoration: 'underline' }}>Descubre más sobre {dj.name}  &gt;</p>
                                         </div>
                                     </div>
                                 </a>
@@ -76,6 +77,7 @@ const LineupItems = ({ data, day }: LineupItemProps) => {
                                         <div className={styles.textContainer}>
                                             <h3 className={styles.bandName}>{band.name}</h3>
                                             <p className={styles.bandHour}>{band.hour} - {band.style}</p>
+                                            <p className={styles.bandHour} style={{ textDecoration: 'underline' }}>Descubre más sobre {band.name}  &gt;</p>
                                         </div>
                                     </div>
                                 </a>

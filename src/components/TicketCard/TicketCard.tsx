@@ -14,6 +14,19 @@ type TicketCardProps = {
     variant: 'friday' | 'saturday' | 'both' | 'child'
 }
 
+// Función para trackear clics en botones de compra
+const trackTicketClick = (ticketType: string, price: string) => {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+        window.dataLayer.push({
+            event: 'ticket_click',
+            ticket_type: ticketType,
+            ticket_price: price,
+            page_location: window.location.href,
+            page_title: document.title
+        });
+    }
+};
+
 const TicketCard = ({ variant }: TicketCardProps) => {
     const { isAbove } = useBreakpoints()
 
@@ -30,7 +43,18 @@ const TicketCard = ({ variant }: TicketCardProps) => {
             <div className={styles.monsterFriday}>
                 <img src={isDesktop ? MonsterBoyAmp.src : MonsterTicketFriday.src} alt='monster ticket friday' />
             </div>
-            <Button className={styles.ctaFriday}><a style={{ textDecoration: 'none', color: 'black' }} href='https://toledoentradas.es/eventos/balambamboo-fest-iernes-26/' target='_blank'>Comprar ahora</a></Button>
+            <Button
+                className={styles.ctaFriday}
+                onPress={() => trackTicketClick('friday', '10€')}
+            >
+                <a
+                    style={{ textDecoration: 'none', color: 'black' }}
+                    href='https://toledoentradas.es/eventos/balambamboo-fest-iernes-26/'
+                    target='_blank'
+                >
+                    Comprar ahora
+                </a>
+            </Button>
         </div>)
     }
     if (variant === 'saturday') {
@@ -43,7 +67,18 @@ const TicketCard = ({ variant }: TicketCardProps) => {
             <div className={styles.monsterSaturday}>
                 <img src={isDesktop ? MonsterBoyAmp.src : MonsterTicketFriday.src} alt='monster ticket friday' />
             </div>
-            <Button className={styles.cta}><a style={{ textDecoration: 'none', color: 'black' }} href='https://toledoentradas.es/eventos/balambamboo-fest-sabado-27/' target='_blank'>Comprar ahora</a></Button>
+            <Button
+                className={styles.cta}
+                onPress={() => trackTicketClick('saturday', '20€')}
+            >
+                <a
+                    style={{ textDecoration: 'none', color: 'black' }}
+                    href='https://toledoentradas.es/eventos/balambamboo-fest-sabado-27/'
+                    target='_blank'
+                >
+                    Comprar ahora
+                </a>
+            </Button>
         </div>)
     }
 
@@ -58,7 +93,18 @@ const TicketCard = ({ variant }: TicketCardProps) => {
             <div className={styles.monsterBoth}>
                 <img src={isDesktop ? MonsterGirlAmp.src : MonsterTicketBoth.src} alt='monster ticket friday' />
             </div>
-            <Button className={styles.cta}><a style={{ textDecoration: 'none', color: 'black' }} href='https://toledoentradas.es/eventos/balambamboo-fest-abono-2-dias/' target='_blank'>Comprar ahora</a></Button>
+            <Button
+                className={styles.cta}
+                onPress={() => trackTicketClick('both', '25€')}
+            >
+                <a
+                    style={{ textDecoration: 'none', color: 'black' }}
+                    href='https://toledoentradas.es/eventos/balambamboo-fest-abono-2-dias/'
+                    target='_blank'
+                >
+                    Comprar ahora
+                </a>
+            </Button>
         </div>)
     }
 
@@ -72,7 +118,18 @@ const TicketCard = ({ variant }: TicketCardProps) => {
             <div className={styles.monsterChild}>
                 <img src={isDesktop ? MonsterGirlAmp.src : GirlHead.src} alt='monster ticket child' />
             </div>
-            <Button className={styles.ctaChild}><a style={{ textDecoration: 'none', color: 'black' }} href='https://toledoentradas.es/eventos/balambamboo-fest-menor-de-edad/' target='_blank'>Comprar ahora</a></Button>
+            <Button
+                className={styles.ctaChild}
+                onPress={() => trackTicketClick('child', '10€')}
+            >
+                <a
+                    style={{ textDecoration: 'none', color: 'black' }}
+                    href='https://toledoentradas.es/eventos/balambamboo-fest-menor-de-edad/'
+                    target='_blank'
+                >
+                    Comprar ahora
+                </a>
+            </Button>
         </div>)
     }
 }

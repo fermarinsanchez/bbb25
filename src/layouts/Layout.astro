@@ -67,7 +67,22 @@ const {
   <meta name='msapplication-TileColor' content='#8B5CF6' />
   <link rel='canonical' href={Astro.url.href} />
 
-  <!-- Google Analytics -->
+  <!-- Google Tag Manager -->
+  <script>
+   ;(function (w, d, s, l, i) {
+    w[l] = w[l] || []
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" })
+    var f = d.getElementsByTagName(s)[0],
+     j = d.createElement(s),
+     dl = l != "dataLayer" ? "&l=" + l : ""
+    j.async = true
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl
+    f.parentNode.insertBefore(j, f)
+   })(window, document, "script", "dataLayer", "G-Z05HNTX8Q6")
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google Analytics (mantenemos para compatibilidad) -->
   <script async src='https://www.googletagmanager.com/gtag/js?id=G-Z05HNTX8Q6'
   ></script>
   <script>
@@ -80,6 +95,16 @@ const {
   </script>
  </head>
  <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript
+   ><iframe
+    src='https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX'
+    height='0'
+    width='0'
+    style='display:none;visibility:hidden'></iframe></noscript
+  >
+  <!-- End Google Tag Manager (noscript) -->
+
   <!-- TopHeader solo visible en pantallas ≥768px -->
   <div class='desktop-only'>
    <TopHeader currentPath={Astro.url.pathname} client:load />

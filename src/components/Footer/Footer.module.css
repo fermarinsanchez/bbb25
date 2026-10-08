@@ -221,7 +221,17 @@
 
   .footerRight {
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
+  }
+
+  .socialLinks,
+  .contactInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-left: 0;
   }
 
   .navLinks {
@@ -287,13 +297,16 @@
     width: 200px;
     height: 200px;
   }
+}
 
+/* Solo tablet: offset por la decoración amp (no en mobile) */
+@media (min-width: 769px) and (max-width: 1024px) {
   .socialLinks {
     padding-left: 88px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .socialLinks {
     padding-left: 0;
   }
@@ -302,5 +315,9 @@
 @media (max-width: 768px) {
   .ampDecoration {
     display: none;
+  }
+
+  .socialLinks {
+    padding-left: 0;
   }
 }

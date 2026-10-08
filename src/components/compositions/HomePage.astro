@@ -525,7 +525,9 @@ const bats = [
  function initEasterEggs() {
   const witch = document.querySelector<HTMLElement>(".hero-witch")
   const toast = document.querySelector<HTMLElement>("[data-egg-toast]")
-  const eggBats = document.querySelectorAll<HTMLElement>("[data-egg-bat]")
+  const eggBats = Array.from(
+   document.querySelectorAll<HTMLElement>("[data-egg-bat]"),
+  )
   let batHits = 0
   let batEggDone = false
 
@@ -547,41 +549,94 @@ const bats = [
    }, 700)
   }
 
+  function registerBatHit(bat: HTMLElement) {
+   if (batEggDone) return
+
+   bat.classList.remove("is-bonked")
+   void bat.offsetWidth
+   bat.classList.add("is-bonked")
+   window.setTimeout(() => bat.classList.remove("is-bonked"), 450)
+
+   batHits += 1
+   spawnBatHitCue(bat, batHits)
+
+   if (batHits < 5) return
+
+   batEggDone = true
+   witch?.classList.add("is-egg-spin")
+   window.setTimeout(
+    () => witch?.classList.remove("is-egg-spin"),
+    reduceMotion ? 0 : 1600,
+   )
+
+   if (!toast) return
+   toast.hidden = false
+   requestAnimationFrame(() => toast.classList.add("is-visible"))
+   window.setTimeout(() => {
+    toast.classList.remove("is-visible")
+    window.setTimeout(() => {
+     toast.hidden = true
+    }, 350)
+   }, 3200)
+  }
+
+  function findBatNearPoint(x: number, y: number) {
+   const pad = 32
+   let hit: HTMLElement | null = null
+   let best = Infinity
+
+   for (const bat of eggBats) {
+    const rect = bat.getBoundingClientRect()
+    if (rect.width < 4 || rect.height < 4) continue
+    if (rect.bottom < 0 || rect.top > window.innerHeight) continue
+    if (rect.right < 0 || rect.left > window.innerWidth) continue
+    // Murciélagos cruzando invisibles: no cuentan
+    const opacity = Number(getComputedStyle(bat).opacity)
+    if (opacity < 0.15) continue
+
+    const cx = rect.left + rect.width / 2
+    const cy = rect.top + rect.height / 2
+    const dist = Math.hypot(x - cx, y - cy)
+    const radius = Math.max(rect.width, rect.height) / 2 + pad
+    if (dist <= radius && dist < best) {
+     best = dist
+     hit = bat
+    }
+   }
+
+   return hit
+  }
+
   eggBats.forEach((bat) => {
    bat.setAttribute("title", "¿Pip?")
    bat.addEventListener("click", (event) => {
     event.preventDefault()
     event.stopPropagation()
-    if (batEggDone) return
-
-    bat.classList.remove("is-bonked")
-    void bat.offsetWidth
-    bat.classList.add("is-bonked")
-    window.setTimeout(() => bat.classList.remove("is-bonked"), 450)
-
-    batHits += 1
-    spawnBatHitCue(bat, batHits)
-
-    if (batHits < 5) return
-
-    batEggDone = true
-    witch?.classList.add("is-egg-spin")
-    window.setTimeout(
-     () => witch?.classList.remove("is-egg-spin"),
-     reduceMotion ? 0 : 1600,
-    )
-
-    if (!toast) return
-    toast.hidden = false
-    requestAnimationFrame(() => toast.classList.add("is-visible"))
-    window.setTimeout(() => {
-     toast.classList.remove("is-visible")
-     window.setTimeout(() => {
-      toast.hidden = true
-     }, 350)
-    }, 3200)
+    registerBatHit(bat)
    })
   })
+
+  // En mobile el contenido tapa a los bats (z-index); detectamos toque cercano
+  document.addEventListener(
+   "click",
+   (event) => {
+    if (batEggDone) return
+    const target = event.target as Element | null
+    if (!target) return
+    if (target.closest("[data-egg-bat]")) return
+    if (
+     target.closest(
+      "a, button, [role='button'], input, textarea, select, label, .cta, dialog, .egg-toast, .children-modal-close",
+     )
+    ) {
+     return
+    }
+
+    const hit = findBatNearPoint(event.clientX, event.clientY)
+    if (hit) registerBatHit(hit)
+   },
+   true,
+  )
 
   const konami = [
    "ArrowUp",

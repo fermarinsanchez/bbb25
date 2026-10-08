@@ -3,6 +3,12 @@ import { Typography } from "../Typography"
 import cartelBbf26 from "../../assets/cartel-bbf26.png"
 import misfitsSkull from "../../assets/misfits-skull.png"
 import witchImg from "../../assets/witch.png"
+import heroPhoto from "../../assets/hero-fondo.jpg"
+import logoWordmark from "../../assets/logo-balambam-boo.png"
+import ferrolCharacter from "../../assets/muneco-ferrol.png"
+import headAndBanger from "../../assets/djs/head-and-banger.jpg"
+import alfonsoMonasterio from "../../assets/djs/alfonso-monasterio.jpg"
+import faqs from "../../data/faqs.json"
 
 const lineup = [
  {
@@ -27,7 +33,6 @@ const lineup = [
  },
 ]
 
-const djs = ["Head and Banger", "Alfonso Monasterio"]
 const ticketsUrl = "https://toledoentradas.es/balambamboo-fest-2026/"
 const eventIso = "2026-10-31T12:00:00+01:00"
 const msPerDay = 1000 * 60 * 60 * 24
@@ -312,89 +317,197 @@ const bats = [
    height='21'
   />
  </div>
- <section class='hero' aria-label='Cartel Balambam Boo Fest 2026'>
-  <div class='hero-caption'>
-   <p class='hero-brand'>Balambam Boo Fest</p>
-   <h1 class='hero-title'>Edición Halloween 2026</h1>
+ <section class='hero' aria-label='Balambam Boo Fest 2026'>
+  <div class='hero-stage'>
+   <div class='hero-bg' aria-hidden='true'>
+    <img src={heroPhoto.src} alt='' />
+   </div>
+   <nav class='hero-anchors' aria-label='En esta página'>
+    <a href='#info'>Info</a>
+    <a href='#cartel'>Cartel</a>
+    <a href='#lineup'>Grupos</a>
+   </nav>
+   <div class='hero-mast'>
+    <h1 class='hero-name'>
+     <img
+      class='hero-logo'
+      src={logoWordmark.src}
+      alt='Balambam Boo'
+      width={logoWordmark.width}
+      height={logoWordmark.height}
+     />
+     <span class='logo-bat' aria-hidden='true'>
+      <img src='/bat1.png' alt='' width='48' height='26' />
+     </span>
+    </h1>
+    <p class='hero-edition'>Edición Halloween</p>
+    <p class='hero-place'>
+     31 de octubre<br />
+     <span class='hero-place-venue'>Terraza Summerland</span>, La Peraleda, Toledo
+    </p>
+    <a
+     href={ticketsUrl}
+     target='_blank'
+     rel='noopener noreferrer'
+     class='cta cta-sell'>Comprar mi entrada</a
+    >
+   </div>
+   <a class='scroll-cue' href='#info' aria-label='Bajar para ver la información del festival'>
+    <span class='scroll-track'>
+     <span class='scroll-line' aria-hidden='true'></span>
+     <svg class='scroll-spider' viewBox='0 0 72 58' aria-hidden='true'>
+      <g class='legs legs-a'>
+       <path d='M30 18 C16 8 8 10 2 2' />
+       <path d='M28 30 C14 28 6 34 2 42' />
+       <path d='M42 18 C56 8 64 10 70 2' />
+       <path d='M44 30 C58 28 66 34 70 42' />
+      </g>
+      <g class='legs legs-b'>
+       <path d='M30 22 C16 16 8 18 2 14' />
+       <path d='M28 34 C14 40 8 50 4 56' />
+       <path d='M42 22 C56 16 64 18 70 14' />
+       <path d='M44 34 C58 40 64 50 68 56' />
+      </g>
+      <ellipse cx='36' cy='30' rx='11' ry='8' />
+      <circle cx='36' cy='20' r='6.2' />
+      <circle class='scroll-spider-eye' cx='33.6' cy='19' r='1.3' />
+      <circle class='scroll-spider-eye' cx='38.6' cy='19' r='1.3' />
+     </svg>
+     <svg class='scroll-arrow' viewBox='0 0 28 16' aria-hidden='true'>
+      <path d='M2 2.5 L14 13 L26 2.5' />
+     </svg>
+    </span>
+   </a>
+  </div>
+ </section>
+
+ <section class='info-story' id='info'>
+  <div class='hero-copy'>
+   <h2 class='band-title'>Festival de punk rock para todas las edades</h2>
    <p class='hero-lead'>
-    Un día de conciertos, actividades, talleres y muchas cosas más. Sábado 31 de
-    octubre · Terraza Summerland (Toledo).
+    Conciertos, actividades y mucho más. Y como esta edición es una fiesta muy
+    especial, celebraremos Halloween por todo lo alto.
    </p>
-   <div class='hero-witch-parallax' data-witch-parallax aria-hidden='true'>
-    <div class='hero-witch-fly'>
+   <p class='hero-lead hero-costume'>
+    <span class='hero-costume-mark'>
+     Puedes venir con tu disfraz, nos encantará verte con tus galas más
+     terroríficas.
+    </span>
+    <span class='spark spark--a' aria-hidden='true'></span>
+    <span class='spark spark--b' aria-hidden='true'></span>
+   </p>
+   <p class='hero-facts'>
+    Sábado 31 de octubre en la Terraza Summerland, La Peraleda (Toledo), desde
+    las 12:00 h. Anticipada a 10 €, en taquilla a 12 €. Menores de 16 años
+    entran gratis.
+   </p>
+   <a
+    href={ticketsUrl}
+    target='_blank'
+    rel='noopener noreferrer'
+    class='cta cta-primary cta-closing'>Comprar mi entrada</a
+   >
+  </div>
+  <div class='hero-figure'>
+   <div class='hero-witch-fly'>
+    <div class='hero-witch-turn'>
      <img
       src={witchImg.src}
-      alt=''
+      alt='Bruja del Balambam Boo con una guitarra'
       class='hero-witch'
       width={witchImg.width}
       height={witchImg.height}
      />
     </div>
    </div>
-   <div class='hero-ctas'>
+  </div>
+ </section>
+
+ <img
+  id='cartel'
+  src={cartelBbf26.src}
+  alt='Cartel Balambam Boo Fest 2026 — Sábado 31 de octubre en Terraza Summerland'
+  class='hero-poster reveal'
+  data-reveal
+  width={cartelBbf26.width}
+  height={cartelBbf26.height}
+ />
+
+ <section class='band-story reveal' data-reveal>
+  <div class='band-figure'>
+   <img
+    class='band-character'
+    src={ferrolCharacter.src}
+    alt='Muñeco de la edición de Ferrol: un pez en una pecera tocando la guitarra'
+    width={ferrolCharacter.width}
+    height={ferrolCharacter.height}
+   />
+  </div>
+  <div class='band-copy'>
+   <h2>Diez años de buen rollo</h2>
+   <p>
+    Una edición más el cartel corre a cargo del gran{" "}
     <a
-     href={ticketsUrl}
+     class='band-artist'
+     href='https://www.instagram.com/fernando_phantom/'
      target='_blank'
      rel='noopener noreferrer'
-     class='cta cta-primary cta-closing'>Comprar entradas</a
-    >
-    <a href='#info' class='cta cta-secondary'>Ver info</a>
-   </div>
+     >Fernando Díaz Franco</a>, que hace que nuestra imagen sea la más molona de la galaxia.
+   </p>
+   <p>
+    Tras diez años dando guerra, volvemos a la carga con una edición muy
+    especial y terrorífica. Emocionados porque este año hemos salido de Toledo
+    para celebrar también en Ferrol, y el 31 de octubre volvemos a casa, a la
+    Terraza Summerland, con las pilas bien cargadas.
+   </p>
+   <p class='band-count' data-countdown data-event={eventIso}>
+    {countdownLabel(daysLeftSSR)}
+   </p>
+   <a
+    href={ticketsUrl}
+    target='_blank'
+    rel='noopener noreferrer'
+    class='cta cta-sell'>Comprar mi entrada</a
+   >
   </div>
-  <img
-   src={cartelBbf26.src}
-   alt='Cartel Balambam Boo Fest 2026 — Sábado 31 de octubre en Terraza Summerland'
-   class='hero-poster reveal'
-   data-reveal
-   width={cartelBbf26.width}
-   height={cartelBbf26.height}
-  />
  </section>
 
- <section class='intro reveal' id='intro' data-reveal>
-  <Typography variant='headline-3'>Edición Halloween 2026</Typography>
-  <Typography variant='body'>
-   Tras celebrar una década, <strong>Balambam Boo</strong> vuelve con una edición
-   especial de Halloween: un festival para todas las edades, con conciertos, DJs,
-   talleres, actividades y ambiente de terraza hasta que se vaya el sol.
-  </Typography>
-  <Typography variant='body'>
-   El <strong>sábado 31 de octubre de 2026</strong> abrimos puertas a las
-   <strong>12:00 h</strong> en la <strong>Terraza Summerland</strong> (La Peraleda,
-   Toledo). Menores de 16 años gratis.
-  </Typography>
- </section>
-
- <section class='info reveal' id='info' data-reveal>
+ <section class='info reveal' data-reveal>
   <div class='info-block' data-reveal-child style='--reveal-delay: 0ms'>
+   <svg class='fact-icon' viewBox='0 0 48 48' aria-hidden='true'>
+    <rect x='7' y='12' width='34' height='28' rx='2' />
+    <path d='M7 22 H41' />
+    <path d='M16 7 V16 M32 7 V16' />
+   </svg>
    <p class='info-label'>Cuándo</p>
-   <p class='info-value'>Sábado 31 de octubre · 12:00 h</p>
+   <p class='info-value'>
+    <span>Sábado 31 de octubre</span>
+    <span>12:00 h</span>
+   </p>
   </div>
   <div class='info-block' data-reveal-child style='--reveal-delay: 100ms'>
+   <svg class='fact-icon' viewBox='0 0 48 48' aria-hidden='true'>
+    <path d='M24 44 C24 44 8 28 8 18 a16 16 0 0 1 32 0 C40 28 24 44 24 44z' />
+    <circle cx='24' cy='18' r='5' />
+   </svg>
    <p class='info-label'>Dónde</p>
-   <p class='info-value'>Terraza Summerland · La Peraleda, Toledo</p>
+   <p class='info-value'>
+    <span>Terraza Summerland</span>
+    <span>La Peraleda, Toledo</span>
+   </p>
   </div>
   <div class='info-block' data-reveal-child style='--reveal-delay: 200ms'>
+   <svg class='fact-icon fact-icon--ticket' viewBox='0 0 64 40' aria-hidden='true'>
+    <path d='M8 5 H46 a5 5 0 0 1 0 10 a5 5 0 0 1 0 10 a5 5 0 0 1 0 10 H8 a5 5 0 0 1 0-10 a5 5 0 0 1 0-10 a5 5 0 0 1 0-10 Z' />
+    <path d='M22 8 V32' />
+   </svg>
    <p class='info-label'>Entradas</p>
-   <p class='info-value'>10 € anticipada · 12 € en taquilla</p>
+   <p class='info-value'>
+    <span>10 € anticipada</span>
+    <span>12 € en taquilla</span>
+   </p>
    <p class='info-note'>Menores de 16 años gratis</p>
   </div>
- </section>
-
- <section
-  class='countdown reveal'
-  id='countdown'
-  data-reveal
-  aria-live='polite'
- >
-  <p
-   class='countdown-text'
-   data-countdown
-   data-event={eventIso}
-  >
-   {countdownLabel(daysLeftSSR)}
-  </p>
-  <p class='countdown-sub'>para el sábado 31 de octubre</p>
  </section>
 
  <section class='lineup reveal' id='lineup' data-reveal>
@@ -434,25 +547,114 @@ const bats = [
     ))
    }
   </ul>
-  <Typography variant='body' className='lineup-djs'>
-   Jornada amenizada con las pnchadas en riguroso vinilo de los DJs{" "}
-   <strong>{djs.join(" & ")}</strong>.
-  </Typography>
+ </section>
+
+ <section class='djs reveal' data-reveal>
+  <h2 class='djs-title'>
+   <span class='djs-title-mark'>
+    Jornada amenizada con las pinchadas en riguroso vinilo de:
+   </span>
+   <span class='glint glint--a' aria-hidden='true'></span>
+   <span class='glint glint--b' aria-hidden='true'></span>
+  </h2>
+  <div class='djs-row'>
+   <figure class='dj-card'>
+    <img
+     src={headAndBanger.src}
+     alt='Head and Banger pinchando con dos platos'
+     width={headAndBanger.width}
+     height={headAndBanger.height}
+    />
+    <figcaption>
+     <a
+      class='lineup-link dj-link'
+      href='https://www.instagram.com/head_and_banger/'
+      target='_blank'
+      rel='noopener noreferrer'
+      aria-label='Head and Banger en Instagram'
+     >
+      Head and Banger
+     </a>
+    </figcaption>
+   </figure>
+   <figure class='dj-card dj-card--alfonso'>
+    <img
+     src={alfonsoMonasterio.src}
+     alt='Alfonso Monasterio'
+     width={alfonsoMonasterio.width}
+     height={alfonsoMonasterio.height}
+    />
+    <figcaption>
+     <a
+      class='lineup-link dj-link'
+      href='https://www.instagram.com/monasteriodecultura/'
+      target='_blank'
+      rel='noopener noreferrer'
+      aria-label='Alfonso Monasterio en Instagram'
+     >
+      Alfonso Monasterio
+     </a>
+    </figcaption>
+   </figure>
+  </div>
+ </section>
+
+ <section class='visit reveal' id='llegar' data-reveal>
+  <h2 class='band-title'>Cómo llegar</h2>
+  <p class='visit-lead'>
+   Terraza Summerland, carretera de la Peraleda 3D, La Peraleda (Toledo). Hay
+   parking gratuito al lado. La parada de bus más cercana es Ctra. Peraleda, a
+   un minuto andando.
+  </p>
+  <div class='visit-map'>
+   <iframe
+    title='Mapa de Terraza Summerland, La Peraleda, Toledo'
+    src='https://maps.google.com/maps?q=Terraza+Summerland,+Carr.+de+la+Peraleda+3D,+45004+Toledo&z=16&hl=es&output=embed'
+    loading='lazy'
+    referrerpolicy='no-referrer-when-downgrade'
+    allowfullscreen
+   ></iframe>
+  </div>
+  <a
+   class='visit-ext'
+   href='https://maps.google.com/?q=Terraza+Summerland,+Carr.+de+la+Peraleda+3D,+45004+Toledo'
+   target='_blank'
+   rel='noopener noreferrer'
+   >Abrir el mapa</a
+  >
+ </section>
+
+ <section class='visit reveal' id='faqs' data-reveal>
+  <h2 class='band-title'>Preguntas frecuentes</h2>
+  <div class='faq-list'>
+   {
+    faqs.map((item) => (
+     <details class='faq-item'>
+      <summary>{item.question}</summary>
+      <div class='faq-answer'>
+       {item.answer.map((line) => (
+        <p>{line}</p>
+       ))}
+      </div>
+     </details>
+    ))
+   }
+  </div>
  </section>
 
  <section class='closing reveal' data-reveal>
-  <Typography variant='headline-3'>¿Te vienes?</Typography>
-  <Typography variant='body'>
+  <h2 class='closing-title'>¿Te vienes?</h2>
+  <p class='closing-lead'>
    Las entradas anticipadas ya están a la venta. Y como es Halloween, os
    esperamos disfrazados: cuanto más terrorífico, mejor.
-  </Typography>
+  </p>
   <a
    href={ticketsUrl}
    target='_blank'
    rel='noopener noreferrer'
-   class='cta cta-primary cta-closing'
+   class='cta cta-sell'
   >
-   Comprar entradas
+   Comprar mi entrada
   </a>
  </section>
 
@@ -701,11 +903,6 @@ const bats = [
  initBootSplash()
  document.addEventListener("astro:page-load", initBootSplash)
 
- const witchParallax = document.querySelector<HTMLElement>(
-  "[data-witch-parallax]",
- )
- const WITCH_SPEED = 0.22
-
  function updateScrollNight() {
   const max = Math.max(
    document.documentElement.scrollHeight - window.innerHeight,
@@ -730,9 +927,6 @@ const bats = [
    const depth = 0.08 + speed * 1.55
    bat.style.transform = `translate3d(${y * speed * 0.12}px, ${y * depth}px, 0)`
   })
-  if (witchParallax) {
-   witchParallax.style.transform = `translate3d(0, ${y * WITCH_SPEED}px, 0)`
-  }
   ticking = false
  }
 
@@ -750,30 +944,35 @@ const bats = [
  function initCountdown() {
   const els = document.querySelectorAll<HTMLElement>("[data-countdown]")
   if (!els.length) return
-  const eventIsoAttr = els[0].dataset.event
+  const source = [...els].find((el) => el.dataset.event)
+  const eventIsoAttr = source?.dataset.event
   if (!eventIsoAttr) return
 
   const eventMs = new Date(eventIsoAttr).getTime()
   const dayMs = 1000 * 60 * 60 * 24
+  const hourMs = 1000 * 60 * 60
 
-  function label(days: number) {
-   if (days > 1) return `Faltan ${days} días`
-   if (days === 1) return "Falta 1 día"
-   if (days === 0) return "¡Es hoy!"
-   return "¡Gracias por venir!"
+  function label() {
+   const diff = eventMs - Date.now()
+   if (diff <= 0 && diff > -dayMs) return "¡Es hoy!"
+   if (diff <= -dayMs) return "¡Gracias por venir!"
+   const days = Math.floor(diff / dayMs)
+   const hours = Math.floor((diff % dayMs) / hourMs)
+   if (days > 1) return `Faltan ${days} días y ${hours} h`
+   if (days === 1) return `Falta 1 día y ${hours} h`
+   if (hours > 1) return `Faltan ${hours} horas`
+   return "Falta menos de una hora"
   }
 
   function tick() {
-   const days = Math.ceil((eventMs - Date.now()) / dayMs)
-   const text = label(days)
+   const text = label()
    els.forEach((el) => {
     el.textContent = text
    })
   }
 
   tick()
-  // Recalcula al cambiar de día (cada hora basta)
-  window.setInterval(tick, 60 * 60 * 1000)
+  window.setInterval(tick, 60 * 1000)
  }
 
  initCountdown()
@@ -813,6 +1012,7 @@ const bats = [
 <style>
  .landing {
   --bbf-orange: #e06731;
+  --bbf-witch: #68b888;
   --bbf-orange-soft: color-mix(in srgb, #e06731 50%, white);
   --bbf-orange-deep: #c45322;
   --bbf-navy: #203048;
@@ -830,7 +1030,10 @@ const bats = [
 
   position: relative;
   background: var(--bbf-page-bg);
+  padding-bottom: var(--bbf-gap);
   color: var(--bbf-ink);
+  --bbf-measure: min(960px, calc(100% - 40px));
+  --bbf-gap: clamp(72px, 11vw, 120px);
   min-height: 100vh;
   overflow-x: visible;
  }
@@ -1018,7 +1221,6 @@ const bats = [
  }
 
  .hero,
- .intro,
  .info,
  .lineup,
  .closing {
@@ -1031,45 +1233,304 @@ const bats = [
   z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   background: transparent;
  }
 
- .hero-caption {
-  width: 100%;
-  max-width: 920px;
-  margin: 0 auto;
-  min-height: calc(100vh - 12vh);
-  min-height: calc(100svh - 12svh);
-  min-height: calc(100dvh - 12svh);
+ .hero-stage {
+  position: relative;
   box-sizing: border-box;
-  padding: clamp(12px, 2.5svh, 28px) 16px clamp(24px, 4svh, 40px);
-  text-align: center;
+  width: 100%;
+  min-height: 100svh;
+  padding: clamp(72px, 12vh, 120px) clamp(20px, 6vw, 88px)
+   clamp(108px, 16vh, 150px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  opacity: 0;
-  transform: translateY(18px);
-  animation: fadeUp 0.85s ease-out 0.1s forwards;
+  justify-content: center;
+  text-align: center;
  }
 
- .hero-ctas {
+ /* Foto de prueba en blanco y negro, con velo para que el texto crema se lea. */
+ .hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+ }
+
+ .hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% 38%;
+  filter: grayscale(1) contrast(1.08);
+ }
+
+ .hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+   ellipse 78% 70% at 50% 46%,
+   rgba(32, 48, 72, 0.62),
+   rgba(32, 48, 72, 0.82)
+  );
+ }
+
+ .hero-mast {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+ .hero-name {
+  position: relative;
+  margin: 0;
+ }
+
+ .logo-bat {
+  position: absolute;
+  left: 47%;
+  top: -1%;
+  width: 12%;
+  min-width: 36px;
+  max-width: 56px;
+  z-index: 2;
+  pointer-events: none;
+  transform-origin: 40% 90%;
+  animation: batLand 1.7s cubic-bezier(0.22, 1, 0.36, 1)
+   calc(var(--boot-splash-ms, 2000ms) + 0.35s) both;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.35));
+ }
+
+ .logo-bat img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: center;
+  animation: batFlapLand 0.22s ease-in-out 7
+   calc(var(--boot-splash-ms, 2000ms) + 0.35s);
+ }
+
+ .hero-logo {
+  display: block;
+  width: min(88vw, 520px);
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+ }
+
+ .hero-edition {
+  margin: clamp(56px, 8vh, 108px) 0 0;
+  font-family: var(--font-lineup);
+  font-size: clamp(1.7rem, 3.2vw, 2.45rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--bbf-witch);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+ }
+
+ .hero-place {
+  margin: 12px 0 0;
+  max-width: 36rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--bbf-cream);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+ }
+
+ .hero-place-venue {
+  white-space: nowrap;
+ }
+
+ .hero-mast .cta {
+  margin-top: 22px;
+ }
+
+ .hero-anchors {
+  position: absolute;
+  top: clamp(18px, 3.5vh, 36px);
+  left: 0;
+  right: 0;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
-  flex-shrink: 0;
-  margin-top: clamp(4px, 1svh, 10px);
-  margin-bottom: clamp(16px, 3svh, 28px);
+  gap: 8px 28px;
+  margin: 0;
+ }
+
+ .hero-anchors a {
+  color: var(--bbf-cream);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+ }
+
+ .hero-anchors a:hover,
+ .hero-anchors a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+ }
+
+ .info-story {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  width: var(--bbf-measure);
+  max-width: var(--bbf-measure);
+  margin: var(--bbf-gap) auto 0;
+  padding: 0;
+  color: var(--bbf-ink);
+  scroll-margin-top: 24px;
+  overflow: hidden;
+  box-sizing: border-box;
+ }
+
+ .hero-figure {
+  align-self: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: min(100%, 260px);
+ }
+
+ .hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  max-width: 36rem;
+  min-width: 0;
+ }
+
+ .scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 36px;
+  z-index: 2;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 64px;
+  height: 118px;
+  margin: 0;
+  color: var(--bbf-cream);
+  text-decoration: none;
+ }
+
+ .scroll-cue:focus-visible {
+  outline: 3px solid var(--bbf-cream);
+  outline-offset: 6px;
+ }
+
+ .scroll-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+ }
+
+ .scroll-line {
+  width: 2px;
+  height: 72px;
+  margin-top: 18px;
+  background: currentColor;
+  transform-origin: bottom center;
+  animation: lineShrink 1.8s ease-in infinite;
+ }
+
+ .scroll-spider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 44px;
+  height: auto;
+  margin-left: -22px;
+  overflow: visible;
+  animation: spiderDown 1.8s ease-in infinite;
+ }
+
+ .legs {
+  transform-box: fill-box;
+  transform-origin: center;
+ }
+
+ .legs-a {
+  animation: legStep 0.42s ease-in-out infinite alternate;
+ }
+
+ .legs-b {
+  animation: legStep 0.42s ease-in-out infinite alternate-reverse;
+ }
+
+ .scroll-spider path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+ }
+
+ .scroll-spider ellipse,
+ .scroll-spider circle {
+  fill: currentColor;
+  stroke: none;
+ }
+
+ .scroll-spider-eye {
+  fill: var(--bbf-navy);
+ }
+
+ .scroll-arrow {
+  display: block;
+  width: 26px;
+  height: 14px;
+  margin-top: -1px;
+  overflow: visible;
+  transform-origin: center top;
+  animation: arrowGrow 1.8s ease-in infinite;
+ }
+
+ .scroll-arrow path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
  }
 
  .hero-poster {
-  width: 100%;
-  max-width: 900px;
+  position: relative;
+  z-index: 1;
+  width: var(--bbf-measure);
+  max-width: var(--bbf-measure);
   height: auto;
   display: block;
-  margin: 0 auto clamp(48px, 8vw, 96px);
+  margin: var(--bbf-gap) auto 0;
+  scroll-margin-top: 24px;
+  box-sizing: border-box;
+ }
+
+ #lineup {
+  scroll-margin-top: 24px;
  }
 
  .reveal {
@@ -1100,76 +1561,146 @@ const bats = [
   transform: translate3d(0, 0, 0);
  }
 
- .hero-brand {
-  margin: 0 0 4px;
-  font-size: clamp(0.85rem, 2.2vw, 1.05rem);
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--bbf-ink);
-  flex-shrink: 0;
+ .info-story .band-title {
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+  line-height: 1.15;
  }
 
- .hero-title {
-  margin: 0 0 8px;
-  font-size: clamp(1.7rem, 6.5vw, 3.1rem);
-  line-height: 1.05;
-  font-weight: 800;
-  color: transparent;
-  -webkit-text-stroke: 2px var(--bbf-navy);
-  text-shadow: none;
-  flex-shrink: 0;
-  transform-origin: center bottom;
-  animation: heroTitleIn 1.05s cubic-bezier(0.22, 1, 0.36, 1)
-   calc(var(--boot-splash-ms, 2000ms) + 0.2s) both;
+ .hero-lead,
+ .hero-facts {
+  margin: 0;
+  max-width: 36rem;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.55;
+  color: inherit;
+  font-weight: 500;
+  text-align: left;
+  text-wrap: pretty;
  }
 
- .hero-lead {
-  margin: 0 auto;
-  max-width: 34rem;
-  font-size: clamp(0.92rem, 2.2vw, 1.1rem);
-  line-height: 1.4;
-  color: var(--bbf-ink);
-  font-weight: 600;
-  flex-shrink: 0;
+ .hero-costume {
+  position: relative;
  }
 
- .hero-witch-parallax {
-  width: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Más aire arriba (respecto al lead) y menos vacío abajo (respecto a CTAs) */
-  padding-top: clamp(20px, 4.5svh, 44px);
-  padding-bottom: clamp(8px, 1.5svh, 16px);
-  will-change: transform;
+ .hero-costume-mark {
+  background-image: linear-gradient(
+   102deg,
+   transparent 0,
+   transparent 8%,
+   color-mix(in srgb, var(--bbf-orange) 42%, transparent) 16%,
+   color-mix(in srgb, var(--bbf-orange) 58%, transparent) 50%,
+   color-mix(in srgb, var(--bbf-orange) 40%, transparent) 84%,
+   transparent 94%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 0.02em);
+  background-size: 100% 0.32em;
+  padding: 0 0.04em 0.28em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: costumeSweep 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+ }
+
+ .spark {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  background: var(--bbf-orange);
+  filter: drop-shadow(0 0 0 var(--bbf-cream));
+  clip-path: polygon(
+   50% 0%,
+   62% 38%,
+   100% 50%,
+   62% 62%,
+   50% 100%,
+   38% 62%,
+   0% 50%,
+   38% 38%
+  );
+  opacity: 1;
+  animation: starTwinkle 2.4s ease-in-out infinite;
+ }
+
+ .spark--a {
+  top: -12px;
+  right: 2%;
+ }
+
+ .spark--b {
+  width: 11px;
+  height: 11px;
+  top: -4px;
+  left: -2px;
+  background: var(--bbf-witch);
+  animation-delay: 0.7s;
+ }
+
+ @keyframes costumeSweep {
+  from {
+   background-size: 0% 0.32em;
+  }
+  to {
+   background-size: 100% 0.32em;
+  }
+ }
+
+ @keyframes starTwinkle {
+  0%,
+  100% {
+   transform: scale(0.9) rotate(0deg);
+  }
+  45% {
+   transform: scale(1.2) rotate(16deg);
+  }
+ }
+
+ @keyframes djMarkSweep {
+  from {
+   background-size: 0% 0.32em;
+  }
+  to {
+   background-size: 100% 0.32em;
+  }
+ }
+
+ @keyframes glintFlash {
+  0%,
+  100% {
+   transform: scale(0.72) rotate(0deg);
+  }
+  50% {
+   transform: scale(1.18) rotate(18deg);
+  }
+ }
+
+ .hero-copy .cta {
+  margin-top: 8px;
  }
 
  .hero-witch-fly {
   width: 100%;
   height: auto;
-  min-height: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   margin: 0;
-  overflow: visible;
-  /* Espera a que acabe el splash (2s) + un pelín */
   animation: witchFlyIn 1.15s cubic-bezier(0.22, 1, 0.36, 1)
    calc(var(--boot-splash-ms, 2000ms) + 0.35s) both;
  }
 
+ .hero-witch-turn {
+  transform: scaleX(-1);
+ }
+
  .hero-witch {
   width: auto;
-  height: clamp(160px, 34svh, 420px);
-  max-width: min(92vw, 520px);
-  max-height: 100%;
+  height: 260px;
+  max-width: 100%;
   display: block;
   object-fit: contain;
-  object-position: center 42%;
-  transform-origin: center center;
+  object-position: center bottom;
+  transform-origin: center bottom;
   animation: witchFloat 2.8s ease-in-out
    calc(var(--boot-splash-ms, 2000ms) + 1.5s) infinite;
   filter: drop-shadow(0 10px 18px rgba(32, 48, 72, 0.28));
@@ -1256,7 +1787,7 @@ const bats = [
   justify-content: center;
   min-width: 148px;
   padding: 14px 28px;
-  border-radius: 999px;
+  border-radius: 2px;
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
@@ -1281,35 +1812,29 @@ const bats = [
   animation: ctaPulse 2.2s ease-in-out 1.8s infinite;
  }
 
- .cta-primary:hover {
-  animation-play-state: paused;
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.18);
+ .cta-sell {
+  background: var(--bbf-orange);
+  color: var(--bbf-cream);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.28);
  }
 
- .cta-secondary {
-  background: transparent;
-  color: var(--bbf-ink);
-  border: 2px solid var(--bbf-ink);
- }
-
- .cta-secondary:hover {
-  background: color-mix(in srgb, var(--bbf-ink) 12%, transparent);
+ .cta-sell:hover,
+ .cta-sell:focus-visible {
+  background: var(--bbf-orange-deep);
+  color: var(--bbf-cream);
   transform: translateY(-2px);
  }
 
- .intro,
  .info,
- .countdown,
  .lineup,
  .closing {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: clamp(72px, 12vw, 120px) 20px;
+  width: var(--bbf-measure);
+  max-width: var(--bbf-measure);
+  margin: var(--bbf-gap) auto 0;
+  padding: 0;
+  box-sizing: border-box;
  }
 
- .intro,
- .countdown,
  .lineup,
  .closing {
   display: flex;
@@ -1318,45 +1843,18 @@ const bats = [
   text-align: center;
  }
 
- .countdown {
-  gap: 8px;
- }
-
- .countdown-text {
-  margin: 0;
-  font-family: var(--font-lineup);
-  font-size: clamp(2.4rem, 9vw, 4.2rem);
-  line-height: 1;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--bbf-cream);
-  text-shadow: 3px 3px 0 var(--bbf-navy);
- }
-
- .countdown-sub {
-  margin: 0;
-  font-size: clamp(0.95rem, 2.4vw, 1.15rem);
-  font-weight: 700;
-  color: var(--bbf-cream);
- }
-
- /* Desde intro hacia abajo: tipografía siempre clara (no sigue el scroll) */
- .intro,
  .info,
- .countdown,
  .lineup,
  .closing {
   color: var(--bbf-cream);
  }
 
- .intro :global(.typography),
  .lineup :global(.typography),
  .closing :global(.typography),
  .info {
   color: var(--bbf-cream);
  }
 
- .intro :global(.typography--headline-3),
  .lineup :global(.typography--headline-3),
  .closing :global(.typography--headline-3) {
   color: var(--bbf-cream);
@@ -1377,18 +1875,165 @@ const bats = [
   padding-bottom: 1.25rem;
  }
 
+ .band-title {
+  margin: 0;
+  font-family: var(--font-lineup);
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: inherit;
+ }
+
+ .closing {
+  margin-bottom: 0;
+ }
+
+ .band-story {
+  width: var(--bbf-measure);
+  max-width: var(--bbf-measure);
+  box-sizing: border-box;
+  margin: var(--bbf-gap) auto 0;
+  padding: clamp(28px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  text-align: left;
+  background: var(--bbf-navy);
+  color: var(--bbf-cream);
+ }
+
+ .band-figure:empty,
+ .band-figure:not(:has(.band-character)) {
+  display: none;
+ }
+
+ .band-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+ }
+
+ .band-character {
+  display: block;
+  width: min(100%, 280px);
+  height: auto;
+  max-height: 320px;
+  margin: 0 auto;
+  object-fit: contain;
+ }
+
+ .band-story h2 {
+  margin: 0;
+  font-family: var(--font-lineup);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bbf-cream);
+ }
+
+ .band-story p {
+  margin: 0;
+  max-width: 40rem;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.55;
+  font-weight: 500;
+ }
+
+ .band-artist {
+  color: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+ }
+
+ .band-artist:hover,
+ .band-artist:focus-visible {
+  color: var(--bbf-orange);
+ }
+
+ .band-count {
+  margin: 4px 0 0;
+  font-family: var(--font-lineup);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--bbf-orange);
+ }
+
  .info {
   display: flex;
   flex-direction: column;
   gap: 28px;
   text-align: center;
+  padding: 32px 0;
   border-top: 2px solid color-mix(in srgb, var(--bbf-cream) 35%, transparent);
   border-bottom: 2px solid color-mix(in srgb, var(--bbf-cream) 35%, transparent);
  }
 
+ .info-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+ }
+
+ .fact-icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 4px;
+  color: var(--bbf-orange);
+ }
+
+ .fact-icon rect,
+ .fact-icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+ }
+
+ .fact-icon circle {
+  fill: currentColor;
+  stroke: none;
+ }
+
+ .info-block:nth-child(1) .fact-icon {
+  transform: rotate(-6deg);
+ }
+
+ .info-block:nth-child(2) .fact-icon {
+  transform: rotate(4deg);
+ }
+
+ .info-block:nth-child(3) .fact-icon {
+  transform: rotate(-3deg);
+ }
+
+ .fact-icon--ticket {
+  width: 64px;
+  height: 40px;
+ }
+
+ .fact-icon--ticket path:last-child {
+  stroke-dasharray: 2.5 3;
+ }
+
+ .info-value span {
+  display: block;
+ }
+
  .info-label {
   margin: 0 0 4px;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1429,7 +2074,7 @@ const bats = [
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 14px;
   transform: rotate(-2.5deg);
  }
 
@@ -1438,7 +2083,7 @@ const bats = [
   font-family: var(--font-lineup);
   font-size: clamp(1.55rem, 4.8vw, 2.4rem);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.2;
   color: var(--bbf-cream);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1450,7 +2095,10 @@ const bats = [
 
  .lineup-link {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: color-mix(in srgb, var(--bbf-cream) 65%, transparent);
   display: inline-block;
   background: transparent;
   border: 3px solid transparent;
@@ -1479,6 +2127,7 @@ const bats = [
   color: var(--bbf-navy);
   background: var(--bbf-cream);
   border-color: var(--bbf-navy);
+  text-decoration: none;
   outline-color: color-mix(in srgb, var(--bbf-navy) 55%, transparent);
   text-shadow: none;
   box-shadow:
@@ -1489,6 +2138,7 @@ const bats = [
 
  .lineup-link--special:hover,
  .lineup-link--special:focus-visible {
+  text-decoration: none;
   color: var(--bbf-cream);
   background: #0a0a0a;
   border-color: var(--bbf-cream);
@@ -1596,28 +2246,336 @@ const bats = [
   animation-delay: 0.33s;
  }
 
- .lineup :global(.lineup-djs) {
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.45;
+ .djs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(40px, 7vw, 72px);
+  width: var(--bbf-measure);
+  max-width: var(--bbf-measure);
+  box-sizing: border-box;
+  margin: var(--bbf-gap) auto 0;
+  text-align: center;
+  color: var(--bbf-cream);
+ }
+
+ .djs-title {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  max-width: 34rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--bbf-cream);
+  text-shadow: 0 2px 0 rgba(32, 48, 72, 0.45);
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+   opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+   transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .djs.is-revealed .djs-title {
+  opacity: 1;
+  transform: none;
+ }
+
+ .djs-title-mark {
+  background-image: linear-gradient(
+   102deg,
+   transparent 0,
+   transparent 8%,
+   color-mix(in srgb, #6cba8a 42%, transparent) 16%,
+   color-mix(in srgb, #6cba8a 58%, transparent) 50%,
+   color-mix(in srgb, #6cba8a 40%, transparent) 84%,
+   transparent 94%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 0.02em);
+  background-size: 0% 0.32em;
+  padding: 0 0.04em 0.28em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+ }
+
+ .djs.is-revealed .djs-title-mark {
+  animation: djMarkSweep 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+ }
+
+ .glint {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  pointer-events: none;
+  background: #fff6eb;
+  filter: drop-shadow(0 0 0 #6cba8a);
+  clip-path: polygon(
+   50% 0%,
+   58% 42%,
+   100% 50%,
+   58% 58%,
+   50% 100%,
+   42% 58%,
+   0% 50%,
+   42% 42%
+  );
+  opacity: 1;
+  animation: glintFlash 2.2s ease-in-out infinite;
+ }
+
+ .glint--a {
+  top: -14px;
+  right: 6%;
+ }
+
+ .glint--b {
+  width: 8px;
+  height: 8px;
+  top: -4px;
+  left: 8%;
+  background: #6cba8a;
+  filter: drop-shadow(0 0 0 #fff6eb);
+  animation-delay: 0.55s;
+ }
+
+ .djs-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 52px;
+  width: 100%;
+ }
+
+ .dj-card:first-child .dj-link {
+  --sticker-tilt: -2.4deg;
+ }
+
+ .dj-card--alfonso .dj-link {
+  --sticker-tilt: 2.6deg;
+ }
+
+ .dj-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 420px);
+  margin: 0;
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+   opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+   transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .djs.is-revealed .dj-card {
+  opacity: 1;
+  transform: none;
+ }
+
+ .djs.is-revealed .dj-card:first-child {
+  transition-delay: 0.38s;
+ }
+
+ .djs.is-revealed .dj-card--alfonso {
+  transition-delay: 0.58s;
+ }
+
+ .dj-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 42%;
+  background: #111;
+  border: 8px solid var(--bbf-cream);
+  box-shadow: 7px 7px 0 var(--bbf-navy);
+  transform: rotate(-2.2deg);
+ }
+
+ .dj-card--alfonso img {
+  object-position: 38% 46%;
+  transform: rotate(2.4deg);
+ }
+
+ .dj-card figcaption {
+  margin: 0;
+  font-family: var(--font-lineup);
+  font-size: clamp(1.45rem, 2.6vw, 2.05rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bbf-cream);
+  text-shadow: 3px 3px 0 var(--bbf-navy);
+ }
+
+ @media (min-width: 640px) {
+  .djs-row {
+   flex-direction: row;
+   align-items: flex-start;
+   justify-content: center;
+   gap: clamp(20px, 4vw, 48px);
+  }
+
+  .dj-card {
+   flex: 1;
+   width: auto;
+   max-width: 420px;
+  }
+ }
+
+ .visit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: var(--bbf-measure);
+  max-width: var(--bbf-measure);
+  box-sizing: border-box;
+  margin: var(--bbf-gap) auto 0;
+  color: var(--bbf-cream);
+  text-align: left;
+ }
+
+ .visit .band-title {
+  margin: 0;
+ }
+
+ .visit-lead,
+ .faq-answer p,
+ .faq-item summary {
+  margin: 0;
+  max-width: 40rem;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.55;
+ }
+
+ .faq-item summary {
+  max-width: none;
+  font-weight: 700;
+ }
+
+ .visit-map {
+  width: 100%;
+  margin-top: 8px;
+  border: 2px solid color-mix(in srgb, var(--bbf-cream) 55%, transparent);
+  background: var(--bbf-navy);
+ }
+
+ .visit-map iframe {
+  display: block;
+  width: 100%;
+  height: 280px;
+  border: 0;
+ }
+
+ .visit-ext,
+ .faq-item summary {
+  color: var(--bbf-cream);
+ }
+
+ .visit-ext {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+ }
+
+ .visit-ext:hover,
+ .visit-ext:focus-visible,
+ .faq-item summary:hover,
+ .faq-item summary:focus-visible {
+  color: var(--bbf-orange);
+ }
+
+ .faq-list {
+  width: 100%;
+  margin-top: 4px;
+  border-top: 2px solid color-mix(in srgb, var(--bbf-cream) 35%, transparent);
+ }
+
+ .faq-item {
+  border-bottom: 2px solid color-mix(in srgb, var(--bbf-cream) 35%, transparent);
+ }
+
+ .faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  cursor: pointer;
+  list-style: none;
+  text-align: left;
+ }
+
+ .faq-item summary::-webkit-details-marker {
+  display: none;
+ }
+
+ .faq-item summary::after {
+  content: "+";
+  flex: none;
+  color: var(--bbf-orange);
+  font-family: var(--font-lineup);
+  font-size: 1.6rem;
+  line-height: 1;
+ }
+
+ .faq-item[open] summary::after {
+  content: "–";
+ }
+
+ .faq-answer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 0 16px;
  }
 
  @media (min-width: 768px) {
-  .lineup :global(.lineup-djs) {
-   font-size: 1.35rem;
-   max-width: 36rem;
-   margin-left: auto;
-   margin-right: auto;
+  .visit-map iframe {
+   height: 360px;
   }
  }
 
  .closing {
-  padding-bottom: clamp(96px, 14vw, 140px);
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: clamp(36px, 4.5vw, 48px) clamp(20px, 4vw, 48px) clamp(28px, 3.2vw, 36px);
+  border: 2px solid color-mix(in srgb, var(--bbf-cream) 50%, transparent);
+ }
+
+ .closing-title {
+  margin: 0;
+  font-family: var(--font-lineup);
+  font-size: clamp(3.2rem, 8vw, 5.6rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bbf-cream);
+  text-shadow: 5px 5px 0 var(--bbf-orange);
+ }
+
+ .closing-lead {
+  margin: 0;
+  max-width: 38rem;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.55;
  }
 
  .closing .cta {
   align-self: center;
-  margin-top: 8px;
+  margin-top: 4px;
  }
 
  .cta-closing {
@@ -1856,6 +2814,72 @@ const bats = [
   }
  }
 
+ @keyframes batLand {
+  0% {
+   opacity: 0;
+   transform: translate(-210px, -70px) rotate(-26deg) scale(0.75);
+  }
+  18% {
+   opacity: 1;
+  }
+  68% {
+   transform: translate(14px, -18px) rotate(10deg) scale(1);
+  }
+  84% {
+   transform: translate(-4px, 5px) rotate(-12deg);
+  }
+  100% {
+   opacity: 1;
+   transform: rotate(-8deg);
+  }
+ }
+
+ @keyframes batFlapLand {
+  50% {
+   transform: scaleY(0.62) rotate(8deg);
+  }
+ }
+
+ @keyframes spiderDown {
+  0% {
+   transform: translateY(0);
+   opacity: 1;
+  }
+  100% {
+   transform: translateY(62px);
+   opacity: 0.9;
+  }
+ }
+
+ @keyframes lineShrink {
+  0% {
+   transform: scaleY(1);
+  }
+  100% {
+   transform: scaleY(0.22);
+  }
+ }
+
+ @keyframes arrowGrow {
+  0% {
+   transform: scale(0.42);
+   opacity: 0.35;
+  }
+  100% {
+   transform: scale(1);
+   opacity: 1;
+  }
+ }
+
+ @keyframes legStep {
+  from {
+   transform: rotate(-10deg);
+  }
+  to {
+   transform: rotate(10deg);
+  }
+ }
+
  @keyframes bootBatFlap {
   0%,
   100% {
@@ -1998,12 +3022,12 @@ const bats = [
    transform: none;
   }
 
-  .hero-title {
+  .scroll-spider,
+  .scroll-line,
+  .scroll-arrow,
+  .legs-a,
+  .legs-b {
    animation: none;
-   color: var(--bbf-cream);
-   -webkit-text-stroke: 0 transparent;
-   text-shadow: 3px 3px 0 var(--bbf-navy);
-   transform: none;
   }
 
   .hero-witch.is-egg-spin {
@@ -2045,60 +3069,98 @@ const bats = [
   }
 
   .reveal,
-  .info.reveal .info-block {
+  .info.reveal .info-block,
+  .djs-title,
+  .djs-row .dj-card {
    opacity: 1;
    transform: none;
    transition: none;
   }
+
+  .hero-costume-mark,
+  .spark,
+  .djs-title-mark,
+  .glint {
+   animation: none;
+  }
+
+  .hero-costume-mark,
+  .djs-title-mark {
+   background-size: 100% 0.32em;
+  }
+
+  .logo-bat,
+  .logo-bat img {
+   animation: none;
+  }
+
+  .logo-bat {
+   opacity: 1;
+   transform: rotate(-8deg);
+  }
+
+  .spark,
+  .glint {
+   opacity: 1;
+   transform: none;
+  }
  }
 
  @media (max-height: 700px) {
-  .hero-caption {
-   min-height: calc(100svh - 10svh);
-  }
-
-  .hero-title {
-   font-size: clamp(1.45rem, 5.5vw, 2.2rem);
-  }
-
-  .hero-lead {
-   font-size: 0.9rem;
-  }
-
-  .hero-witch {
-   height: clamp(120px, 30svh, 260px);
-  }
-
   .cta {
    padding: 12px 22px;
    min-width: 132px;
   }
  }
 
- @media (min-width: 768px) {
-  .hero-caption {
-   padding: clamp(16px, 3svh, 36px) 32px clamp(10px, 2svh, 20px);
+ @media (min-width: 960px) {
+  .info-story {
+   display: grid;
+   grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.85fr);
+   column-gap: clamp(28px, 4vw, 72px);
+   align-items: center;
+  }
+
+  .hero-figure {
+   grid-column: 2;
+   grid-row: 1;
+   align-self: center;
+   justify-content: flex-end;
+   width: 320px;
+  }
+
+  .hero-witch-fly {
+   justify-content: flex-end;
+   width: 100%;
   }
 
   .hero-witch {
-   height: clamp(220px, 40svh, 500px);
-   max-width: min(70vw, 540px);
+   height: 320px;
+   width: auto;
+   max-width: 100%;
+   margin-left: auto;
   }
 
-  .intro,
-  .info,
-  .lineup,
-  .closing {
-   max-width: 760px;
-   padding-left: 32px;
-   padding-right: 32px;
+  .band-story:has(.band-character) {
+   display: grid;
+   grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.15fr);
+   column-gap: clamp(28px, 4vw, 64px);
+   align-items: center;
   }
 
+  .band-story:has(.band-character) .band-character {
+   width: 100%;
+   max-height: 360px;
+   margin: 0;
+  }
+ }
+
+ @media (min-width: 768px) {
   .info {
    flex-direction: row;
    justify-content: space-between;
+   align-items: flex-start;
    gap: 24px;
-   max-width: 900px;
   }
 
   .info-block {

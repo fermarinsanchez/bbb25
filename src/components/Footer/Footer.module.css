@@ -91,7 +91,9 @@
 
 .navLink {
   color: var(--footer-ink);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
   font-size: 1rem;
   font-weight: 600;
   transition: color 0.25s ease, transform 0.25s ease;
@@ -117,6 +119,21 @@
   font-size: 1.25rem;
   font-weight: bold;
   color: var(--footer-ink);
+}
+
+.mailLink {
+  display: inline-block;
+  margin: 0 0 1rem;
+  color: var(--footer-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 2px;
+}
+
+.mailLink:hover,
+.mailLink:focus-visible {
+  color: var(--footer-accent);
 }
 
 .socialIcons {

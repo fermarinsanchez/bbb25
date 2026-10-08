@@ -1,12 +1,9 @@
 ---
 import Footer from "../components/Footer/Footer.astro"
-import CookieConsentWrapper from "../components/CookieConsent/CookieConsentWrapper"
-import CookieDebugPanel from "../components/CookieConsent/CookieDebugPanel"
+import CookieBanner from "../components/CookieConsent/CookieBanner.astro"
 import "../styles/main.css"
 import { ClientRouter } from "astro:transitions"
 import { buildSiteUrl } from "../config/site.js"
-import { BottomMenu } from "../components/BottomMenu"
-import { TopHeader } from "../components/TopHeader"
 
 export interface Props {
  title?: string
@@ -16,15 +13,15 @@ export interface Props {
 }
 
 const {
- title = "Balambam Boo Fest 2025",
+ title = "Balambam Boo Fest 2026",
  bandImage,
- description = "Festival de música para todas las edades. 26-27 de Octubre en Summer Land (Toledo). ¡Vuelve el mejor festival cn conciertos, actividades, markets y muchas locuras más!",
- image = "/cartel-cuadrado-ok.jpg",
+ description = "Edición Halloween. Sábado 31 de octubre de 2026 en Terraza Summerland (Toledo). Rock, brujas y vinilos para todas las edades.",
+ image = "/cartel-bbf26.png",
 } = Astro.props
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='es'>
  <head>
   <meta charset='UTF-8' />
   <meta name='viewport' content='width=device-width' />
@@ -32,12 +29,10 @@ const {
   <meta name='generator' content={Astro.generator} />
   {bandImage && <link rel='preload' as='image' href={bandImage} />}
 
-  <!-- Meta tags básicos -->
   <title>{title}</title>
   <meta name='description' content={description} />
   <meta name='author' content='Balambam Boo Fest' />
 
-  <!-- Open Graph / Facebook -->
   <meta property='og:type' content='website' />
   <meta property='og:url' content={Astro.url.href} />
   <meta property='og:title' content={title} />
@@ -48,10 +43,9 @@ const {
   />
   <meta property='og:image:width' content='1200' />
   <meta property='og:image:height' content='630' />
-  <meta property='og:site_name' content='BBooFest 2025' />
+  <meta property='og:site_name' content='BBooFest 2026' />
   <meta property='og:locale' content='es_ES' />
 
-  <!-- Twitter Card -->
   <meta name='twitter:card' content='summary_large_image' />
   <meta name='twitter:url' content={Astro.url.href} />
   <meta name='twitter:title' content={title} />
@@ -62,12 +56,10 @@ const {
   />
   <meta name='twitter:site' content='@balambamboofest' />
 
-  <!-- Otros meta tags importantes -->
-  <meta name='theme-color' content='#8B5CF6' />
-  <meta name='msapplication-TileColor' content='#8B5CF6' />
+  <meta name='theme-color' content='#EFB398' />
+  <meta name='msapplication-TileColor' content='#EFB398' />
   <link rel='canonical' href={Astro.url.href} />
 
-  <!-- Google Tag Manager -->
   <script>
    ;(function (w, d, s, l, i) {
     w[l] = w[l] || []
@@ -80,9 +72,7 @@ const {
     f.parentNode.insertBefore(j, f)
    })(window, document, "script", "dataLayer", "GTM-529278XZ")
   </script>
-  <!-- End Google Tag Manager -->
 
-  <!-- Google Analytics (mantenemos para compatibilidad) -->
   <script async src='https://www.googletagmanager.com/gtag/js?id=G-Z05HNTX8Q6'
   ></script>
   <script>
@@ -95,7 +85,6 @@ const {
   </script>
  </head>
  <body>
-  <!-- Google Tag Manager (noscript) -->
   <noscript
    ><iframe
     src='https://www.googletagmanager.com/ns.html?id=GTM-529278XZ'
@@ -103,29 +92,14 @@ const {
     width='0'
     style='display:none;visibility:hidden'></iframe></noscript
   >
-  <!-- End Google Tag Manager (noscript) -->
-
-  <!-- TopHeader solo visible en pantallas ≥768px -->
-  <div class='desktop-only'>
-   <TopHeader currentPath={Astro.url.pathname} client:load />
-  </div>
 
   <main class='main-content'>
    <slot />
   </main>
 
-  <!-- Footer solo visible en pantallas ≥768px -->
-  <div class='desktop-only'>
-   <Footer />
-  </div>
+  <Footer />
 
-  <!-- BottomMenu solo visible en pantallas <768px -->
-  <div class='mobile-only'>
-   <BottomMenu currentPath={Astro.url.pathname} client:load />
-  </div>
-
-  <CookieConsentWrapper client:load />
-  <CookieDebugPanel client:load />
+  <CookieBanner />
   <ClientRouter />
  </body>
 </html>
@@ -136,49 +110,10 @@ const {
   margin: 0;
   width: 100%;
   min-height: 100vh;
+  background-color: #efb398;
  }
 
  .main-content {
-  min-height: calc(100vh - 80px - 200px); /* 100vh - TopHeader - Footer aprox */
- }
-
- /* Clases para controlar la visibilidad según el viewport */
- .desktop-only {
-  display: block;
- }
-
- .mobile-only {
-  display: none;
- }
-
- /* En pantallas pequeñas (≤767px): ocultar elementos desktop, mostrar elementos mobile */
- @media (max-width: 767px) {
-  .desktop-only {
-   display: none;
-  }
-
-  .mobile-only {
-   display: block;
-  }
-
-  .main-content {
-   padding-top: 0; /* No padding top en móviles */
-   min-height: calc(100vh - 82px); /* 100vh - BottomMenu */
-  }
- }
-
- /* En pantallas medianas y grandes (≥768px): mostrar elementos desktop, ocultar elementos mobile */
- @media (min-width: 768px) {
-  .desktop-only {
-   display: block;
-  }
-
-  .mobile-only {
-   display: none;
-  }
-
-  .main-content {
-   min-height: calc(100vh - 80px - 200px); /* 100vh - TopHeader - Footer */
-  }
+  min-height: 100vh;
  }
 </style>

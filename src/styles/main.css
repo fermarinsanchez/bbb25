@@ -3,7 +3,9 @@
 
 @font-face {
   font-family: "Spooky Monster";
-  src: url("/fonts/spooky-monster.ttf") format("truetype");
+  src:
+    url("/fonts/spooky-monster.woff") format("woff"),
+    url("/fonts/spooky-monster.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;

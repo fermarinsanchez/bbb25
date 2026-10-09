@@ -14,6 +14,7 @@ interface TypographyProps {
     variant: TypographyVariant;
     children: React.ReactNode;
     className?: string;
+    style?: React.CSSProperties;
     as?: React.ElementType;
 }
 
@@ -31,11 +32,13 @@ export function Typography({
     variant,
     children,
     className,
+    style,
     as
 }: TypographyProps) {
     const Component = as || defaultElements[variant];
 
     return React.createElement(Component, {
-        className: `${styles.typography} ${styles[`typography--${variant}`]} ${className || ''}`.trim()
+        className: `${styles.typography} ${styles[`typography--${variant}`]} ${className || ''}`.trim(),
+        style,
     }, children);
 } 

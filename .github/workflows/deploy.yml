@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 on:
- # Activa el flujo de trabajo cada vez que hagas push a la rama `main`
+ # Deploy desde la rama de la edición 2026
  push:
-  branches: [main]
+  branches: [bboo27]
  # Te permite ejecutar este flujo de trabajo manualmente desde la pestaña Acciones en GitHub.
  workflow_dispatch:
 

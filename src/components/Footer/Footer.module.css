@@ -1,10 +1,24 @@
 .footer {
-  background-color: #73C2AF;
-  color: white;
+  --footer-bg: color-mix(in srgb, #e06731 50%, white);
+  --footer-ink: color-mix(
+    in srgb,
+    #fff6eb calc(var(--scroll-night, 0) * 100%),
+    #203048
+  );
+  --footer-cream: #fff6eb;
+  --footer-accent: #e06731;
+  --footer-surface: color-mix(
+    in srgb,
+    #203048 calc(var(--scroll-night, 0) * 88%),
+    var(--footer-bg)
+  );
+
+  background-color: var(--footer-surface);
+  color: var(--footer-ink);
   padding: 3rem 0 1.5rem 0;
   margin-top: auto;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
   position: relative;
+  border-top: 2px solid color-mix(in srgb, var(--footer-ink) 18%, transparent);
 }
 
 .footerContainer {
@@ -20,7 +34,6 @@
   margin-bottom: 2.5rem;
 }
 
-/* Sección izquierda: Logo e información */
 .footerLeft {
   display: flex;
   align-items: flex-start;
@@ -47,6 +60,7 @@
   font-size: 1.75rem;
   font-weight: bold;
   line-height: 1.2;
+  color: var(--footer-ink);
 }
 
 .festivalInfo p {
@@ -54,9 +68,9 @@
   font-size: 1rem;
   opacity: 0.9;
   line-height: 1.4;
+  color: var(--footer-ink);
 }
 
-/* Sección central: Enlaces de navegación */
 .footerCenter {
   display: flex;
   flex-direction: column;
@@ -66,6 +80,7 @@
   margin: 0 0 1.25rem 0;
   font-size: 1.25rem;
   font-weight: bold;
+  color: var(--footer-ink);
 }
 
 .navLinks {
@@ -75,31 +90,50 @@
 }
 
 .navLink {
-  color: white;
-  text-decoration: none;
+  color: var(--footer-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
   font-size: 1rem;
-  transition: all 0.3s ease;
-  opacity: 0.9;
+  font-weight: 600;
+  transition: color 0.25s ease, transform 0.25s ease;
+  opacity: 0.85;
 }
 
 .navLink:hover {
   opacity: 1;
+  color: var(--footer-accent);
   transform: translateX(4px);
 }
 
-/* Sección derecha: Redes sociales y contacto */
 .footerRight {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   z-index: 1;
-
 }
 
-.socialLinks h4, .contactInfo h4 {
+.socialLinks h4,
+.contactInfo h4 {
   margin: 0 0 1.25rem 0;
   font-size: 1.25rem;
   font-weight: bold;
+  color: var(--footer-ink);
+}
+
+.mailLink {
+  display: inline-block;
+  margin: 0 0 1rem;
+  color: var(--footer-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 2px;
+}
+
+.mailLink:hover,
+.mailLink:focus-visible {
+  color: var(--footer-accent);
 }
 
 .socialIcons {
@@ -113,23 +147,23 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #203048;
   border-radius: 50%;
   text-decoration: none;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  border: 2px solid #203048;
 }
 
 .socialLink:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--footer-accent);
+  border-color: var(--footer-accent);
+  transform: scale(1.08);
 }
 
 .socialIcon {
   width: 24px;
   height: 24px;
-  color: white;
+  color: var(--footer-cream);
 }
 
 .contactInfo p {
@@ -139,9 +173,8 @@
   line-height: 1.4;
 }
 
-/* Línea separadora y copyright */
 .footerBottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid color-mix(in srgb, var(--footer-ink) 20%, transparent);
   padding-top: 1.5rem;
   text-align: center;
 }
@@ -150,9 +183,9 @@
   margin: 0;
   font-size: 0.9rem;
   opacity: 0.8;
+  color: var(--footer-ink);
 }
 
-/* Animación de rotación del BIcon */
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -162,92 +195,98 @@
   }
 }
 
-/* Responsive: Solo mostrar en pantallas mayores a 767px (≥768px) */
 @media (max-width: 767px) {
   .footer {
-    display: none;
+    padding: 2.5rem 0 2rem;
   }
 }
 
-/* Responsive para pantallas medianas (1024px y menores) */
 @media (max-width: 1024px) {
   .footerContainer {
     padding: 0 24px;
   }
-  
+
   .footerContent {
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
   }
-  
+
   .footerRight {
     grid-column: 1 / -1;
     flex-direction: row;
     justify-content: space-between;
     gap: 3rem;
   }
-  
-  .socialLinks, .contactInfo {
+
+  .socialLinks,
+  .contactInfo {
     flex: 1;
   }
 }
 
-/* Responsive para pantallas pequeñas (768px y menores) */
 @media (max-width: 768px) {
   .footerContent {
     grid-template-columns: 1fr;
     text-align: center;
     gap: 2rem;
   }
-  
+
   .footerLeft {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .footerRight {
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
   }
-  
+
+  .socialLinks,
+  .contactInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-left: 0;
+  }
+
   .navLinks {
     align-items: center;
   }
-  
+
   .socialIcons {
     justify-content: center;
   }
 }
 
-/* Responsive para pantallas muy pequeñas */
 @media (max-width: 480px) {
   .footerContainer {
     padding: 0 16px;
   }
-  
+
   .footerContent {
     gap: 1.5rem;
   }
-  
+
   .footerLeft {
     gap: 1rem;
   }
-  
+
   .bIconContainer {
     width: 56px;
     height: 56px;
   }
-  
+
   .festivalInfo h3 {
     font-size: 1.5rem;
   }
-  
+
   .festivalInfo p {
     font-size: 0.9rem;
   }
-} 
+}
 
-/* Amp decorativo posicionado absolutamente */
 .ampDecoration {
   position: absolute;
   right: 2rem;
@@ -266,24 +305,27 @@
   transform: scale(1.05);
 }
 
-/* Responsive para el amp decorativo */
 @media (max-width: 1024px) {
   .ampDecoration {
     right: 1.5rem;
   }
-  
+
   .ampIcon {
     width: 200px;
     height: 200px;
   }
+}
+
+/* Solo tablet: offset por la decoración amp (no en mobile) */
+@media (min-width: 769px) and (max-width: 1024px) {
   .socialLinks {
     padding-left: 88px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .socialLinks {
-    padding-left:0px;
+    padding-left: 0;
   }
 }
 
@@ -291,4 +333,8 @@
   .ampDecoration {
     display: none;
   }
-} 
+
+  .socialLinks {
+    padding-left: 0;
+  }
+}

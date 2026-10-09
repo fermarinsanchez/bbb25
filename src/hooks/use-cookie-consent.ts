@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 
-interface CookiePreferences {
+export interface CookiePreferences {
+    necessary?: boolean;
     analytics: boolean;
     marketing: boolean;
     preferences: boolean;
 }
 
 interface CookieConsentHook {
+    isReady: boolean;
     hasConsent: boolean;
     preferences: CookiePreferences;
     savePreferences: (prefs: CookiePreferences) => void;
@@ -15,103 +17,131 @@ interface CookieConsentHook {
     applyPreferences: (prefs: CookiePreferences) => void;
 }
 
+const STORAGE_PREFERENCES = 'cookie-preferences';
+const STORAGE_CONSENT = 'cookie-consent';
+
+function readStoredPreferences(): CookiePreferences | null {
+    if (typeof window === 'undefined') return null;
+
+    const raw =
+        localStorage.getItem(STORAGE_PREFERENCES) ||
+        localStorage.getItem(STORAGE_CONSENT);
+
+    if (!raw) return null;
+
+    try {
+        return JSON.parse(raw) as CookiePreferences;
+    } catch {
+        localStorage.removeItem(STORAGE_PREFERENCES);
+        localStorage.removeItem(STORAGE_CONSENT);
+        return null;
+    }
+}
+
 export const useCookieConsent = (): CookieConsentHook => {
+    const [isReady, setIsReady] = useState(false);
     const [hasConsent, setHasConsent] = useState(false);
     const [preferences, setPreferences] = useState<CookiePreferences>({
         analytics: false,
         marketing: false,
-        preferences: false
+        preferences: false,
     });
 
     useEffect(() => {
-        // Buscar preferencias guardadas en localStorage
-        const savedPreferences = localStorage.getItem('cookie-preferences');
+        const stored = readStoredPreferences();
 
-        if (savedPreferences) {
-            try {
-                const parsedPreferences = JSON.parse(savedPreferences) as CookiePreferences;
-                setPreferences(parsedPreferences);
-                setHasConsent(true);
-            } catch (error) {
-                // Si hay error al parsear, limpiar localStorage
-                localStorage.removeItem('cookie-preferences');
-                setHasConsent(false);
-            }
+        if (stored) {
+            setPreferences(stored);
+            setHasConsent(true);
         } else {
             setHasConsent(false);
         }
+
+        setIsReady(true);
     }, []);
 
-    const savePreferences = useCallback((newPreferences: CookiePreferences) => {
-        setPreferences(newPreferences);
-        setHasConsent(true);
+    const applyPreferences = useCallback((prefs: CookiePreferences) => {
+        if (prefs.analytics) {
+            // Habilitar analytics
+        } else {
+            // Deshabilitar analytics
+        }
 
-        // Guardar en localStorage
-        localStorage.setItem('cookie-preferences', JSON.stringify(newPreferences));
+        if (prefs.marketing) {
+            // Habilitar marketing
+        } else {
+            // Deshabilitar marketing
+        }
 
-        // Aplicar las preferencias inmediatamente
-        applyPreferences(newPreferences);
+        if (prefs.preferences) {
+            // Habilitar preferencias
+        } else {
+            // Deshabilitar preferencias
+        }
     }, []);
 
-    const updatePreferences = useCallback((updates: Partial<CookiePreferences>) => {
-        const updatedPreferences = { ...preferences, ...updates };
-        setPreferences(updatedPreferences);
+    const savePreferences = useCallback(
+        (newPreferences: CookiePreferences) => {
+            const normalized: CookiePreferences = {
+                necessary: true,
+                analytics: !!newPreferences.analytics,
+                marketing: !!newPreferences.marketing,
+                preferences: !!newPreferences.preferences,
+            };
 
-        // Guardar en localStorage
-        localStorage.setItem('cookie-preferences', JSON.stringify(updatedPreferences));
+            setPreferences(normalized);
+            setHasConsent(true);
 
-        // Aplicar las preferencias actualizadas
-        applyPreferences(updatedPreferences);
-    }, [preferences]);
+            localStorage.setItem(STORAGE_PREFERENCES, JSON.stringify(normalized));
+            localStorage.setItem(STORAGE_CONSENT, JSON.stringify(normalized));
+
+            applyPreferences(normalized);
+        },
+        [applyPreferences],
+    );
+
+    const updatePreferences = useCallback(
+        (updates: Partial<CookiePreferences>) => {
+            const updatedPreferences = { ...preferences, ...updates, necessary: true };
+            setPreferences(updatedPreferences);
+            setHasConsent(true);
+
+            localStorage.setItem(
+                STORAGE_PREFERENCES,
+                JSON.stringify(updatedPreferences),
+            );
+            localStorage.setItem(STORAGE_CONSENT, JSON.stringify(updatedPreferences));
+
+            applyPreferences(updatedPreferences);
+        },
+        [preferences, applyPreferences],
+    );
 
     const resetConsent = useCallback(() => {
         setHasConsent(false);
         setPreferences({
             analytics: false,
             marketing: false,
-            preferences: false
+            preferences: false,
         });
 
-        // Limpiar localStorage
-        localStorage.removeItem('cookie-preferences');
+        localStorage.removeItem(STORAGE_PREFERENCES);
+        localStorage.removeItem(STORAGE_CONSENT);
 
-        // Deshabilitar todas las cookies
         applyPreferences({
             analytics: false,
             marketing: false,
-            preferences: false
+            preferences: false,
         });
-    }, []);
-
-    const applyPreferences = useCallback((prefs: CookiePreferences) => {
-        // Aplicar preferencias de analytics
-        if (prefs.analytics) {
-            // Habilitar Google Analytics, etc.
-        } else {
-            // Deshabilitar Google Analytics, etc.
-        }
-
-        // Aplicar preferencias de marketing
-        if (prefs.marketing) {
-            // Habilitar cookies de marketing
-        } else {
-            // Deshabilitar cookies de marketing
-        }
-
-        // Aplicar preferencias de funcionalidad
-        if (prefs.preferences) {
-            // Habilitar cookies de preferencias
-        } else {
-            // Deshabilitar cookies de preferencias
-        }
-    }, []);
+    }, [applyPreferences]);
 
     return {
+        isReady,
         hasConsent,
         preferences,
         savePreferences,
         updatePreferences,
         resetConsent,
-        applyPreferences
+        applyPreferences,
     };
-}; 
+};

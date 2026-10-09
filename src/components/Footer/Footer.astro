@@ -1,7 +1,6 @@
 ---
 import BIcon from "../../assets/BIcon.svg"
 import styles from "./Footer.module.css"
-import Amp from "../../assets/amp.svg"
 import { Typography } from "../Typography"
 import { buildSiteUrl } from "../../config/site.js"
 ---
@@ -9,43 +8,42 @@ import { buildSiteUrl } from "../../config/site.js"
 <footer class={styles.footer}>
  <div class={styles.footerContainer}>
   <div class={styles.footerContent}>
-   <!-- Sección izquierda: Logo e información del festival -->
    <div class={styles.footerLeft}>
     <div class={styles.bIconContainer}>
      <img src={BIcon.src} alt='BBooFest' class={styles.bIcon} />
     </div>
     <div class={styles.festivalInfo}>
-     <Typography variant='headline-3'>Balambam Boo Fest 2025</Typography>
-     <Typography variant='body'>Festival de música independiente</Typography>
+     <Typography variant='headline-3'>Balambam Boo Fest 2026</Typography>
+     <Typography variant='body'>Edición Halloween</Typography>
      <Typography variant='body'
-      >26-27 de Octubre · Summer Land (Toledo)</Typography
+      >31 de octubre · Terraza Summerland (Toledo)</Typography
      >
     </div>
    </div>
 
-   <!-- Sección central: Enlaces a secciones -->
    <div class={styles.footerCenter}>
     <div class={styles.pageLinks}>
-     <Typography variant='headline-4'>Navegación</Typography>
+     <Typography variant='headline-4'>Legal</Typography>
      <nav class={styles.navLinks}>
-      <a href={buildSiteUrl("/")} class={styles.navLink}>Inicio</a>
-      <a href={buildSiteUrl("/lineup")} class={styles.navLink}>Grupos</a>
-      <a href={buildSiteUrl("/tickets")} class={styles.navLink}>Tickets</a>
-      <a href={buildSiteUrl("/social")} class={styles.navLink}>Info</a>
       <a href={buildSiteUrl("/politica-privacidad")} class={styles.navLink}
        >Privacidad</a
+      >
+      <a href={buildSiteUrl("/politica-cookies")} class={styles.navLink}
+       >Cookies</a
       >
      </nav>
     </div>
    </div>
 
-   <!-- Sección derecha: Redes sociales y contacto -->
    <div class={styles.footerRight}>
     <div class={styles.socialLinks}>
      <Typography variant='headline-4'>Síguenos</Typography>
+     <a href='mailto:balambamboofest@gmail.com' class={styles.mailLink}
+      >balambamboofest@gmail.com</a
+     >
      <div class={styles.socialIcons}>
       <a
-       href='https://www.instagram.com/balambamboofest/?hl=es%20target='
+       href='https://www.instagram.com/balambamboofest/?hl=es'
        target='_blank'
        rel='noopener noreferrer'
        class={styles.socialLink}
@@ -104,16 +102,10 @@ import { buildSiteUrl } from "../../config/site.js"
    </div>
   </div>
 
-  <!-- Línea separadora y copyright -->
   <div class={styles.footerBottom}>
    <Typography variant='body'
-    >&copy; 2025 Balambam Boo Fest. Todos los derechos reservados.</Typography
+    >&copy; 2026 Balambam Boo Fest. Todos los derechos reservados.</Typography
    >
   </div>
- </div>
-
- <!-- Amp decorativo posicionado absolutamente en la derecha -->
- <div class={styles.ampDecoration}>
-  <img src={Amp.src} alt='' class={styles.ampIcon} />
  </div>
 </footer>

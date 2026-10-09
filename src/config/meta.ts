@@ -1,43 +1,42 @@
 // Configuración de meta tags para cada página
 export const META_CONFIG = {
     home: {
-        title: 'Balambam Boo Fest 2025 - El mejor festival para todas las edades',
-        description: '¡Vuelve el mejor festival tras 10 años de trayectoria! 26-27 de Septiembre en Summerland (Toledo). Conciertos, actividades, narkets y muchas locuras más.',
-        image: 'https://res.cloudinary.com/dci5hxl4x/image/upload/v1756108115/bboofest_25_3_wri4dw.png'
+        title: 'Balambam Boo Fest 2026 — Edición Halloween',
+        description: 'Sábado 31 de octubre de 2026 en Terraza Summerland (Toledo). Un día de rock, brujas y vinilos. Entrada anticipada 10€ · Menores de 16 gratis.',
+        image: '/cartel-bbf26.png'
     },
     lineup: {
-        title: 'Lineup Balambam Boo Fest 2025 - Grupos y Bandas',
-        description: 'Descubre el increíble lineup del Balambam Boo Fest 2025. Las mejores bandas de música independiente en un festival inolvidable.',
-        image: 'https://res.cloudinary.com/dci5hxl4x/image/upload/v1756108115/bboofest_25_3_wri4dw.png'
+        title: 'Lineup Balambam Boo Fest 2026',
+        description: 'Museo de Cera, Plastic Meat, Femur, Children in Heat, Bule y DJs Head and Banger & Alfonso Monasterio.',
+        image: '/cartel-bbf26.png'
     },
     tickets: {
-        title: 'Tickets Balambam Boo Fest 2025 - Comprar Entradas',
-        description: 'Consigue tus entradas para el Balambam Boo Fest 2025. Festival de música independiente el 26-27 de Septiembre en Summerland (Toledo).',
-        image: 'https://res.cloudinary.com/dci5hxl4x/image/upload/v1756108115/bboofest_25_3_wri4dw.png'
+        title: 'Entradas Balambam Boo Fest 2026',
+        description: '10€ anticipada · 12€ en taquilla. Menores de 16 años gratis. Sábado 31 de octubre en Terraza Summerland (Toledo).',
+        image: '/cartel-bbf26.png'
     },
     social: {
-        title: 'Info Balambam Boo Fest 2025 - Información del Festival',
-        description: 'Toda la información del Balambam Boo Fest 2025. Horarios, ubicación, actividades y mucho más sobre el mejor festival de música independiente.',
-        image: 'https://res.cloudinary.com/dci5hxl4x/image/upload/v1756108115/bboofest_25_3_wri4dw.png'
+        title: 'Info Balambam Boo Fest 2026',
+        description: 'Toda la información de la edición Halloween: horarios, ubicación y redes del Balambam Boo Fest 2026.',
+        image: '/cartel-bbf26.png'
     },
     cookies: {
-        title: 'Configuración de Cookies - Balambam Boo Fest 2025',
-        description: 'Gestiona tus preferencias de cookies en el Balambam Boo Fest 2025. Configura la privacidad de tu navegación.',
-        image: 'https://res.cloudinary.com/dci5hxl4x/image/upload/v1756108115/bboofest_25_3_wri4dw.png'
+        title: 'Configuración de Cookies - Balambam Boo Fest 2026',
+        description: 'Gestiona tus preferencias de cookies en el Balambam Boo Fest 2026.',
+        image: '/cartel-bbf26.png'
     },
     politicaCookies: {
-        title: 'Política de Cookies - Balambam Boo Fest 2025',
-        description: 'Política de cookies del Balambam Boo Fest 2025. Información sobre el uso de cookies y tecnologías similares en nuestro sitio web.',
-        image: 'https://res.cloudinary.com/dci5hxl4x/image/upload/v1756108115/bboofest_25_3_wri4dw.png'
+        title: 'Política de Cookies - Balambam Boo Fest 2026',
+        description: 'Política de cookies del Balambam Boo Fest 2026.',
+        image: '/cartel-bbf26.png'
     },
     politicaPrivacidad: {
-        title: 'Política de Privacidad - Balambam Boo Fest 2025',
-        description: 'Política de privacidad del Balambam Boo Fest 2025. Cómo protegemos y tratamos tus datos personales.',
-        image: 'https://res.cloudinary.com/dci5hxl4x/image/upload/v1756108115/bboofest_25_3_wri4dw.png'
+        title: 'Política de Privacidad - Balambam Boo Fest 2026',
+        description: 'Política de privacidad del Balambam Boo Fest 2026.',
+        image: '/cartel-bbf26.png'
     }
 } as const;
 
-// Función para obtener la configuración de meta tags de una página
 export function getMetaConfig(page: keyof typeof META_CONFIG) {
     return META_CONFIG[page];
-} 
+}

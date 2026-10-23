@@ -191,6 +191,7 @@
    ?.addEventListener("click", () => {
     const preferences = getFromForm()
     savePreferences(preferences)
+    window.bbfApplyConsent?.(preferences)
     showSuccess()
     window.setTimeout(() => {
      window.location.href = "/"
@@ -208,6 +209,7 @@
     }
     localStorage.removeItem(STORAGE_PREFERENCES)
     localStorage.removeItem(STORAGE_CONSENT)
+    window.bbfApplyConsent?.(defaults)
     applyToForm(defaults)
     showSuccess()
    })

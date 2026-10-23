@@ -60,7 +60,48 @@ const {
   <meta name='msapplication-TileColor' content='#EFB398' />
   <link rel='canonical' href={Astro.url.href} />
 
-  <script>
+  <script is:inline>
+   window.dataLayer = window.dataLayer || []
+   function gtag() {
+    dataLayer.push(arguments)
+   }
+
+   function bbfConsentState(prefs) {
+    var marketing = !!(prefs && prefs.marketing)
+    var analytics = !!(prefs && prefs.analytics)
+    return {
+     ad_storage: marketing ? "granted" : "denied",
+     ad_user_data: marketing ? "granted" : "denied",
+     ad_personalization: marketing ? "granted" : "denied",
+     analytics_storage: analytics ? "granted" : "denied",
+    }
+   }
+
+   var bbfStoredConsent = null
+   try {
+    var bbfRaw =
+     localStorage.getItem("cookie-preferences") ||
+     localStorage.getItem("cookie-consent")
+    if (bbfRaw) bbfStoredConsent = JSON.parse(bbfRaw)
+   } catch (e) {}
+
+   var bbfDefault = bbfStoredConsent
+    ? bbfConsentState(bbfStoredConsent)
+    : {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      wait_for_update: 500,
+     }
+   gtag("consent", "default", bbfDefault)
+
+   window.bbfApplyConsent = function (prefs) {
+    gtag("consent", "update", bbfConsentState(prefs))
+   }
+  </script>
+
+  <script is:inline>
    ;(function (w, d, s, l, i) {
     w[l] = w[l] || []
     w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" })
@@ -75,7 +116,7 @@ const {
 
   <script async src='https://www.googletagmanager.com/gtag/js?id=G-Z05HNTX8Q6'
   ></script>
-  <script>
+  <script is:inline>
    window.dataLayer = window.dataLayer || []
    function gtag() {
     dataLayer.push(arguments)

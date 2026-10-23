@@ -89,22 +89,26 @@
   }
 
   banner.querySelector("[data-cookie-accept]")?.addEventListener("click", () => {
-   saveConsent({
+   const preferences = {
     necessary: true,
     analytics: true,
     marketing: true,
     preferences: true,
-   })
+   }
+   saveConsent(preferences)
+   window.bbfApplyConsent?.(preferences)
    hideBanner(banner)
   })
 
   banner.querySelector("[data-cookie-reject]")?.addEventListener("click", () => {
-   saveConsent({
+   const preferences = {
     necessary: true,
     analytics: false,
     marketing: false,
     preferences: false,
-   })
+   }
+   saveConsent(preferences)
+   window.bbfApplyConsent?.(preferences)
    hideBanner(banner)
   })
  }

@@ -61,23 +61,7 @@ export const useCookieConsent = (): CookieConsentHook => {
     }, []);
 
     const applyPreferences = useCallback((prefs: CookiePreferences) => {
-        if (prefs.analytics) {
-            // Habilitar analytics
-        } else {
-            // Deshabilitar analytics
-        }
-
-        if (prefs.marketing) {
-            // Habilitar marketing
-        } else {
-            // Deshabilitar marketing
-        }
-
-        if (prefs.preferences) {
-            // Habilitar preferencias
-        } else {
-            // Deshabilitar preferencias
-        }
+        window.bbfApplyConsent?.(prefs);
     }, []);
 
     const savePreferences = useCallback(

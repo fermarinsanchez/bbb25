@@ -34,6 +34,7 @@ const lineup = [
 ]
 
 const ticketsUrl = "https://toledoentradas.es/balambamboo-fest-2026/"
+const festivalEmail = "balambamboofest@gmail.com"
 const eventIso = "2026-10-31T12:00:00+01:00"
 const msPerDay = 1000 * 60 * 60 * 24
 const daysLeftSSR = Math.ceil(
@@ -632,9 +633,23 @@ const bats = [
      <details class='faq-item'>
       <summary>{item.question}</summary>
       <div class='faq-answer'>
-       {item.answer.map((line) => (
-        <p>{line}</p>
-       ))}
+       {item.answer.map((line) => {
+        const parts = line.split(festivalEmail)
+        return (
+         <p>
+          {parts.map((part, index) => (
+           <>
+            {part}
+            {index < parts.length - 1 && (
+             <a class='visit-ext' href={`mailto:${festivalEmail}`}>
+              {festivalEmail}
+             </a>
+            )}
+           </>
+          ))}
+         </p>
+        )
+       })}
       </div>
      </details>
     ))

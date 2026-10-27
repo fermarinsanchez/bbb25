@@ -4,8 +4,44 @@ import Layout from "../layouts/Layout.astro"
 import { getMetaConfig } from "../config/meta.js"
 
 const meta = getMetaConfig("home")
+
+const eventLd = {
+ "@context": "https://schema.org",
+ "@type": "Event",
+ name: "Balambam Boo Fest 2026 — Edición Halloween",
+ description: meta.description,
+ startDate: "2026-10-31T12:00:00+01:00",
+ eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+ eventStatus: "https://schema.org/EventScheduled",
+ url: "https://balambamboofest.com/",
+ image: "https://balambamboofest.com/cartel-bbf26.png",
+ location: {
+  "@type": "Place",
+  name: "Terraza Summerland",
+  address: {
+   "@type": "PostalAddress",
+   streetAddress: "Carretera de la Peraleda 3D",
+   addressLocality: "Toledo",
+   postalCode: "45004",
+   addressCountry: "ES",
+  },
+ },
+ offers: {
+  "@type": "Offer",
+  price: "10",
+  priceCurrency: "EUR",
+  availability: "https://schema.org/InStock",
+  url: "https://toledoentradas.es/balambamboo-fest-2026/",
+ },
+ organizer: {
+  "@type": "Organization",
+  name: "Balambam Boo Fest",
+  url: "https://balambamboofest.com/",
+ },
+}
 ---
 
 <Layout title={meta.title} description={meta.description} image={meta.image}>
+ <script type="application/ld+json" is:inline set:html={JSON.stringify(eventLd)} />
  <HomePage />
 </Layout>

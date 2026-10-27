@@ -3,10 +3,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(135deg, #73C2AF 0%, #5BA8A0 100%);
-  color: white;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
+  background: linear-gradient(135deg, #203048 0%, #2a3f5c 100%);
+  color: #fff6eb;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
   animation: slideUp 0.4s ease-out;
   max-height: 90vh;
   overflow-y: auto;
@@ -67,6 +67,7 @@
   align-items: center;
   gap: 1rem;
   padding-left: 72px;
+  padding-top: 8px;
   flex-wrap: wrap;
 }
 
@@ -119,13 +120,14 @@
 }
 
 .buttonAccept {
-  background: rgba(255, 255, 255, 0.9);
-  color: #2C5F5A;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: #e06731;
+  color: #fff6eb;
+  border: 2px solid #e06731;
 }
 
 .buttonAccept:hover {
-  background: white;
+  background: #c45322;
+  border-color: #c45322;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }

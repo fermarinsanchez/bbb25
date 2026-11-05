@@ -1,7 +1,7 @@
 // Configuración del sitio
 export const SITE_CONFIG = {
     name: 'Balambam Boo Fest 2026',
-    description: 'Edición Halloween — 31 de octubre en Terraza Summerland (Toledo)',
+    description: 'Edición Halloween — 21 de noviembre en Terraza Summerland (Toledo)',
 
     urls: {
         home: '/',

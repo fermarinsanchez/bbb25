@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+ <url>
+  <loc>https://balambamboofest.com/</loc>
+  <priority>1.0</priority>
+ </url>
+ <url>
+  <loc>https://balambamboofest.com/cookies/</loc>
+  <priority>0.1</priority>
+ </url>
+ <url>
+  <loc>https://balambamboofest.com/politica-cookies/</loc>
+  <priority>0.1</priority>
+ </url>
+ <url>
+  <loc>https://balambamboofest.com/politica-privacidad/</loc>
+  <priority>0.1</priority>
+ </url>
+</urlset>

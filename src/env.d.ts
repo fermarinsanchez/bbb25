@@ -6,6 +6,11 @@ declare global {
     interface Window {
         dataLayer: any[];
         gtag: (...args: any[]) => void;
+        bbfApplyConsent?: (prefs: {
+            analytics?: boolean;
+            marketing?: boolean;
+            preferences?: boolean;
+        }) => void;
     }
 }
 

@@ -3,6 +3,7 @@ import { Typography } from "../Typography"
 import cartelBbf26 from "../../assets/cartel-bbf26.webp"
 import misfitsSkull from "../../assets/misfits-skull.png"
 import witchImg from "../../assets/witch.png"
+import bingoBall from "../../assets/bingo-ball.png"
 import heroPhoto from "../../assets/hero-fondo.jpg"
 import logoWordmark from "../../assets/logo-balambam-boo.png"
 import ferrolCharacter from "../../assets/muneco-ferrol.png"
@@ -12,20 +13,105 @@ import faqs from "../../data/faqs.json"
 
 const lineup = [
  {
-  name: "Bule",
-  href: "https://www.instagram.com/bule_banda/?hl=es",
+  time: "12:00",
+  name: "Apertura de puertas",
  },
  {
+  time: "13:00",
+  name: "VHS",
+  href: "https://www.instagram.com/somos.vhs/?hl=es",
+ },
+ {
+  time: "14:00",
   name: "Mallo",
   href: "https://www.instagram.com/mallo_musica/?hl=es",
  },
  {
-  name: "Children in Heat",
+  time: "15:15",
+  name: "Bingo!",
   special: true,
+  modal: "bingo-modal",
  },
  {
-  name: "VHS",
-  href: "https://www.instagram.com/somos.vhs/?hl=es",
+  time: "16:00",
+  name: "Children in Heat",
+  special: true,
+  modal: "children-modal",
+ },
+ {
+  time: "16:45",
+  name: "Descarburados (Scooter No Club)",
+  href: "https://www.instagram.com/descarburadostoledosnc/",
+ },
+ {
+  time: "17:15",
+  name: "Bule",
+  href: "https://www.instagram.com/bule_banda/?hl=es",
+ },
+ {
+  time: "19:00",
+  name: "Fin",
+ },
+]
+
+const festivalExtras = [
+ {
+  title: "Taller «Un cuento Exquisito»",
+  detail: "Tuti Kekos, stand de juguetes en madera",
+ },
+ {
+  title: "Taller de pigmentos naturales",
+  detail: "No veo un pigmento",
+ },
+ {
+  title: "Taller de heridas de Halloween",
+  detail: "En Mitad del Medio, stand de artesanía",
+ },
+ {
+  title: "Pinta tu tote bag",
+  detail: "Lady Tea, stand de artesanía",
+  detailLinkText: "Lady Tea",
+  detailHref: "https://www.instagram.com/_lady.tea_/?hl=es",
+ },
+ {
+  title: "Haz tu propia chapa",
+  detail: "@fernando_phantom",
+  detailHref: "https://www.instagram.com/fernando_phantom/",
+ },
+ {
+  title: "Corner Disfraces",
+  detail: "Disfraces, pintacaras y globoflexia",
+ },
+ {
+  title: "Discos Marginales",
+  titleHref: "https://www.instagram.com/discos_marginales/?hl=es",
+  detail: "Stand de venta de discos",
+ },
+ {
+  title: "Batir Records",
+  titleHref: "https://batir-records.com/",
+  detail: "Stand de venta de discos",
+ },
+ {
+  title: "Roctopus Records",
+  titleHref: "https://www.instagram.com/roctopusrecords/?hl=es",
+  detail: "Stand de venta de discos",
+ },
+ {
+  title: "Cegaru",
+  titleHref: "https://www.instagram.com/cegaru.tattoo/?hl=es",
+  detail: "Stand de venta de camisetas",
+ },
+ {
+  title: "Merchandising de las bandas",
+ },
+ {
+  title: "Mural creativo",
+  detail: "Balambam Boo",
+ },
+ {
+  title: "Fan nº 1",
+  detail: "Decora carteles y anima a las bandas con tus diseños",
  },
 ]
 
@@ -93,7 +179,14 @@ const bats = [
   speed: 0.455,
   rotate: 20,
  },
- { src: "/bat1.png", top: "22%", left: "6%", size: 90, speed: 0.062, rotate: 10 },
+ {
+  src: "/bat1.png",
+  top: "22%",
+  left: "6%",
+  size: 90,
+  speed: 0.062,
+  rotate: 10,
+ },
  {
   src: "/bat2.png",
   top: "26%",
@@ -182,7 +275,14 @@ const bats = [
   speed: 0.455,
   rotate: -12,
  },
- { src: "/bat1.png", top: "67%", left: "4%", size: 52, speed: 0.086, rotate: 6 },
+ {
+  src: "/bat1.png",
+  top: "67%",
+  left: "4%",
+  size: 52,
+  speed: 0.086,
+  rotate: 6,
+ },
  {
   src: "/bat2.png",
   top: "70%",
@@ -199,7 +299,14 @@ const bats = [
   speed: 0.42,
   rotate: -26,
  },
- { src: "/bat2.png", top: "77%", left: "8%", size: 74, speed: 0.062, rotate: 10 },
+ {
+  src: "/bat2.png",
+  top: "77%",
+  left: "8%",
+  size: 74,
+  speed: 0.062,
+  rotate: 10,
+ },
  {
   src: "/bat1.png",
   top: "80%",
@@ -240,26 +347,23 @@ const bats = [
   speed: 0.49,
   rotate: -20,
  },
- { src: "/bat2.png", top: "96%", left: "28%", size: 42, speed: 0.074, rotate: 8 },
+ {
+  src: "/bat2.png",
+  top: "96%",
+  left: "28%",
+  size: 42,
+  speed: 0.074,
+  rotate: 8,
+ },
 ]
 ---
 
 <div class='landing'>
  <div class='boot-splash' data-boot-splash aria-hidden='true'>
   <div class='boot-splash-inner'>
-   <img
-    src='/bat1.png'
-    alt=''
-    class='boot-splash-bat'
-    width='72'
-    height='39'
-   />
+   <img src='/bat1.png' alt='' class='boot-splash-bat' width='72' height='39' />
    <p class='boot-splash-brand'>Balambam Boo Fest</p>
-   <p
-    class='boot-splash-countdown'
-    data-countdown
-    data-event={eventIso}
-   >
+   <p class='boot-splash-countdown' data-countdown data-event={eventIso}>
     {countdownLabel(daysLeftSSR)}
    </p>
    <p class='boot-splash-year'>
@@ -343,7 +447,8 @@ const bats = [
     <p class='hero-edition'>Edición Halloween</p>
     <p class='hero-place'>
      21 de noviembre<br />
-     <span class='hero-place-venue'>Terraza Summerland</span>, La Peraleda, Toledo
+     <span class='hero-place-venue'>Terraza Summerland</span>, La Peraleda,
+     Toledo
     </p>
     <a
      href={ticketsUrl}
@@ -352,29 +457,33 @@ const bats = [
      class='cta cta-sell'>Comprar mi entrada</a
     >
    </div>
-   <a class='scroll-cue' href='#info' aria-label='Bajar para ver la información del festival'>
+   <a
+    class='scroll-cue'
+    href='#info'
+    aria-label='Bajar para ver la información del festival'
+   >
     <span class='scroll-track'>
      <span class='scroll-line' aria-hidden='true'></span>
      <svg class='scroll-spider' viewBox='0 0 72 58' aria-hidden='true'>
       <g class='legs legs-a'>
-       <path d='M30 18 C16 8 8 10 2 2' />
-       <path d='M28 30 C14 28 6 34 2 42' />
-       <path d='M42 18 C56 8 64 10 70 2' />
-       <path d='M44 30 C58 28 66 34 70 42' />
+       <path d='M30 18 C16 8 8 10 2 2'></path>
+       <path d='M28 30 C14 28 6 34 2 42'></path>
+       <path d='M42 18 C56 8 64 10 70 2'></path>
+       <path d='M44 30 C58 28 66 34 70 42'></path>
       </g>
       <g class='legs legs-b'>
-       <path d='M30 22 C16 16 8 18 2 14' />
-       <path d='M28 34 C14 40 8 50 4 56' />
-       <path d='M42 22 C56 16 64 18 70 14' />
-       <path d='M44 34 C58 40 64 50 68 56' />
+       <path d='M30 22 C16 16 8 18 2 14'></path>
+       <path d='M28 34 C14 40 8 50 4 56'></path>
+       <path d='M42 22 C56 16 64 18 70 14'></path>
+       <path d='M44 34 C58 40 64 50 68 56'></path>
       </g>
-      <ellipse cx='36' cy='30' rx='11' ry='8' />
-      <circle cx='36' cy='20' r='6.2' />
-      <circle class='scroll-spider-eye' cx='33.6' cy='19' r='1.3' />
-      <circle class='scroll-spider-eye' cx='38.6' cy='19' r='1.3' />
+      <ellipse cx='36' cy='30' rx='11' ry='8'></ellipse>
+      <circle cx='36' cy='20' r='6.2'></circle>
+      <circle class='scroll-spider-eye' cx='33.6' cy='19' r='1.3'></circle>
+      <circle class='scroll-spider-eye' cx='38.6' cy='19' r='1.3'></circle>
      </svg>
      <svg class='scroll-arrow' viewBox='0 0 28 16' aria-hidden='true'>
-      <path d='M2 2.5 L14 13 L26 2.5' />
+      <path d='M2 2.5 L14 13 L26 2.5'></path>
      </svg>
     </span>
    </a>
@@ -451,8 +560,8 @@ const bats = [
      class='band-artist'
      href='https://www.instagram.com/fernando_phantom/'
      target='_blank'
-     rel='noopener noreferrer'
-     >Fernando Díaz Franco</a>, que hace que nuestra imagen sea la más molona de la galaxia.
+     rel='noopener noreferrer'>Fernando Díaz Franco</a
+    >, que hace que nuestra imagen sea la más molona de la galaxia.
    </p>
    <p>
     Tras diez años dando guerra, volvemos a la carga con una edición muy
@@ -475,9 +584,9 @@ const bats = [
  <section class='info reveal' data-reveal>
   <div class='info-block' data-reveal-child style='--reveal-delay: 0ms'>
    <svg class='fact-icon' viewBox='0 0 48 48' aria-hidden='true'>
-    <rect x='7' y='12' width='34' height='28' rx='2' />
-    <path d='M7 22 H41' />
-    <path d='M16 7 V16 M32 7 V16' />
+    <rect x='7' y='12' width='34' height='28' rx='2'></rect>
+    <path d='M7 22 H41'></path>
+    <path d='M16 7 V16 M32 7 V16'></path>
    </svg>
    <p class='info-label'>Cuándo</p>
    <p class='info-value'>
@@ -487,8 +596,9 @@ const bats = [
   </div>
   <div class='info-block' data-reveal-child style='--reveal-delay: 100ms'>
    <svg class='fact-icon' viewBox='0 0 48 48' aria-hidden='true'>
-    <path d='M24 44 C24 44 8 28 8 18 a16 16 0 0 1 32 0 C40 28 24 44 24 44z' />
-    <circle cx='24' cy='18' r='5' />
+    <path d='M24 44 C24 44 8 28 8 18 a16 16 0 0 1 32 0 C40 28 24 44 24 44z'
+    ></path>
+    <circle cx='24' cy='18' r='5'></circle>
    </svg>
    <p class='info-label'>Dónde</p>
    <p class='info-value'>
@@ -497,9 +607,15 @@ const bats = [
    </p>
   </div>
   <div class='info-block' data-reveal-child style='--reveal-delay: 200ms'>
-   <svg class='fact-icon fact-icon--ticket' viewBox='0 0 64 40' aria-hidden='true'>
-    <path d='M8 5 H46 a5 5 0 0 1 0 10 a5 5 0 0 1 0 10 a5 5 0 0 1 0 10 H8 a5 5 0 0 1 0-10 a5 5 0 0 1 0-10 a5 5 0 0 1 0-10 Z' />
-    <path d='M22 8 V32' />
+   <svg
+    class='fact-icon fact-icon--ticket'
+    viewBox='0 0 64 40'
+    aria-hidden='true'
+   >
+    <path
+     d='M8 5 H46 a5 5 0 0 1 0 10 a5 5 0 0 1 0 10 a5 5 0 0 1 0 10 H8 a5 5 0 0 1 0-10 a5 5 0 0 1 0-10 a5 5 0 0 1 0-10 Z'
+    ></path>
+    <path d='M22 8 V32'></path>
    </svg>
    <p class='info-label'>Entradas</p>
    <p class='info-value'>
@@ -511,17 +627,14 @@ const bats = [
  </section>
 
  <section class='lineup reveal' id='lineup' data-reveal>
-  <Typography
-   variant='headline-1'
-   as='h2'
-   className='lineup-heading'
-  >
-   Grupos
+  <Typography variant='headline-1' as='h2' className='lineup-heading'>
+   Horario de grupos y eventos
   </Typography>
   <ul class='lineup-list'>
    {
     lineup.map((band) => (
      <li class:list={["lineup-item", { "lineup-item--special": band.special }]}>
+      <span class='lineup-time'>{band.time}</span>
       {band.href ? (
        <a
         href={band.href}
@@ -532,21 +645,89 @@ const bats = [
        >
         {band.name}
        </a>
-      ) : (
+      ) : band.special && band.modal ? (
        <button
         type='button'
         class='lineup-link lineup-link--special'
         aria-haspopup='dialog'
-        aria-controls='children-modal'
-        data-special-trigger
+        aria-controls={band.modal}
+        data-modal-trigger={band.modal}
        >
         {band.name}
        </button>
+      ) : (
+       <span class='lineup-event'>{band.name}</span>
       )}
      </li>
     ))
    }
   </ul>
+ </section>
+
+ <section class='activities reveal' id='actividades' data-reveal>
+  <h2 class='activities-heading'>
+   <span class='activities-heading-word'>Actividades,</span>{" "}
+   <span class='activities-heading-word'>Talleres</span>{" "}
+   <span class='activities-heading-word'>y</span>{" "}
+   <span class='activities-heading-word'>Stands</span>
+  </h2>
+
+  <ul class='activities-list'>
+   {
+    festivalExtras.map((item) => (
+     <li class='activities-item'>
+      <p class='activities-item-title'>
+       {item.titleHref ? (
+        <a
+         class='activities-item-link activities-item-link--title'
+         href={item.titleHref}
+         target='_blank'
+         rel='noopener noreferrer'
+        >
+         {item.title}
+        </a>
+       ) : (
+        item.title
+       )}
+      </p>
+      {item.detail && (
+       <p class='activities-item-detail'>
+        {item.detailHref && item.detailLinkText ? (
+         <>
+          <a
+           class='activities-item-link'
+           href={item.detailHref}
+           target='_blank'
+           rel='noopener noreferrer'
+          >
+           {item.detailLinkText}
+          </a>
+          {item.detail.slice(item.detailLinkText.length)}
+         </>
+        ) : item.detailHref ? (
+         <a
+          class='activities-item-link'
+          href={item.detailHref}
+          target='_blank'
+          rel='noopener noreferrer'
+         >
+          {item.detail}
+         </a>
+        ) : (
+         item.detail
+        )}
+       </p>
+      )}
+     </li>
+    ))
+   }
+  </ul>
+
+  <p class='activities-lead'>
+   Acércate a los stands de talleres y artesanía para conocer los proyectos y
+   los <em>horarios y condiciones</em> de los diferentes talleres y
+   actividades.
+  </p>
  </section>
 
  <section class='djs reveal' data-reveal>
@@ -612,15 +793,13 @@ const bats = [
     src='https://maps.google.com/maps?q=Terraza+Summerland,+Carr.+de+la+Peraleda+3D,+45004+Toledo&z=16&hl=es&output=embed'
     loading='lazy'
     referrerpolicy='no-referrer-when-downgrade'
-    allowfullscreen
-   ></iframe>
+    allowfullscreen></iframe>
   </div>
   <a
    class='visit-ext'
    href='https://maps.google.com/?q=Terraza+Summerland,+Carr.+de+la+Peraleda+3D,+45004+Toledo'
    target='_blank'
-   rel='noopener noreferrer'
-   >Abrir el mapa</a
+   rel='noopener noreferrer'>Abrir el mapa</a
   >
  </section>
 
@@ -708,28 +887,86 @@ const bats = [
  </p>
 </dialog>
 
+<dialog
+ class='children-modal bingo-modal'
+ id='bingo-modal'
+ aria-labelledby='bingo-modal-title'
+>
+ <button
+  type='button'
+  class='children-modal-close'
+  data-modal-close
+  aria-label='Cerrar'
+ >
+  ×
+ </button>
+ <div class='bingo-modal-art' aria-hidden='true'>
+  <img
+   src={witchImg.src}
+   alt=''
+   class='bingo-modal-witch'
+   width={witchImg.width}
+   height={witchImg.height}
+  />
+  <img
+   src={bingoBall.src}
+   alt=''
+   class='bingo-modal-ball'
+   width={bingoBall.width}
+   height={bingoBall.height}
+  />
+ </div>
+ <h2 id='bingo-modal-title' class='children-modal-title bingo-modal-title'>
+  Bingo con muchas sorpresas!
+ </h2>
+</dialog>
+
 <script>
- const trigger = document.querySelector("[data-special-trigger]")
- const modal = document.getElementById(
-  "children-modal",
- ) as HTMLDialogElement | null
- const closeBtn = document.querySelector("[data-modal-close]")
+ let modalScrollY = 0
 
- function openModal() {
-  if (!modal) return
+ function restoreModalScroll() {
+  window.scrollTo(0, modalScrollY)
+ }
+
+ function openSiteModal(modal: HTMLDialogElement) {
+  modalScrollY = window.scrollY
   modal.showModal()
+  // showModal() / focus pueden resetear el scroll en algunos navegadores
+  restoreModalScroll()
+  requestAnimationFrame(restoreModalScroll)
+  modal.querySelector<HTMLElement>("[data-modal-close]")?.focus({
+   preventScroll: true,
+  })
  }
 
- function closeModal() {
-  if (!modal) return
+ function closeSiteModal(modal: HTMLDialogElement) {
   modal.close()
+  restoreModalScroll()
  }
 
- trigger?.addEventListener("click", openModal)
- closeBtn?.addEventListener("click", closeModal)
+ document
+  .querySelectorAll<HTMLElement>("[data-modal-trigger]")
+  .forEach((trigger) => {
+   const modalId = trigger.dataset.modalTrigger
+   if (!modalId) return
+   const modal = document.getElementById(modalId) as HTMLDialogElement | null
+   if (!modal) return
 
- modal?.addEventListener("click", (event) => {
-  if (event.target === modal) closeModal()
+   trigger.addEventListener("click", (event) => {
+    event.preventDefault()
+    openSiteModal(modal)
+   })
+   modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeSiteModal(modal)
+   })
+   modal.addEventListener("close", restoreModalScroll)
+  })
+
+ document.querySelectorAll("[data-modal-close]").forEach((closeBtn) => {
+  closeBtn.addEventListener("click", () => {
+   const dialog = closeBtn.closest("dialog") as HTMLDialogElement | null
+   if (dialog) closeSiteModal(dialog)
+  })
  })
 
  const bats = document.querySelectorAll<HTMLElement>(".bat")
@@ -869,13 +1106,15 @@ const bats = [
   let konamiIndex = 0
 
   window.addEventListener("keydown", (event) => {
-   const key =
-    event.key.length === 1 ? event.key.toLowerCase() : event.key
+   const key = event.key.length === 1 ? event.key.toLowerCase() : event.key
    if (key === konami[konamiIndex]) {
     konamiIndex += 1
     if (konamiIndex === konami.length) {
      konamiIndex = 0
-     openModal()
+     const childrenModal = document.getElementById(
+      "children-modal",
+     ) as HTMLDialogElement | null
+     if (childrenModal) openSiteModal(childrenModal)
     }
     return
    }
@@ -926,10 +1165,7 @@ const bats = [
   // Empieza ~25% del scroll y llega a noche plena al final
   const t = Math.min(1, Math.max(0, (raw - 0.25) / 0.75))
   const eased = t * t * (3 - 2 * t)
-  document.documentElement.style.setProperty(
-   "--scroll-night",
-   eased.toFixed(4),
-  )
+  document.documentElement.style.setProperty("--scroll-night", eased.toFixed(4))
  }
 
  function updateParallax() {
@@ -1058,12 +1294,11 @@ const bats = [
   z-index: 10000;
   display: grid;
   place-items: center;
-  background:
-   radial-gradient(
-    ellipse 70% 55% at 50% 45%,
-    color-mix(in srgb, var(--bbf-orange) 55%, var(--bbf-navy)) 0%,
-    var(--bbf-navy) 70%
-   );
+  background: radial-gradient(
+   ellipse 70% 55% at 50% 45%,
+   color-mix(in srgb, var(--bbf-orange) 55%, var(--bbf-navy)) 0%,
+   var(--bbf-navy) 70%
+  );
   opacity: 1;
   transition: opacity 0.45s ease;
  }
@@ -1760,12 +1995,11 @@ const bats = [
   width: min(92vw, 520px);
   text-align: center;
   color: var(--bbf-cream);
-  background:
-   radial-gradient(
-    ellipse 80% 70% at 50% 30%,
-    color-mix(in srgb, var(--bbf-orange) 35%, var(--bbf-navy)) 0%,
-    var(--bbf-navy) 70%
-   );
+  background: radial-gradient(
+   ellipse 80% 70% at 50% 30%,
+   color-mix(in srgb, var(--bbf-orange) 35%, var(--bbf-navy)) 0%,
+   var(--bbf-navy) 70%
+  );
   border: 4px solid var(--bbf-cream);
   box-shadow:
    8px 8px 0 var(--bbf-orange),
@@ -1904,14 +2138,16 @@ const bats = [
  /* className propia: Typography usa CSS modules hasheados */
  .lineup :global(.lineup-heading) {
   font-family: var(--font-lineup);
-  font-size: clamp(2.8rem, 9vw, 4.5rem);
+  font-size: clamp(1.85rem, 6.5vw, 3.4rem);
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.05;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--bbf-cream);
   text-shadow: 3px 3px 0 var(--bbf-navy);
   padding-bottom: 1.25rem;
+  max-width: 18ch;
+  margin-inline: auto;
  }
 
  .band-title {
@@ -2004,6 +2240,125 @@ const bats = [
   font-size: clamp(1.4rem, 2.4vw, 1.9rem);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: var(--bbf-orange);
+ }
+
+ .activities {
+  --bbf-lilac: #c9a0ff;
+  width: var(--bbf-measure);
+  max-width: var(--bbf-measure);
+  box-sizing: border-box;
+  margin: var(--bbf-gap) auto 0;
+  padding: clamp(28px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(28px, 4vw, 40px);
+  text-align: left;
+  background: var(--bbf-navy);
+  color: var(--bbf-cream);
+ }
+
+ .activities-heading {
+  margin: 0;
+  font-family: var(--font-lineup);
+  font-size: clamp(1.55rem, 4.2vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bbf-orange);
+ }
+
+ .activities-heading-word {
+  display: inline-block;
+  white-space: nowrap;
+ }
+
+ .activities-lead {
+  margin: 0;
+  max-width: 40rem;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.55;
+  font-weight: 500;
+ }
+
+ .activities-lead em {
+  font-style: normal;
+  font-weight: 800;
+  color: var(--bbf-lilac);
+ }
+
+ .activities-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+ }
+
+ .activities-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+ }
+
+ .activities-item-title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--bbf-cream);
+ }
+
+ .activities-item-detail {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--bbf-orange);
+ }
+
+ @media (min-width: 960px) {
+  .activities-item {
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-items: baseline;
+   gap: 0;
+  }
+
+  .activities-item-title,
+  .activities-item-detail {
+   display: inline;
+  }
+
+  .activities-item-title:has(+ .activities-item-detail)::after {
+   content: " - ";
+   color: var(--bbf-cream);
+  }
+ }
+
+ .activities-item-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+ }
+
+ .activities-item-link--title {
+  font-weight: inherit;
+ }
+
+ .activities-item-link:hover,
+ .activities-item-link:focus-visible {
+  color: var(--bbf-orange-soft);
+ }
+
+ .activities-item-link--title:hover,
+ .activities-item-link--title:focus-visible {
   color: var(--bbf-orange);
  }
 
@@ -2119,10 +2474,15 @@ const bats = [
 
  .lineup-item {
   --sticker-tilt: -2deg;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35em 0.55em;
   font-family: var(--font-lineup);
-  font-size: clamp(1.55rem, 4.8vw, 2.4rem);
+  font-size: clamp(1.15rem, 3.6vw, 1.9rem);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.25;
   color: var(--bbf-cream);
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -2131,6 +2491,17 @@ const bats = [
   animation: fadeUp 0.7s ease-out forwards;
  }
 
+ .lineup-time {
+  flex: 0 0 auto;
+  min-width: 4.2ch;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  opacity: 0.88;
+ }
+
+ .lineup-event {
+  display: inline-block;
+ }
 
  .lineup-link {
   color: inherit;
@@ -2188,8 +2559,11 @@ const bats = [
  }
 
  .children-modal {
-  position: relative;
+  position: fixed;
+  inset: 0;
   width: min(92vw, 380px);
+  height: fit-content;
+  max-height: min(90vh, 640px);
   margin: auto;
   padding: 28px 24px 32px;
   border: 3px solid #fff6eb;
@@ -2198,6 +2572,7 @@ const bats = [
   color: #fff6eb;
   text-align: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  overflow: auto;
  }
 
  .children-modal::backdrop {
@@ -2253,6 +2628,64 @@ const bats = [
   color: rgba(255, 246, 235, 0.9);
  }
 
+ .bingo-modal {
+  width: min(92vw, 420px);
+  overflow: hidden;
+ }
+
+ .bingo-modal-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 190px;
+  margin: 4px 0 10px;
+ }
+
+ .bingo-modal-witch {
+  width: min(72%, 240px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+  transform: rotate(-6deg);
+  animation: bingoWitchBob 2.6s ease-in-out infinite;
+ }
+
+ .bingo-modal-ball {
+  position: absolute;
+  right: 6%;
+  bottom: 4%;
+  width: clamp(88px, 28vw, 120px);
+  height: auto;
+  border-radius: 50%;
+  display: block;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.4));
+  animation: bingoBallSpin 5.5s linear infinite;
+ }
+
+ .bingo-modal-title {
+  color: var(--bbf-witch);
+  text-shadow: 2px 2px 0 rgba(224, 103, 49, 0.55);
+ }
+
+ @keyframes bingoWitchBob {
+  0%,
+  100% {
+   transform: rotate(-6deg) translateY(0);
+  }
+  50% {
+   transform: rotate(-3deg) translateY(-6px);
+  }
+ }
+
+ @keyframes bingoBallSpin {
+  from {
+   transform: rotate(0deg);
+  }
+  to {
+   transform: rotate(360deg);
+  }
+ }
+
  @keyframes modalIn {
   from {
    opacity: 0;
@@ -2270,19 +2703,31 @@ const bats = [
  }
  .lineup-item:nth-child(2) {
   --sticker-tilt: 2.8deg;
-  animation-delay: 0.12s;
+  animation-delay: 0.1s;
  }
  .lineup-item:nth-child(3) {
   --sticker-tilt: -2deg;
-  animation-delay: 0.19s;
+  animation-delay: 0.15s;
  }
  .lineup-item:nth-child(4) {
   --sticker-tilt: 3.2deg;
-  animation-delay: 0.26s;
+  animation-delay: 0.2s;
  }
  .lineup-item:nth-child(5) {
   --sticker-tilt: -2.6deg;
-  animation-delay: 0.33s;
+  animation-delay: 0.25s;
+ }
+ .lineup-item:nth-child(6) {
+  --sticker-tilt: 2.4deg;
+  animation-delay: 0.3s;
+ }
+ .lineup-item:nth-child(7) {
+  --sticker-tilt: -3deg;
+  animation-delay: 0.35s;
+ }
+ .lineup-item:nth-child(8) {
+  --sticker-tilt: 2deg;
+  animation-delay: 0.4s;
  }
 
  .djs {
@@ -2588,7 +3033,8 @@ const bats = [
   align-items: center;
   justify-content: center;
   gap: 16px;
-  padding: clamp(36px, 4.5vw, 48px) clamp(20px, 4vw, 48px) clamp(28px, 3.2vw, 36px);
+  padding: clamp(36px, 4.5vw, 48px) clamp(20px, 4vw, 48px)
+   clamp(28px, 3.2vw, 36px);
   border: 2px solid color-mix(in srgb, var(--bbf-cream) 50%, transparent);
  }
 
@@ -2637,11 +3083,23 @@ const bats = [
  .cta-closing::before {
   background:
    radial-gradient(circle at 12% 30%, var(--bbf-orange) 0 3px, transparent 4px),
-   radial-gradient(circle at 88% 25%, var(--bbf-cream) 0 2.5px, transparent 3.5px),
+   radial-gradient(
+    circle at 88% 25%,
+    var(--bbf-cream) 0 2.5px,
+    transparent 3.5px
+   ),
    radial-gradient(circle at 20% 85%, var(--bbf-cream) 0 2px, transparent 3px),
    radial-gradient(circle at 78% 80%, var(--bbf-orange) 0 3px, transparent 4px),
-   radial-gradient(circle at 50% -4%, var(--bbf-orange) 0 2.5px, transparent 3.5px),
-   radial-gradient(circle at 50% 108%, var(--bbf-cream) 0 2.5px, transparent 3.5px);
+   radial-gradient(
+    circle at 50% -4%,
+    var(--bbf-orange) 0 2.5px,
+    transparent 3.5px
+   ),
+   radial-gradient(
+    circle at 50% 108%,
+    var(--bbf-cream) 0 2.5px,
+    transparent 3.5px
+   );
  }
 
  .cta-closing::after {
@@ -3076,10 +3534,20 @@ const bats = [
    display: none !important;
   }
   .hero-witch-fly,
-  .hero-witch {
+  .hero-witch,
+  .bingo-modal-witch,
+  .bingo-modal-ball {
    animation: none;
    opacity: 1;
+  }
+
+  .hero-witch-fly,
+  .hero-witch {
    transform: none;
+  }
+
+  .bingo-modal-witch {
+   transform: rotate(-6deg);
   }
 
   .scroll-spider,

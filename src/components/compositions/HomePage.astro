@@ -1,6 +1,7 @@
 ---
 import { Typography } from "../Typography"
 import cartelBbf26 from "../../assets/cartel-bbf26.webp"
+import menuBalambamBoo from "../../assets/menu-balambam-boo.webp"
 import misfitsSkull from "../../assets/misfits-skull.png"
 import witchImg from "../../assets/witch.png"
 import bingoBall from "../../assets/bingo-ball.png"
@@ -728,6 +729,17 @@ const bats = [
    los <em>horarios y condiciones</em> de los diferentes talleres y
    actividades.
   </p>
+ </section>
+
+ <section class='festival-menu reveal' id='menu' data-reveal>
+  <h2 class='festival-menu-title'>El menú del festival</h2>
+  <img
+   src={menuBalambamBoo.src}
+   alt='Carta de comida Balambam Boo — sábado 21 de noviembre en Terraza Summerland'
+   class='festival-menu-poster'
+   width={menuBalambamBoo.width}
+   height={menuBalambamBoo.height}
+  />
  </section>
 
  <section class='djs reveal' data-reveal>
@@ -2257,6 +2269,39 @@ const bats = [
   text-align: left;
   background: var(--bbf-navy);
   color: var(--bbf-cream);
+ }
+
+ .festival-menu {
+  width: var(--bbf-measure);
+  max-width: var(--bbf-measure);
+  box-sizing: border-box;
+  margin: var(--bbf-gap) auto 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 3vw, 28px);
+  text-align: center;
+  scroll-margin-top: 24px;
+ }
+
+ .festival-menu-title {
+  margin: 0;
+  font-family: var(--font-lineup);
+  font-size: clamp(1.55rem, 4.2vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bbf-cream);
+  text-shadow: 2px 2px 0 var(--bbf-navy);
+ }
+
+ .festival-menu-poster {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
  }
 
  .activities-heading {

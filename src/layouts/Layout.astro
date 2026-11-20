@@ -15,7 +15,7 @@ export interface Props {
 const {
  title = "Balambam Boo Fest 2026",
  bandImage,
- description = "Edición Halloween. Sábado 21 de noviembre de 2026 en Terraza Summerland (Toledo). Rock, brujas y vinilos para todas las edades.",
+ description = "Festival cancelado. Por motivos ajenos a la organización, la edición del 21 de noviembre queda suspendida. Las entradas se devolverán automáticamente.",
  image = "/cartel-bbf26.jpg",
 } = Astro.props
 ---
@@ -56,8 +56,8 @@ const {
   />
   <meta name='twitter:site' content='@balambamboofest' />
 
-  <meta name='theme-color' content='#EFB398' />
-  <meta name='msapplication-TileColor' content='#EFB398' />
+  <meta name='theme-color' content='#000000' />
+  <meta name='msapplication-TileColor' content='#000000' />
   <link rel='canonical' href={Astro.url.href} />
 
   <script is:inline>
@@ -151,7 +151,8 @@ const {
   margin: 0;
   width: 100%;
   min-height: 100vh;
-  background-color: #efb398;
+  background-color: #000;
+  color: #f5f5f5;
  }
 
  .main-content {

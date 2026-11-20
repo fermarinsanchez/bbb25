@@ -1,24 +1,16 @@
 .footer {
-  --footer-bg: color-mix(in srgb, #e06731 50%, white);
-  --footer-ink: color-mix(
-    in srgb,
-    #fff6eb calc(var(--scroll-night, 0) * 100%),
-    #203048
-  );
-  --footer-cream: #fff6eb;
-  --footer-accent: #e06731;
-  --footer-surface: color-mix(
-    in srgb,
-    #203048 calc(var(--scroll-night, 0) * 88%),
-    var(--footer-bg)
-  );
+  --footer-bg: #000;
+  --footer-ink: #f2f2f2;
+  --footer-cream: #fff;
+  --footer-accent: #ff6b6b;
+  --footer-surface: #000;
 
   background-color: var(--footer-surface);
   color: var(--footer-ink);
   padding: 3rem 0 1.5rem 0;
   margin-top: auto;
   position: relative;
-  border-top: 2px solid color-mix(in srgb, var(--footer-ink) 18%, transparent);
+  border-top: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 .footerContainer {

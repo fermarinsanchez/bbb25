@@ -1,8 +1,8 @@
 // Configuración de meta tags para cada página
 export const META_CONFIG = {
     home: {
-        title: 'Balambam Boo Fest 2026 — Edición Halloween',
-        description: 'Sábado 21 de noviembre de 2026 en Terraza Summerland (Toledo). Un día de rock, brujas y vinilos. Entrada anticipada 10€ · Menores de 16 gratis.',
+        title: 'Balambam Boo Fest 2026 — CANCELADO',
+        description: 'Por motivos ajenos a la organización, nos vemos obligados a cancelar la edición del 21 de noviembre. Las entradas se devolverán automáticamente a lo largo de la tarde.',
         image: '/cartel-bbf26.jpg'
     },
     lineup: {
